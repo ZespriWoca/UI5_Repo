@@ -1,0 +1,134 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<!-- Settings Dialog for Sorting and Grouping Supplier Orders Table -->
+	<ViewSettingsDialog confirm="handleViewSettingsDialogClose"
+		title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SETTINGSDIALOG_TITLE}">
+
+		<!-- Sort Items for Shipment No , Delivery No and Load Start Date -->
+		<sortItems>
+
+			<!-- Supplier ID -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SUPPLIER}"
+				key="SupplierID" />
+
+			<!-- Shipment Number -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+				key="ShipmentID" />
+
+			<!-- Load Port -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_LOAD_PORT}"
+				key="LoadPort" />
+
+			<!-- Destination Port -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_DESTINATION_PORT}"
+				key="DestinationPort" />
+
+			<!-- Line -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_LINE}"
+				key="DeliveryLineNumber" />
+
+			<!-- Container ID -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_CONTAINER_ID}"
+				key="ContainerID" />
+
+			<!-- Access -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SETTINGSDIALOG_SORTBY_ACCESS}"
+				key="MarketAccessArea" />
+
+			<!-- Start Date -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SETTINGSDIALOG_SORTBY_START}"
+				key="LoadFromDate" />
+
+			<!-- End Date -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SETTINGSDIALOG_SORTBY_END}"
+				key="LoadToDate" />
+
+			<!-- Brand -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_BRAND}"
+				key="Characteristic/Brand" />
+
+			<!-- Variety -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_VARIETY}"
+				key="Characteristic/Variety" />
+
+			<!-- Class -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_CLASS}"
+				key="Characteristic/Class" />
+
+			<!-- Growing Method -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_GROWING_METHOD}"
+				key="Characteristic/GrowingMethod" />
+
+			<!-- Size -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SIZE}"
+				key="Characteristic/Size" />
+
+			<!-- Palette Base -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SETTINGSDIALOG_SORTBY_PALETTE_BASE}"
+				key="Characteristic/PalletBase" />
+
+			<!-- Stack -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_STACK}"
+				key="Characteristic/Stack" />
+
+			<!-- Pack Style -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SETTINGSDIALOG_SORTBY_PACK}"
+				key="Characteristic/PackStyle" />
+
+			<!-- Label -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_LABEL}"
+				key="Characteristic/Label" />
+
+			<!-- Quantity -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_QUANTITY}"
+				key="Quantity" />
+
+			<!-- Shortage -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SHORTAGE}"
+				key="Shortage" />
+
+			<!-- Trade Quantity -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_TRADE}"
+				key="TradeQuantity" />
+
+			<!-- UOM -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_UOM}"
+				key="UOM" />
+
+		</sortItems>
+
+		<!-- Group Items for Delivery No and Supplier -->
+		<groupItems>
+
+			<!-- Delivery Number -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+				key="DeliveryID" />
+
+		</groupItems>
+
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

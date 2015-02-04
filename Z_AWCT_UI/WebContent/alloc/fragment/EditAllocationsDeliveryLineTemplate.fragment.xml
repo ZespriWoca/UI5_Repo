@@ -1,0 +1,68 @@
+<ColumnListItem xmlns="sap.m" xmlns:core="sap.ui.core">
+	<cells>
+		<!-- Container ID -->
+		<Text id="containerIDCell" text="{ContainerID}"
+			tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+
+		<!-- Line Number -->
+		<Text text="{DeliveryLineNumber}"
+			tooltip="{i18n>TXT_GENERIC_LINE_NUMBER}" />
+
+		<!-- Supplier -->
+		<Text
+			text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TABLE_DELIVERY_LINE_SUPPLIER_ID}"
+			tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+
+		<!-- Container Type -->
+		<Text id="containerTypeCell" text="{ContainerType}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_CONTAINER_TYPE}" />
+
+		<!-- Material Number -->
+		<Text text="{MaterialNumber}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_MATERIAL_NUMBER}" />
+
+		<!-- Brand -->
+		<Text text="{Brand}"
+			tooltip="{i18n>TXT_GENERIC_BRAND}" />
+
+		<!-- Fruit Group -->
+		<Text text="{FruitGroup}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_FRUIT_GROUP}" />
+
+		<!-- Size -->
+		<Text text="{Size}"
+			tooltip="{i18n>TXT_GENERIC_SIZE}" />
+
+		<!-- Pack -->
+		<Text text="{Pack}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_PACK}" />
+
+		<!-- Label -->
+		<Text text="{Label}"
+			tooltip="{i18n>TXT_GENERIC_LABEL}" />
+
+		<!-- UoM -->
+		<Text text="{UOM}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_UOM}" />
+
+		<!-- Quantity -->
+		<Text
+			text="{path:'Quantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+
+		<!-- Allocation Quantity -->
+		<ObjectNumber
+			number="{path:'AllocationQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			state="{parts: ['AllocationQuantity', 'Quantity'], formatter: '.formatDeliveryLineAllocationQuantityState'}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_ALLOCATION_QUANTITY}" />
+
+		<!-- Batch Characteristics -->
+		<Text
+			text="{path:'CountBatchCharacteristics', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_BATCH_CHARACTERISTICS}" />
+
+		<!-- Actions -->
+		<Button icon="sap-icon://overflow" press="handleRowActionsPress"
+			type="Transparent" tooltip ="{i18n>TXT_TABLE_ROW_ACTIONS_BUTTON_TOOLTIP}"/>
+	</cells>
+</ColumnListItem>

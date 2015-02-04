@@ -1,0 +1,311 @@
+/* Split Container : Setting Height manually to get the split container inside the page ,
+ by default UI5 set the position as relative and height = 100%  */
+ 
+.zAwctSplitContainerFullHeight {
+   height: 100%;
+   position: absolute;
+}
+
+/* Empty View : Vertical Layout positioning for displaying InfoText in the Center of the View */
+
+.zAwctVerticalLayoutEmptyViewPositioning{
+  position: absolute;
+  left: 34%;
+  right: 25%;
+  top: 38%;   
+  margin:auto;  
+  overflow:visible;
+}
+
+/* Empty View : Text Alignment for displaying InfoText in the Center of the View */
+
+.zAwctTextCenterAlignment{
+  text-align:center !important;
+  font-size:1.5rem; 
+}
+/* Add Supplier Table : padding for the cells in the table  */
+
+.zAwctTableCenterAlignedRows .sapMListTblCell
+{
+	vertical-align: inherit;
+	padding-bottom: inherit;
+	padding-top: inherit;
+}
+
+.zAwctInputRightAlign {
+	.sapMInputBaseInner {
+		text-align: right;
+	}
+}
+
+/* Add Supplier Input Field : Setting the text starting from the right end,
+ by default UI5 set the text align to begin of input field  */
+.zAwctInputTextAlign .sapMInputBaseInner
+{
+	text-align: end;
+}
+/* Add Supplier SupplierID column : Setting the font weight to bold*/
+.zAwctTextFontWeight
+{
+	font-weight: bold !important;
+}
+
+/* Add Supplier Quantity column Layout : Setting the required padding and width of the layout*/
+.zAwctLayoutPadding .sapUiHLayoutChildWrapper {
+	width: 60px;
+	padding-left: 10px;
+	text-align: left;
+}
+/* Add Supplier Quantity column Layout : Setting the Text padding for the measurement*/
+.zAwctTextPadding 
+{
+	padding-top: 15px !important;
+}
+/* Edit Allocations : Makes all table cells center aligned vertically */
+.zAwctTableVerticalCenterCells .sapMListTblCell{
+	vertical-align: middle;
+	padding-top: 0.5rem;
+}
+
+/* Edit Allocations : Makes the button's icon blue */
+.zAwctButtonIconColor .sapUiIcon {
+	color: #009de0;
+}
+
+/*Maintain Line Text Table :Align the text in Maintain Line Text */
+.zAwctMaintainTextTableTextAlign
+{
+	padding-left: 0em;
+	padding-top: 1em !important;
+	padding-bottom: 1em !important;
+	position: relative;
+top: -2px;
+}
+
+/* Maintain Line Text Table : Style to make the table scrollable*/
+.zAwctMaintainTextTableScrollable{
+	overflow-y: auto !important;
+	max-height: 250px;
+}
+
+
+/* Maintain Line Text Table : Setting the font style for Text Area*/
+.zAwctMaintainTextTextAreaFontSize .sapMTextAreaInner
+{
+	font-size: large;
+	font-family: initial;
+}
+
+/* Maintain Line Text Table : Align the cells of the table*/
+.zAwctMaintainTextTableCellAlign .sapMListTblCell {
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+/* Maintain Line Text Table : Align the icon and the height of the button*/
+.zAwctMaintainTextTableActionButton
+{
+	height: 40px;
+	.sapUiIcon
+	{
+		position: relative;
+		top: -5px;
+	}
+}
+
+/* Vertical scrollbar for tables in dialog */
+.zAwctTableVerticalScrollAndStyle{
+	overflow-y : auto !important;
+	/* Table header */
+	.sapMListTblHeader .sapMListTblCell {
+	padding-bottom:7px;
+	padding-top:9px;
+	background-color:#ECEBEB;
+	}
+}
+
+
+/* Remove top padding for form in the dialog */
+	.zAwctDialogFormPaddingTop{
+		.sapMDialogScrollCont, .sapUiFormResGrid>div{
+			padding-top : 0rem;
+		}
+		
+		.sapUiRespGridSpanS12 {
+			margin-bottom: 0rem !important;
+		}
+		
+		.zAwctDialogFormElementMarginBottom {
+			margin-bottom: 1rem !important;
+		}
+	}
+
+/* Release / Unlock Dialog Table Layout Styling */
+
+	.zAwctTableLayoutPadding {
+		padding: 1rem;
+		padding-top: 0rem;
+	}
+	
+/* Styling for release and unlock dialog */
+	.zAwctDialogPaddingTop {
+		.sapMDialog.sapMMessageDialog, .sapMDialogScrollCont{
+		padding-top : 0.5em !important;
+		}
+		&.sapMDialog{
+		min-width: 38rem;
+		}
+		
+	}
+
+/* Font for dialog labels */
+.zAwctLabelStyling{
+	margin-right: 1rem;
+	font-size: 0.9rem;
+	text-shadow: 0 1px 0 #ffffff;
+	color: #333333;
+}
+
+/*Sub total and total*/
+.zAwctSubTotalText, .zAwctTotalText{
+	font-size : 1.05rem;
+}
+
+/* Padding for text */
+.zAwctTextPaddingTop{
+	padding-top : 0.7em;
+}
+
+/* FileUploader */
+.zAwctFileUploader{
+
+    .sapUiTf.sapUiTfBack.sapUiTfBrd.sapUiTfStd{
+    	height:46px;
+    	width:250px;
+    	font-size: 0.875rem;
+    }
+    .sapUiBtnNorm{
+   		height:46px;
+    	width:135px;
+    	font-size: 0.875rem;
+    	color:#333333;
+    	text-shadow:#ffffff 0px 1px 0px;
+    	
+    }
+    .sapUiBtnS.sapUiBtnNorm{
+    	border-radius:0px;
+    }
+}
+
+/* Italics + Gray for dialog text when there is no text */
+.zAwctTextGrayItalics {
+	color: gray;
+	font-style: italic;
+}
+
+/* Maintain Batch Characteristics */
+.zAwctTableReducedCellPadding {
+	tbody td {
+		padding: 7px;
+	}
+}
+
+/*Delivery Line text Button color*/
+.zAwctDeliveryLineTextButtonBackgroundColor{
+		
+	/*Set icon color*/
+	.sapMBtnCustomIcon{
+		color : #A2D0FF !important;
+	}
+}
+
+/* Info Layout positioning for upload dialog (in Progress status)*/
+.zAwctUploadInfoLayoutPositioningAndStyling {
+border: 0.1em solid #d14900;
+padding: 10px;
+background-color: #FFFEB4;
+}
+
+/* Delivery WorkList: upload Dialog : Icon positioning in the warning info layout */
+.zAwctIconPositioning {
+font-size : 1.2em;
+padding-right : 0.2em ;
+}
+
+/*  Delivery WorkList: upload Dialog : text alignment in the warning info layout */
+.zAwctWarningTextVerticalAlign {
+vertical-align: middle !important;
+}
+
+/* Edit order allocation : charge code table row styling */
+.zAwctChargeCodeTableRowStyling {
+	&>td {
+		.sapMText{
+			font-weight: bold !important;
+		}
+	}
+}
+
+
+/* Padding right for warning icons in the delivery Swap create view*/
+.zAwctObjectStatusPaddingRight{
+padding-right : 0.5em;
+}
+
+/* Delivery Swap Create : Padding bottom for the text in warning info layout */ 
+.zAwctHorizontalLayoutPaddingBottom{
+padding-bottom : 0.7em;
+} 
+
+/* Delivery Swap Create : Warning info layout positioning and styling*/
+.zAwctVerticalLayoutPositioningAndStyling {
+border: 0.1em solid #d14900;
+margin-left: 15px;
+margin-top: 10px;
+padding: 10px;
+background-color: #FFFEB4;
+width: ~"calc(100% - 50px)";
+}
+
+/* Delivery Swap Create : Icon positioning in the warning info layout */
+.zAwctIconPositioning {
+font-size : 1.2em;
+padding-right : 0.5em ;
+}
+
+/* Delivery Swap Create : text alignment in the warning info layout */
+.zAwctWarningTextVerticalAlign {
+vertical-align: middle !important;
+}
+
+/* Delivery Swap Create :  warning info layout header text bold*/
+.zAwctLayoutHeaderTextBold {
+font-weight: bold;
+padding-bottom: 0.7em;
+}
+
+/* Delivery Swap Coloring for source */
+.zAwctTableSwapColumnColorFrom {
+background-color : #ffe6e6 !important;
+}
+
+/* Delivery Swap Coloring for target */
+.zAwctTableSwapColumnColorTo {
+background : #E6FEE6 !important;
+}
+
+/* Delivery WorkList : View Settings Dialog - Scroll Container height */
+.zAwctScrollContainerHeight{
+height : ~"calc(100% - 50px)" !important; 
+}
+
+/* Delivery WorkList : View Settings Dialog - Vertical Layout second child height */
+/* To use 100% height in calc* for scroll height , it's parent height also should be height = 100% */
+.zAwctSettingsDialogVerticalLayoutHeight {
+	height : 100% !important;
+	.sapUiVltCell:nth-child(2)  {
+		height : 100% !important;
+	} 
+}

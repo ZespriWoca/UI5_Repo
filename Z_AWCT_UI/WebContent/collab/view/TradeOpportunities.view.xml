@@ -1,0 +1,366 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:awct="com.zespri.awct.control" controllerName="com.zespri.awct.collab.view.TradeOpportunities">
+	<Page id="pageTradeOpportunities"
+		title="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_PAGE_TITLE_TEXT}">
+		<!-- Facet Filter -->
+		<awct:FacetFilter id="facetFilterTrades" type="Simple"
+			showReset="true" reset="handleFacetFilterReset" liveSearch="true"
+			showPopoverOKButton="true">
+			<awct:lists>
+
+				<!-- Status Filter -->
+				<awct:FacetFilterList id="facetFilterListStatus"
+					title="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_FILTER_STATUS}"
+					key="Status" mode="MultiSelect" listClose="handleListClose"
+					showInFacetFilterBar="true" growing="false">
+					<awct:items>
+						<FacetFilterItem key="{TradeStatusKey}" text="{TradeStatusValue}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+			</awct:lists>
+		</awct:FacetFilter>
+
+		<IconTabBar select="handleIconTabBarSelect" id="tabBarTrade"
+			expandable="false">
+			<items>
+				<!-- Icon Tab for Inbound Trade Opportunities -->
+				<IconTabFilter id="tabInbound" icon="sap-icon://arrow-bottom"
+					text="{i18n>TXT_TRADEOPPORTUNITIES_TAB_INBOUND_TRADE_OPPORTUNITIES}"
+					key="I">
+					<Table id="tradeOpportunitiesInboundTradeTable" mode="SingleSelectMaster"
+						itemPress="handleItemPress" growing="true" growingThreshold="100"
+						busy="true">
+
+						<headerToolbar>
+							<Toolbar>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://drop-down-list" press="handleTableSettingsDialogButtonPress"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_BUTTON_TABLE_SETTINGS_TOOLTIP}" />
+							</Toolbar>
+						</headerToolbar>
+
+						<columns>
+							<!-- Trade ID -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}" />
+							</Column>
+
+							<!-- Initiating Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}" />
+							</Column>
+
+							<!-- Receiving Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}" />
+							</Column>
+
+							<!-- Shipment Number -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+							</Column>
+
+							<!-- Load Port -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LOAD_PORT}" tooltip="{i18n>TXT_GENERIC_LOAD_PORT}" />
+							</Column>
+
+							<!-- Shipment Start Date -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}" />
+							</Column>
+
+							<!-- Delivery Number -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+							</Column>
+
+							<!-- Line -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LINE}" tooltip="{i18n>TXT_GENERIC_LINE}" />
+							</Column>
+
+							<!-- Container -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_CONTAINER}" tooltip="{i18n>TXT_GENERIC_CONTAINER}" />
+							</Column>
+
+							<!-- Trade Initiated On -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}" />
+							</Column>
+
+							<!-- Trade Expiry Date -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}" />
+							</Column>
+
+							<!-- Trade Quantity -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}" />
+							</Column>
+
+							<!-- UoM -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_UOM}" tooltip="{i18n>TXT_GENERIC_UOM}" />
+							</Column>
+
+							<!-- Status -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}" />
+							</Column>
+
+						</columns>
+					</Table>
+				</IconTabFilter>
+
+				<!-- Icon Tab for Outbound Trade Opportunities -->
+				<IconTabFilter id="tabOutbound" icon="sap-icon://arrow-top"
+					text="{i18n>TXT_TRADEOPPORTUNITIES_TAB_OUTBOUND_TRADE_OPPORTUNITIES}"
+					key="O">
+					<Table id="tradeOpportunitiesOutboundTradeTable" mode="SingleSelectMaster"
+						itemPress="handleItemPress" growing="true" growingThreshold="100"
+						busy="true">
+
+						<headerToolbar>
+							<Toolbar>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://drop-down-list" press="handleTableSettingsDialogButtonPress"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_BUTTON_TABLE_SETTINGS_TOOLTIP}" />
+							</Toolbar>
+						</headerToolbar>
+
+						<columns>
+							<!-- Trade ID -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}" />
+							</Column>
+
+							<!-- Initiating Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}" />
+							</Column>
+
+							<!-- Receiving Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}" />
+							</Column>
+
+							<!-- Shipment Number -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+							</Column>
+
+							<!-- Load Port -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LOAD_PORT}" tooltip="{i18n>TXT_GENERIC_LOAD_PORT}" />
+							</Column>
+
+							<!-- Shipment Start Date -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}" />
+							</Column>
+
+							<!-- Delivery Number -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+							</Column>
+
+							<!-- Line -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LINE}" tooltip="{i18n>TXT_GENERIC_LINE}" />
+							</Column>
+
+							<!-- Container -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_CONTAINER}" tooltip="{i18n>TXT_GENERIC_CONTAINER}" />
+							</Column>
+
+							<!-- Trade Initiated On -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}" />
+							</Column>
+
+							<!-- Trade Expiry Date -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}" />
+							</Column>
+
+							<!-- Trade Quantity -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}" />
+							</Column>
+
+							<!-- Open Quantity -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_OPENQUANTITY}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_OPENQUANTITY}" />
+							</Column>
+
+							<!-- UoM -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_UOM}" tooltip="{i18n>TXT_GENERIC_UOM}" />
+							</Column>
+
+							<!-- Status -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}" />
+							</Column>
+
+							<!-- Parent Trade ID -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_PARENT_TRADE_ID}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_PARENT_TRADE_ID}" />
+							</Column>
+
+						</columns>
+					</Table>
+				</IconTabFilter>
+
+				<!-- Icon Tab for Open Trade Opportunities -->
+				<IconTabFilter id="tabOpen" icon="sap-icon://display-more"
+					text="{i18n>TXT_TRADEOPPORTUNITIES_TAB_OPEN_TRADE_OPPORTUNITIES}"
+					key="OP">
+					<Table id="tradeOpportunitiesOpenTradeTable" mode="SingleSelectMaster"
+						itemPress="handleItemPress" growing="true" growingThreshold="100"
+						busy="true">
+
+						<headerToolbar>
+							<Toolbar>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://drop-down-list" press="handleTableSettingsDialogButtonPress"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_BUTTON_TABLE_SETTINGS_TOOLTIP}" />
+							</Toolbar>
+						</headerToolbar>
+
+						<columns>
+							<!-- Trade ID -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}" />
+							</Column>
+
+							<!-- Initiating Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}" />
+							</Column>
+
+							<!-- Receiving Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}" />
+							</Column>
+
+							<!-- Shipment Number -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+							</Column>
+
+							<!-- Load Port -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LOAD_PORT}" tooltip="{i18n>TXT_GENERIC_LOAD_PORT}" />
+							</Column>
+
+							<!-- Shipment Start Date -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}" />
+							</Column>
+
+							<!-- Delivery Number -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+							</Column>
+
+							<!-- Line -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LINE}" tooltip="{i18n>TXT_GENERIC_LINE}" />
+							</Column>
+
+							<!-- Container -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_CONTAINER}" tooltip="{i18n>TXT_GENERIC_CONTAINER}" />
+							</Column>
+
+							<!-- Trade Initiated On -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}" />
+							</Column>
+
+							<!-- Trade Expiry Date -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}" />
+							</Column>
+
+							<!-- Open Quantity -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_OPENQUANTITY}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_OPENQUANTITY}" />
+							</Column>
+
+							<!-- UoM -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_UOM}" tooltip="{i18n>TXT_GENERIC_UOM}" />
+							</Column>
+
+							<!-- Status -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}" />
+							</Column>
+
+						</columns>
+					</Table>
+
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</core:View>

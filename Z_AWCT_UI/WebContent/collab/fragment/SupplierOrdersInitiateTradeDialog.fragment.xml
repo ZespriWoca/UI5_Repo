@@ -1,0 +1,102 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<Dialog title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_INITIATE_TRADE_TITLE}"
+		type="Message" busyIndicatorDelay="0">
+
+		<!-- Form -->
+		<form:Form id="initiateTradeForm">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Product Name -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_INITIATETRADE_LABEL_PRODUCTNAME}">
+							<form:fields>
+								<Text
+									text="{parts:['Characteristic/Brand', 'Characteristic/Variety', 'Characteristic/Class', 'Characteristic/GrowingMethod', 'Characteristic/Size', 'Characteristic/PalletBase', 'Characteristic/Stack', 'Characteristic/PackStyle', 'Characteristic/Label'], formatter:'.formatProductName'}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Shipment Number -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}">
+							<form:fields>
+								<Text text="{ShipmentID}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Delivery Number / Line -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_INITIATETRADE_LABEL_DELIVERYNO_LINE}">
+							<form:fields>
+								<Text text="{DeliveryID} / {DeliveryLineNumber}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Container -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_CONTAINER}">
+							<form:fields>
+								<Text text="{ContainerID}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Current Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_INITIATETRADE_LABEL_CURRENTQUANTITY}">
+							<form:fields>
+								<Text
+									text="{path:'Quantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Current Supplier -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_INITIATETRADE_LABEL_CURRENTSUPPLIER}">
+							<form:fields>
+								<Text text="{SupplierID}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Trade with Supplier -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_INITIATETRADE_LABEL_TRADEWITHSUPPLIER}">
+							<form:fields>
+								<Select id="tradeSupplierSelect">
+									<core:Item key="{Supplier}" text="{Supplier}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Trade Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_INITIATETRADE_LABEL_TRADEQUANTITY}">
+							<form:fields>
+								<Input type="Number" id="tradeQuantityInput"
+									value="{path:'Trade', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityAsInteger'}"
+									maxLength="10" />
+							</form:fields>
+						</form:FormElement>
+
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+
+		<!-- Continue button -->
+		<beginButton>
+			<Button text="{i18n>TXT_GENERIC_TRADE}"
+				dialogType="Message" press="handleInitiateTradeOkPress" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button text="{i18n>TXT_GENERIC_CANCEL}"
+				dialogType="Message" press="handleInitiateTradeCancelPress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

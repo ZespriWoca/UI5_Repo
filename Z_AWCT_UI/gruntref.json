@@ -1,0 +1,8 @@
+{
+	"source"	: "WebContent/",
+	"finalize"	: "build/finalize/", 
+	"process"	: "build/process/",
+	"staging" 	: "build/staging/",
+	"output"	: "build/output/",
+	"outputsrc"	: "build/output/_src"
+}

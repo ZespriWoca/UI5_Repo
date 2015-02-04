@@ -1,0 +1,233 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="com.zespri.awct.collab.view.TradeOpportunitiesDetails"
+	busyIndicatorDelay="0">
+	<Page title="{i18n>TXT_GENERIC_TRADE}" id="pageTradeOpportunitiesDetails">
+		<!-- A grid layout used to display details about the selected trade -->
+
+		<layout:Grid defaultSpan="L6 M6 S12">
+			<layout:content>
+				<!-- Layout has 2 cells -->
+
+				<!-- First cell is a form displaying details of trade -->
+
+				<html:div>
+					<Toolbar>
+						<Label class="zAwctTradeToolbarLabel"
+							text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_FORM_TITLE}" />
+					</Toolbar>
+					<form:SimpleForm id="SimpleFormDisplay480"
+						minWidth="1024" maxContainerCols="2" editable="false"
+						layout="ResponsiveGridLayout" labelSpanL="6" labelSpanM="6"
+						emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2"
+						class="zAwctTradeDetailForm">
+						<form:content>
+
+							<!-- First column of form -->
+							<core:Title text="" />
+
+							<!-- Initiating Supplier -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_INITIATINGSUPPLIER}" />
+							<Text text="{InitiatingSupplierID}" />
+
+							<!-- Receiving Supplier -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_RECEIVINGSUPPLIER}" />
+							<Text text="{ReceivingSupplierID}" />
+
+							<!-- Shipment Number -->
+							<Label text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+							<Text text="{ShipmentID}" />
+
+							<!-- Shipment Start Date -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_SHIPMENT_START_DATE}" />
+							<Text
+								text="{path:'ShipmentStartDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+
+							<!-- Delivery Number -->
+							<Label text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+							<Text text="{DeliveryID}" />
+
+							<!-- Line -->
+							<Label text="{i18n>TXT_GENERIC_LINE}" />
+							<Text text="{DeliveryLineNumber}" />
+
+							<!-- Container -->
+							<Label text="{i18n>TXT_GENERIC_CONTAINER}" />
+							<Text text="{ContainerID}" />
+
+							<!-- Trade Initiated On -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_TRADE_INITIATED_ON}" />
+							<Text
+								text="{path:'TradeRequestDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+
+							<!-- Trade Expiry Date -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_TRADE_EXPIRY_DATE}" />
+							<Text
+								text="{path:'TradeExpiryDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+
+							<!-- Trade Quantity -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_TRADEQUANTITY}" />
+							<Text
+								text="{path:'TradeQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+							<!-- UoM -->
+							<Label text="{i18n>TXT_GENERIC_UOM}" />
+							<Text text="{TradeUoM}" />
+
+							<!-- Status -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_STATUS}" />
+							<ObjectStatus id="statusObject" />
+
+							<!-- Delivery Header Text -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_DELIVERY_HEADER_TEXT}" />
+							<Text id="deliveryHeaderText" />
+
+							<!-- Second column of form -->
+							<core:Title text="" />
+
+							<!-- Brand -->
+							<Label text="{i18n>TXT_GENERIC_BRAND}" />
+							<Text text="{Characteristic/Brand}" />
+
+							<!-- Variety -->
+							<Label text="{i18n>TXT_GENERIC_VARIETY}" />
+							<Text text="{Characteristic/Variety}" />
+
+							<!-- Growing Method -->
+							<Label text="{i18n>TXT_GENERIC_GROWING_METHOD}" />
+							<Text text="{Characteristic/GrowingMethod}" />
+
+							<!-- Size -->
+							<Label text="{i18n>TXT_GENERIC_SIZE}" />
+							<Text text="{Characteristic/Size}" />
+
+							<!-- Palette -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_PALETTE}" />
+							<Text text="{Characteristic/PalletBase}" />
+
+							<!-- Stack -->
+							<Label text="{i18n>TXT_GENERIC_STACK}" />
+							<Text text="{Characteristic/Stack}" />
+
+							<!-- Pack -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_PACK}" />
+							<Text text="{Characteristic/PackStyle}" />
+
+							<!-- Label -->
+							<Label text="{i18n>TXT_GENERIC_LABEL}" />
+							<Text text="{Characteristic/Label}" />
+
+							<!-- Delivery Text Note -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_DELVTEXTNOTE}" />
+							<Text text="{DeliveryTextNote}" />
+
+							<!-- Access -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_ACCESS}" />
+							<Text text="{MarketAccessArea}" />
+
+							<!-- Marketer -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_MARKETER}" />
+							<Text text="{Marketer}" />
+
+							<!-- Ship. Name -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_SHIPNAME}" />
+							<Text text="{ShipmentName}" />
+
+							<!-- Ship. Type -->
+							<Label
+								text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_LABEL_SHIPTYPE}" />
+							<Text text="{ShipmentType}" />
+						</form:content>
+					</form:SimpleForm>
+				</html:div>
+				<!-- Second cell of grid is a table -->
+				<html:div>
+					<Toolbar>
+						<Label class="zAwctTradeToolbarLabel"
+							text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_TABLE_TITLE}" />
+					</Toolbar>
+					<!-- Batch Characteristics Table -->
+					<Table id="batchCharacteristicsTable" growing="true"
+						growingThreshold="100" class="zAwctTradeTable">
+
+						<columns>
+							<!-- Name -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_COLUMN_NAME}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_COLUMN_NAME_TOOLTIP}" />
+							</Column>
+
+							<!-- Include/Exclude -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_COLUMN_INCLUDE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_COLUMN_INCLUDE_TOOLTIP}" />
+							</Column>
+
+							<!-- Value -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}"
+									tooltip="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}" />
+							</Column>
+						</columns>
+
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{CharacteristicName}"
+										tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_COLUMN_NAME_TOOLTIP}" />
+									<Text
+										text="{path:'Operation', formatter:'.formatExcludeIncludeText'}"
+										tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_DETAILS_BATCHCHAR_COLUMN_INCLUDE_TOOLTIP}" />
+									<Text
+										text="{path:'BatchCharacteristicsValueSet', formatter:'.formatBatchCharacteristicsValuesText'}"
+										tooltip="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}" />
+
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</html:div>
+			</layout:content>
+		</layout:Grid>
+
+
+
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+
+					<!-- Accept Button visible only for Inbound trade opportunities -->
+					<Button id="tradeAcceptButton" press="handleAcceptPress"
+						text="{i18n>TXT_TRADEOPPORTUNITIES_DETAILS_TOOLBAR_BUTTON_ACCEPT}"
+						type="Accept" visible="false" />
+
+					<!-- Reject Button visible only for Inbound trade opportunities -->
+					<Button id="tradeRejectButton" press="handleRejectPress"
+						text="{i18n>TXT_TRADEOPPORTUNITIES_DETAILS_TOOLBAR_BUTTON_REJECT}"
+						type="Reject" visible="false" />
+
+					<!-- Cancel Detail -->
+					<Button id="tradeDetailCancelButton" text="{i18n>TXT_GENERIC_CANCEL}"
+						type="Reject" press="handleCancelPress" visible="false" />
+
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

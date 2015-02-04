@@ -1,0 +1,63 @@
+<ColumnListItem xmlns="sap.m">
+	<cells>
+		<!-- Supplier -->
+		<Text text="{initiateSwapLines>Supplier}"
+			tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+
+		<!-- Product -->
+		<Text text="{initiateSwapLines>Product}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_PRODUCT}" />
+
+		<!-- Source Delivery Number -->
+		<Text />
+
+		<!-- Source BC -->
+		<Text />
+
+		<!-- Source Container -->
+		<Text text="{initiateSwapLines>SourceContainerID}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_CONT}" />
+
+		<!-- Source Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>SourceAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_OLD_QTY}" />
+
+		<!-- Source New Quantity -->
+		<Text
+			text="{parts:[{path: 'initiateSwapLines>SourceAllocationQuantity'},{path: 'initiateSwapLines>SwapQuantity'}], formatter:'.formatSourceNewQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_NEW_QTY}" />
+
+		<!-- Swap Quantity -->
+		<Input value="{initiateSwapLines>SwapQuantity}" change="handleSwapQtyChange"
+			enabled="true"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SWAP_QUANTITY}" />
+
+		<!-- No Batch Characteristics Match & No Line Text Match -->
+		<Text id="warningIconCell" />
+
+		<!-- Target Delivery Number -->
+		<Text />
+
+		<!-- Target BC -->
+		<Text />
+
+		<!-- Target Container -->
+		<Text text="{initiateSwapLines>TargetContainerID}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_CONT}" />
+
+		<!-- Target Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>TargetAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_OLD_QTY}" />
+
+		<!-- Target New Quantity -->
+		<Text
+			text="{parts:[{path: 'initiateSwapLines>TargetAllocationQuantity'},{path: 'initiateSwapLines>SwapQuantity'}], formatter:'.formatTargetNewQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_NEW_QTY}" />
+
+		<!-- UOM -->
+		<Text text="{initiateSwapLines>UoM}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_UOM}" />
+	</cells>
+</ColumnListItem>

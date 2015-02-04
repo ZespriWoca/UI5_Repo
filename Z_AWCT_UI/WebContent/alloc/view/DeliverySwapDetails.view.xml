@@ -1,0 +1,214 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="com.zespri.awct.alloc.view.DeliverySwapDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="pageSwapDetail" title="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_PAGE_TITLE}">
+		<content>
+			<!-- Swap Information -->
+			<f:SimpleForm maxContainerCols="2" minWidth="1024"
+				columnsL="2" columnsM="2">
+				<f:content>
+					<core:Title />
+					<!-- Shipment From -->
+					<Label
+						text="{i18n>TXT_GENERIC_SHIPMENT_FROM}">
+					</Label>
+					<Text text="{SourceShipmentID}" />
+
+					<!-- Delivery From -->
+					<Label
+						text="{i18n>TXT_GENERIC_DELIVERY_FROM}" />
+					<Text text="{SourceDeliveryNumber}" />
+					<core:Title />
+
+					<!-- Shipment To -->
+					<Label
+						text="{i18n>TXT_GENERIC_SHIPMENT_TO}" />
+					<Text text="{TargetShipmentID}" />
+
+					<!-- Delivery To -->
+					<Label
+						text="{i18n>TXT_GENERIC_DELIVERY_TO}" />
+					<Text text="{TargetDeliveryNumber}" />
+				</f:content>
+			</f:SimpleForm>
+
+			<!-- Delivery Swap Details Table -->
+			<Table id="deliverySwapDetailsTable" growing="true"
+				growingThreshold="10" inset="false" class="zAwctTableVerticalCenterCells">
+				<headerToolbar>
+					<Toolbar>
+						<Label text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_TITLE}">
+						</Label>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!-- Supplier -->
+					<Column>
+						<Label
+							tooltip="{i18n>TXT_GENERIC_SUPPLIER}"
+							text="{i18n>TXT_GENERIC_SUPPLIER}" />
+					</Column>
+
+					<!-- Product -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_PRODUCT_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_PRODUCT}" />
+					</Column>
+
+					<!-- Source Delivery Number -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_DELIVERY_LINENUMBER_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_DELIVERY_LINENUMBER}" />
+					</Column>
+
+					<!-- Source BC -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_BC_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_BC}" />
+					</Column>
+
+					<!-- Source Cont -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_CONT_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_CONT}" />
+					</Column>
+
+					<!-- Source Old Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_OLD_QUANTITY_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_OLD_QUANTITY}" />
+					</Column>
+
+					<!-- Source New Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_NEW_QUANTITY_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_NEW_QUANTITY}" />
+					</Column>
+
+					<!-- Swap Quantity -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SWAP_QUANTITY_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SWAP_QUANTITY}" />
+					</Column>
+
+					<!-- Target Delivery Number -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_DELIVERY_LINENUMBER_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_DELIVERY_LINENUMBER}" />
+					</Column>
+
+					<!-- Target BC -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_BC_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_BC}" />
+					</Column>
+
+					<!-- Target Cont -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_CONT_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_CONT}" />
+					</Column>
+
+					<!-- Target Old Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_OLD_QUANTITY_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_OLD_QUANTITY}" />
+					</Column>
+
+					<!-- Target New Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_NEW_QUANTITY_TOOLTIP}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_NEW_QUANTITY}" />
+					</Column>
+
+					<!-- UOM -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_GENERIC_UOM}"
+							text="{i18n>TXT_GENERIC_UOM}" />
+					</Column>
+
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<!-- Supplier ID -->
+							<Text
+								tooltip="{i18n>TXT_GENERIC_SUPPLIER}"
+								text="{parts: ['Supplier', 'RecordType'], formatter:'.formatIsSupplierLine'}" />
+
+							<!-- Product -->
+							<Text text="{Product}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_PRODUCT_TOOLTIP}" />
+
+							<!-- Source delivery line -->
+							<Text text="{SourceDeliveryLineNumber}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_DELIVERY_LINENUMBER_TOOLTIP}" />
+
+							<!-- Source BC count -->
+							<Link text="{CountofCharacteristicsFrom}" press="handleViewSourceBatchCharacteristicsOpen"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_BC_TOOLTIP}" />
+
+							<!-- Source container ID -->
+							<Text text="{SourceContainerID}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_CONT_TOOLTIP}" />
+
+							<!-- Source old quantity -->
+							<Text
+								text="{path: 'SourceOldQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_OLD_QUANTITY_TOOLTIP}" />
+
+							<!-- Source new quantity -->
+							<Text
+								text="{path: 'SourceNewQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SOURCE_NEW_QUANTITY_TOOLTIP}" />
+
+							<!-- Swap quantity -->
+							<Text
+								text="{path: 'SwapQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_SWAP_QUANTITY_TOOLTIP}" />
+
+							<!-- Target delivery line -->
+							<Text text="{TargetDeliveryLineNumber}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_DELIVERY_LINENUMBER_TOOLTIP}" />
+
+							<!-- Target BC count -->
+							<Link text="{CountofCharacteristicsTo}" press="handleViewTargetBatchCharacteristicsOpen"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_BC_TOOLTIP}" />
+
+							<!-- Target container ID -->
+							<Text text="{TargetContainerID}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_CONT_TOOLTIP}" />
+
+							<!-- Target old quantity -->
+							<Text
+								text="{path: 'TargetOldQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_OLD_QUANTITY_TOOLTIP}" />
+
+							<!-- Target new quantity -->
+							<Text
+								text="{path: 'TargetNewQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+								tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_DETAILS_TABLE_COLUMN_TARGET_NEW_QUANTITY_TOOLTIP}" />
+							<Text text="{UnitOfMeasure}"
+								tooltip="{i18n>TXT_GENERIC_UOM}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</core:View>

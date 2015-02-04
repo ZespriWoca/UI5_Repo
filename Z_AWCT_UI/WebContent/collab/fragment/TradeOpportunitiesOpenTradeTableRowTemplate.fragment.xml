@@ -1,0 +1,32 @@
+<ColumnListItem type="Navigation" xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<cells>
+		<Text text="{TradeID}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_ID}" />
+		<Text text="{InitiatingSupplierID}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}" />
+		<Text text="{ReceivingSupplierID}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}" />
+		<Text text="{ShipmentID}" tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+		<Text text="{LoadPort}" tooltip="{i18n>TXT_GENERIC_LOAD_PORT}" />
+		<Text
+			text="{path:'ShipmentStartDate',  formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}" />
+		<Text text="{DeliveryID}" tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+		<Text text="{DeliveryLineNumber}" tooltip="{i18n>TXT_GENERIC_LINE}" />
+		<Text text="{ContainerID}" tooltip="{i18n>TXT_GENERIC_CONTAINER}" />
+		<Text
+			text="{path:'TradeRequestDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}" />
+		<Text
+			text="{path:'TradeExpiryDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}" />
+		<Text
+			text="{path:'PendingQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_OPENQUANTITY}" />
+		<Text text="{TradeUoM}" tooltip="{i18n>TXT_GENERIC_UOM}" />
+		<ObjectStatus text="{path:'Status', formatter:'.formatStatusText'}"
+			state="{path:'Status', formatter:'.formatStatusState'}" tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}" />
+
+	</cells>
+</ColumnListItem>

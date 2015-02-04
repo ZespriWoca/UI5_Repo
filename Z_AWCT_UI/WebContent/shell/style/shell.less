@@ -1,0 +1,37 @@
+.zAwctDashboardBackground {
+	position	:	fixed;
+	opacity		:	0.7;
+}
+
+.zAwctPaneContentListItem * .sapMSLITitleOnly {
+	font-size	:	0.9rem	!important;
+}
+
+.zAwctPaneContentListItem * .sapMLIBTypeInactive {
+	background-color :	grey	!important;
+	color :	white	!important;
+	&:hover {
+			background-color: grey !important;
+		}
+}
+.zAwctPaneContentListItem * .sapMLIB.sapMGHLI {
+	&:hover {
+			background-color: grey !important;
+		}
+}
+
+.zAwctPaneFooterContentVerticalAlign{
+	.sapMBarPH>span{
+		vertical-align : middle !important;
+	}
+	.sapMBarPH {
+	font-size : 1.3rem;
+	}
+}
+
+/* Hide second scrollbar for pane in IE */
+.zAwctUnifiedShell{
+	.sapUiUfdSpltContCntnt{
+		overflow-y : hidden;
+	}
+}

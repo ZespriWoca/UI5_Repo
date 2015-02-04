@@ -1,0 +1,106 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:awct="com.zespri.awct.control"
+	controllerName="com.zespri.awct.admin.view.MaintainLibraryText"
+	xmlns:html="http://www.w3.org/1999/xhtml" busyIndicatorDelay="0">
+
+	<!-- Library Text Maintenance View Page to display the Library text list -->
+
+	<Page id="librarytextPage" title="{i18n>TXT_ADMINISTRATION_TABLEHEADER_LABEL}">
+		<!-- Sub Header -->
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<!-- SearchField -->
+					<Toolbar>
+						<SearchField id="SearchField" width="100%"
+							search="handleLibraryTextSearch" change="handleLibraryTextSearch" />
+					</Toolbar>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+
+			<!-- Table to display Library Text List -->
+
+			<Table id="LibraryTextMaintenaceTable" selectionChange="handleSelectedLibraryText"
+				mode="SingleSelectMaster" class="zAwctAdminLibraryTextPadding"
+				updateFinished="handleLibraryTextTableUpdateFinished">
+
+				<columns>
+					<!-- Header -->
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label
+							text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_HEADERCOLUMN}"
+							tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_HEADERCOLUMN}" />
+					</Column>
+					<!-- Text -->
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Label
+							text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_TEXTCOLUMN}"
+							tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_TEXTCOLUMN}" />
+					</Column>
+
+					<!-- Active -->
+					<Column>
+						<Label
+							text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_ACTIVECOLUMN}"
+							tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_ACTIVECOLUMN}" />
+					</Column>
+
+					<!-- Sequence -->
+					<Column>
+						<Label
+							text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_SEQUENCECOLUMN}"
+							tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_SEQUENCECOLUMN}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{TextName}"
+								tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_HEADERCOLUMN}" />
+							<Text text="{Text}"
+								tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_TEXTCOLUMN}" />
+							<Switch state="{Active}" enabled="false" customTextOff="No"
+								customTextOn="Yes"
+								tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_ACTIVECOLUMN}" />
+							<Input id="sequenceInput" value="{Sequence}" type="Text" liveChange="handleSequenceLiveChange"
+								tooltip="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_SEQUENCECOLUMN}"
+								maxLength="5"  enabled="false"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+
+		<!-- Footer for the table for navigation -->
+
+		<footer id="libfooter">
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+					<!-- Save button for saving changes of the existing library text in 
+						the Maintain library text -->
+					<Button id="saveButton"
+						text="{i18n>TXT_GENERIC_SAVE}"
+						type="Emphasized" enabled="false" press="handelSaveChanges" visible="false"/>
+
+					<Button id="discardButton"
+						text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_DISCARD_BUTTON}"
+						enabled="false" press="handelDiscardChanges" visible="false"/>
+
+					<!-- Details button for navigate to details view -->
+					<Button id="detailsButton"
+						text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_DETAILSBUTTON}"
+						press="handleDeatilPageNavigation" enabled="false" />
+
+					<!-- Addtext button for adding new library text -->
+					<Button text="{i18n>TXT_ADMINISTRATION_ADDBUTTON}" press="handleAddLibraryText" id="addTextButton" visible="false"/>
+				</contentRight>
+			</Bar>
+		</footer>
+
+
+
+	</Page>
+
+</core:View>

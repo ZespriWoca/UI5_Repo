@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<Dialog
+		title="{i18n>TXT_COLLABORATION_ORDERHISTORY_REQUEST_EXEMPTION_DIALOG_TITLE}"
+		type="Message" busyIndicatorDelay="0">
+		<!-- Form -->
+		<form:Form id="requestExemptionForm">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+						<!-- Charge Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_ORDERHISTORY_REQUEST_EXEMPTION_DIALOG_CHARGE_QUANTITY_LABEL}">
+							<form:fields>
+								<Input type="Text" id="chargeQuantityInput" enabled="false"
+									value="{path:'ChargeQuantity', formatter:'.formatQuantityAsAbsoluteInteger'} {UoM}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Exemption Requested Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_ORDERHISTORY_REQUEST_EXEMPTION_DIALOG_EXEMPTION_REQUESTED_QUANTITY_LABEL}">
+							<form:fields>
+								<Input type="Number" id="exemptionRequestedQuantityInput" maxLength="10" />
+							</form:fields>
+						</form:FormElement>
+
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_ORDERHISTORY_REQUEST_EXEMPTION_DIALOG_EXEMPTION_REASON_TITLE}">
+							<form:fields>
+								<!-- Exemption Reason -->
+								<!-- Request Exemption EvetType is REXM -->
+								<Select id="requestExemptionReasonSelect"
+									items="{path:'/ReasonCodeSet', filters:[{path:'EventType', operator:'EQ', value1:'REXM'}]}">
+									<core:Item key="{ReasonCodeID}"
+										text="{ReasonCodeID} - {ReasonCodeDescription}">
+									</core:Item>
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_COMMENTS}">
+							<form:fields>
+								<!-- Comments -->
+								<TextArea id="commentsTextArea" />
+							</form:fields>
+						</form:FormElement>
+
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+		<!-- Continue button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_REQUEST_EXEMPTION_DIALOG_REQUEST_EXEMPTION_BUTTON_LABEL}"
+				dialogType="Message" press="handleOrderHistoryRequestExemptionPress" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_GENERIC_CLOSE}"
+				dialogType="Message" press="handleOrderHistoryRequestExemptionDialogClose" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

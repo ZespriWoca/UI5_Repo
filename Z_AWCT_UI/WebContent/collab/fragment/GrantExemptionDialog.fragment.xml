@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<Dialog
+		title="{i18n>TXT_COLLABORATION_ORDERHISTORY_GRANT_EXEMPTION_DIALOG_TITLE}"
+		type="Message" busyIndicatorDelay="0">
+		<!-- Form -->
+		<form:Form id="grantExemptionForm">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+						<!-- Charge Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_ORDERHISTORY_GRANT_EXEMPTION_DIALOG_CHARGE_QUANTITY_LABEL}">
+							<form:fields>
+								<Input type="Text" id="chargeQuantityInput" enabled="false"
+									value="{path:'ChargeQuantity', formatter:'.formatQuantityAsAbsoluteInteger'} {UoM}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Exemption Request Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_ORDERHISTORY_GRANT_EXEMPTION_DIALOG_EXEMPTION_REQUEST_QUANTITY_LABEL}">
+							<form:fields>
+								<Input type="Text" id="exemptionRequestQuantityInput"
+									enabled="false"
+									value="{path:'ExemptionRequested', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityAsInteger'} {UoM}" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Exemption Acceptance Quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_ORDERHISTORY_GRANT_EXEMPTION_DIALOG_EXEMPTION_ACCEPTANCE_QUANTITY_LABEL}">
+							<form:fields>
+								<Input type="Number" id="exemptionAcceptanceQuantityInput" maxLength="10"/>
+							</form:fields>
+						</form:FormElement>
+						
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_COMMENTS}">
+							<form:fields>
+								<!-- Comments -->
+								<TextArea id="commentsTextArea" />
+							</form:fields>
+						</form:FormElement>
+
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+		<!-- Continue button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_GRANT_EXEMPTION_DIALOG_GRANT_EXEMPTION_BUTTON_LABEL}"
+				dialogType="Message" press="handleOrderHistoryGrantExemptionPress" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_GENERIC_CLOSE}"
+				dialogType="Message" press="handleOrderHistoryGrantExemptionDialogClose" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

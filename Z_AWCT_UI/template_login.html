@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%; margin: 0;">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9,10">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<title>@label_title_login</title>
+	<link rel="shortcut icon" href="@img_favicon" />
+@Html.Raw(css_theme_link)
+@Html.Raw(css_style)
+<!--[if lte IE 8]>
+@Html.Raw(css_ie8_style)
+<![endif]--> 
+<style id="antiClickjack" type="text/css">
+	body { display : none !important; }
+</style>
+<style id="forgotPassword" type="text/css">
+	div.zAwctBottomLinkContainer {
+		text-align: center;
+	}
+	
+	form.zAwctHiddenForm {
+		display: none;
+	}
+	
+	div.zAwctErrorContainerHidden {
+		display: none;
+	}
+</style>
+@Html.Raw(sys_script_generated)
+<script src="@script_included"></script>
+@Html.Raw(custom_script)
+<script>
+    (function () {
+        var antiClickjack;
+        try {
+            if ((top === self) || (top.location.href)) {
+                antiClickjack = document.getElementById("antiClickjack");
+                if (antiClickjack) {
+                    antiClickjack.parentNode.removeChild(antiClickjack);
+                }
+            }
+        }
+        catch (e) {
+        }
+    }());
+	
+	//START OF AJAX utility
+	var ajax = {};
+	ajax.x = function() {
+		if (typeof XMLHttpRequest !== 'undefined') {
+			return new XMLHttpRequest();  
+		}
+		var versions = [
+			"MSXML2.XmlHttp.5.0",   
+			"MSXML2.XmlHttp.4.0",  
+			"MSXML2.XmlHttp.3.0",   
+			"MSXML2.XmlHttp.2.0",  
+			"Microsoft.XmlHttp"
+		];
+
+		var xhr;
+		for(var i = 0; i < versions.length; i++) {  
+			try {  
+				xhr = new ActiveXObject(versions[i]);  
+				break;  
+			} catch (e) {
+			}  
+		}
+		return xhr;
+	};
+
+	ajax.send = function(url, callback, method, data, sync) {
+		var x = ajax.x();
+		x.open(method, url, sync);
+		x.onreadystatechange = function() {
+			if (x.readyState == 4) {
+				callback(x.responseText)
+			}
+		};
+		if (method == 'POST') {
+			x.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		}
+		x.send(data)
+	};
+
+	ajax.get = function(url, data, callback, sync) {
+		var query = [];
+		for (var key in data) {
+			query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+		}
+		ajax.send(url + '?' + query.join('&'), callback, 'GET', null, sync)
+	};
+
+	ajax.post = function(url, data, callback, sync) {
+		var query = [];
+		for (var key in data) {
+			query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+		}
+		ajax.send(url, callback, 'POST', query.join('&'), sync)
+	};
+	//END OF AJAX utility
+	
+	//Forgot password
+	function showForgotPasswordForm() {
+		document.getElementById("LOGIN_FORM").style.display = "none";
+		document.getElementById("FORGOT_PASSWORD_FORM").style.display = "block";
+	}
+	
+	function showLoginForm() {
+		document.getElementById("LOGIN_FORM").style.display = "block";
+		document.getElementById("FORGOT_PASSWORD_FORM").style.display = "none";
+	}
+	
+	function hideForgotPasswordLink() {
+		document.getElementById("FORGOT_PASSWORD_LINK").style.display = "none";
+	}
+	
+	function handleResetPasswordButtonPress() {
+		//Get selected username and email
+		var sUserID = document.getElementById("FORGOT_PASSWORD_USERNAME_FIELD-inner");
+		var sEmail = document.getElementById("FORGOT_PASSWORD_EMAIL_FIELD-inner");
+		
+		//Validate
+		if(!sUserID && !sEmail) {
+			//TODO: Show error
+			return;
+		}
+		
+		//Get the XSRF token (synchronously)
+		var sXSRFToken;
+		var oXHR = new XMLHttpRequest();
+		oXHR.open("GET", "/sap/opu/odata/IWBEP/USERREQUESTMANAGEMENT/$metadata", false);
+		oXHR.setRequestHeader("X-CSRF-Token", "Fetch");
+		oXHR.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+		oXHR.setRequestHeader("Content-Type", "application/atom+xml");
+		oXHR.setRequestHeader("DataServiceVersion", "2.0");
+		oXHR.send();
+		if(oXHR.status === 200) {
+			sXSRFToken = oXHR.getResponseHeader('x-csrf-token');
+		}
+		
+		//Trigger request
+		oXHR = new XMLHttpRequest();
+		oXHR.open("POST", "/sap/opu/odata/IWBEP/USERREQUESTMANAGEMENT/ResetUserCredential", true);
+		//oXHR.setRequestHeader("x-csrf-token", sXSRFToken);
+		oXHR.send({
+			UserName : sUserID
+		});
+	}
+</script>
+</head>
+<body class="sapUiBody sapUiSraLoginSplashScreen" style="direction: @sys_text_direction;">
+<div id="LOGIN_PAGE" class="sapUiSraLoginView sapMPage @sys_login_height_class" onload="@sys_icf_cookie_check ()">
+<div class="sapUiSraBrandingBar sapThemeBrand-asBackgroundColor"></div>
+<div class="sapUiSraHeader" @Html.Raw(sys_header_state)><div class="sapUiSraTitle">@header_title</div><div class="sapUiSraSubTitle">@header_subtitle</div></div>
+<div class="sapUiSraFooter"><div class="sapUiSraLoginLogo"><img src="@img_logo" width="@img_logo_width" /></div><div class="sapUiSraLoginCopyright">@Html.Raw(label_copyright)</div></div>
+<div class="sapUiSraLoginPage" id="LOGIN_PAGE_FULL">
+<form class="sapUiSraLoginForm" id="LOGIN_FORM" name="@sys_form_name_login" action="@sys_form_action" method="post" >
+@Html.Raw(sys_form_hidden_fields)
+		<!-- in case of inline-block display spaces matter! -->
+		<div class="sapUiSraLoginInputBlock">
+			<div id="USERNAME_BLOCK" class="sapMBar sapMBarTranslucent sapUiSraLoginHidden" onclick="fioriLogin.setInputFocus('USERNAME_FIELD-inner')"><label id="USERNAME_LABEL" for="USERNAME_FIELD-inner" class="sapMLabel" onclick="fioriLogin.setInputFocus('USERNAME_FIELD-inner')">@label_user</label><div id="USERNAME_FIELD" class="sapMInputBase"><input id="USERNAME_FIELD-inner" type="text" class="sapMInputBaseInner" name="@sys_form_param_user" maxlength="@sys_form_user_maxlen" inputmode="verbatim"></div></div>
+			<div id="PASSWORD_BLOCK" class="sapMBar sapMBarTranslucent sapUiSraLoginHidden" onclick="fioriLogin.setInputFocus('PASSWORD_FIELD-inner')"><label id="PASSWORD_LABEL" for="PASSWORD_FIELD-inner" class="sapMLabel" onclick="fioriLogin.setInputFocus('PASSWORD_FIELD-inner')">@label_password</label><div id="PASSWORD_FIELD" class="sapMInputBase"><input id="PASSWORD_FIELD-inner" type="password" class="sapMInputBaseInner" name="@sys_form_param_password" inputmode="verbatim"></div></div>
+			<div id="LANGUAGE_BLOCK" class="sapMBar sapMBarTranslucent sapUiSraLoginHidden" @Html.Raw(sys_form_lang_state)><label id="LANGUAGE_LABEL" for="LANGUAGE_SELECT" class="sapMLabel">@label_language</label><div id="LANGUAGE_SELECT_BLOCK" class="sapMInputBase sapUiSraSelectBlock"><select id="LANGUAGE_SELECT" class="sapMInputBaseInner sapUiSraSelect"></select></div></div>
+			<div id="CLIENT_BLOCK" class="sapMBar sapMBarTranslucent sapUiSraLoginHidden" @Html.Raw(sys_form_client_state) onclick="fioriLogin.setInputFocus('CLIENT_FIELD-inner')"><label id="CLIENT_LABEL" for="CLIENT_FIELD-inner" class="sapMLabel" onclick="fioriLogin.setInputFocus('CLIENT_FIELD-inner')">@label_client</label><div id="CLIENT_FIELD" class="sapMInputBase"><input id="CLIENT_FIELD-inner" type="text" value="@sys_form_default_client" maxlength="3" size="3" class="sapMInputBaseInner" name="@sys_form_param_client" inputmode="verbatim"></div></div>
+		</div>
+		<div class="sapUiSraMessageContainer"><div id="LOGIN_ERROR_BLOCK" class="sapMBar sapUiSraMessage sapUiSraMessageError" @Html.Raw(sys_messages_state) ><label id="LOGIN_LBL_ERROR" class="sapThemeText">@Html.Raw(sys_messages_text)</label></div></div>
+		<div class="sapUiSraLoginButtonBlock"><div class="sapUiSraBtnBlock sapUiSraLoginBtnBlock"><button type="submit" id="LOGIN_LINK" class="sapMBtn sapMBtnEmphasized" 
+            onclick="hideForgotPasswordLink(); return fioriLogin.submitLogin('@sys_form_input_processing', '@sys_form_event_login')" ><div class="sapUiSraLogonAnimation" id="sapUiSraFlower">
+                <div class="sapUiSraFlowerBlossom">
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer1"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf1"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer2"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf2"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer3"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf3"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer4"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf4"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer5"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf5"></div></div>
+                </div>
+            </div><span class="sapMBtnContent sapMLabelBold sapUiSraDisplayBeforeLogin">@label_button_login</span><span class="sapMBtnContent sapMLabelBold sapUiSraDisplayAfterLogin">@label_button_login_loading</span></button>
+			</div><div class="sapUiSraBtnBlock sapUiSraLoginHidden"><button type="button" id="CHANGE_PASSWORD_LINK" class="sapMBtn sapMBtnDefault" onclick="fioriLogin.submitLogin('@sys_form_input_processing', '@sys_form_event_changepwd')"><span class="sapMBtnContent sapMLabelBold">@label_change_password</span></button>
+		</div></div>
+		
+		<!-- Forgot password link-->
+		<div id="FORGOT_PASSWORD_LINK" class="sapUiSraLoginButtonBlock sapUiSraDisplayBeforeLogin" class="zAwctBottomLinkContainer">
+			<a href="#" onclick="showForgotPasswordForm()">@label_link_forgot_password_en</a>
+		</div>
+	</form>
+	
+	<!-- Forgot password form -->
+	<form class="sapUiSraLoginForm zAwctHiddenForm" id="FORGOT_PASSWORD_FORM">
+		<div class="sapUiSraLoginInputBlock">
+			<div id="FORGOT_PASSWORD_USERNAME_BLOCK" class="sapMBar sapMBarTranslucent sapUiSraLoginHidden" onclick="fioriLogin.setInputFocus('FORGOT_PASSWORD_USERNAME_FIELD-inner')"><label id="FORGOT_PASSWORD_USERNAME_LABEL" for="FORGOT_PASSWORD_USERNAME_FIELD-inner" class="sapMLabel" onclick="fioriLogin.setInputFocus(''FORGOT_PASSWORD_USERNAME_FIELD-inner')">@label_user</label><div id="FORGOT_PASSWORD_USERNAME_FIELD" class="sapMInputBase"><input id="FORGOT_PASSWORD_USERNAME_FIELD-inner" type="text" class="sapMInputBaseInner" maxlength="12 " inputmode="verbatim"></div></div>
+			<div id="FORGOT_PASSWORD_EMAIL_BLOCK" class="sapMBar sapMBarTranslucent sapUiSraLoginHidden" onclick="fioriLogin.setInputFocus('FORGOT_PASSWORD_EMAIL_FIELD-inner')"><label id="FORGOT_PASSWORD_EMAIL_LABEL" for="FORGOT_PASSWORD_EMAIL_FIELD-inner" class="sapMLabel" onclick="fioriLogin.setInputFocus('FORGOT_PASSWORD_EMAIL_FIELD-inner')">@label_email_en</label><div id="FORGOT_PASSWORD_EMAIL_FIELD" class="sapMInputBase"><input id="FORGOT_PASSWORD_EMAIL_FIELD-inner" type="email" class="sapMInputBaseInner" inputmode="verbatim"></div></div>
+		</div>
+		
+		<!-- Forgot password : Error container -->
+		<div class="sapUiSraMessageContainer zAwctErrorContainerHidden">
+			<div id="FORGOT_PASSWORD_ERROR_BLOCK" class="sapMBar sapUiSraMessage sapUiSraMessageError">
+				<label id="FORGOT_PASSWORD_LBL_ERROR" class="sapThemeText"/>
+			</div>
+		</div>
+		
+		<!-- Forgot password : Reset password button-->
+		<div class="sapUiSraLoginButtonBlock"><div class="sapUiSraBtnBlock sapUiSraLoginBtnBlock"><button type="submit" id="RESET_PASSWORD_BUTTON" class="sapMBtn sapMBtnEmphasized" onclick="handleResetPasswordButtonPress()"><div class="sapUiSraLogonAnimation" id="sapUiSraFlower">
+                <div class="sapUiSraFlowerBlossom">
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer1"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf1"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer2"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf2"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer3"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf3"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer4"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf4"></div></div>
+                    <div class="sapUiSraFlowerLeafContainer sapUiSraFlowerLeafContainer5"><div class="sapUiSraFlowerLeaf sapUiSraFlowerLeaf5"></div></div>
+                </div>
+            </div><span class="sapMBtnContent sapMLabelBold sapUiSraDisplayBeforeLogin">@label_button_reset_password_en</span><span class="sapMBtnContent sapMLabelBold sapUiSraDisplayAfterLogin">@label_button_reset_password_en</span></button>
+			</div><div class="sapUiSraBtnBlock sapUiSraLoginHidden"><button type="button" id="CANCEL_RESET_PASSWORD_BUTTON" class="sapMBtn sapMBtnDefault" onclick="showLoginForm()"><span class="sapMBtnContent sapMLabelBold">@label_button_cancel_reset_password_en</span></button>
+		</div></div>
+	</form>
+</div>
+</div>
+<script>setTimeout(function () { document.body.className = "sapUiBody"; }, 50);</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m, sap.ui.unified"
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-resourceroots='{
+					"com.zespri.awct": "",
+					"shell" : "shell"
+				}'
+				data-sap-ui-rootcomponent='com.zespri.awct'
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		
+		<link rel="shortcut icon" href="image/Zespri_favicon_16x16.ico">
+		<link rel="apple-touch-icon" href="image/Zespri_logo_76x76px.png" sizes="76x76">
+		<link rel="apple-touch-icon" href="image/Zespri_logo_152x152px.png" sizes="152x152">
+		
+		<link rel="stylesheet/less" type="text/css" media="all" href="style/awct-root.less"/>
+		<style id="antiClickJack">
+			body {
+				display: none !important;
+			}
+		</style>
+		
+		<script>		
+            (function() {
+
+                /* Remove the "antiClickJack" style class and launch application */
+                function doRender() {
+                    // Get the "body" style class (display : none) and remove it 
+                    var antiClickJack = document.getElementById("antiClickJack");
+                    antiClickJack.parentNode.removeChild(antiClickJack);
+
+                    // Launch the Application
+                    sap.ui.getCore().attachInit(function() {
+                        document.title = "Zespri WOCA (AWCT)";
+                        jQuery.sap.require("sap.ui.core.plugin.LessSupport");
+
+                        //Create a component and place it in the Shell
+                        new sap.m.Shell("AWCTShell", {
+                            appWidthLimited : false,
+                            app : new sap.ui.core.ComponentContainer({
+                                height : "100%",
+                                component : sap.ui.getCore().getRootComponent()
+                            })
+                        }).placeAt("content");
+                    });
+                }
+
+                if (!opener) {
+                    // If page is not embedded
+                    if (top === self) {
+                        doRender();
+                    } else {
+                        // If Page is embedded , check for same domain
+                        try {
+                            // Try to access a property of parent to check same domain
+                            var location = parent.location.href;
+                            doRender();
+                        } catch (e) {
+                            // Fail gracefully and stay hidden
+                        }
+                    }
+
+                } else {
+                    // PopUp Scenario
+                    try {
+                        // Try to access a property of parent to check same domain
+                        var location = opener.location.href;
+                        doRender();
+                    } catch (e) {
+                        // Fail gracefully and stay hidden
+                    }
+                }
+            })();
+        </script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
