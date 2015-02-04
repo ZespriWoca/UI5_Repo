@@ -1,0 +1,68 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.alloc.view.MasterDeliveryWorkList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!-- Master Page for Delivery WorkList -->
+
+	<Page id="masterPage"
+		title="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_PAGE_HEADER}">
+
+		<!-- Sub Header -->
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<!-- SearchField Control to search the Delivery WorkList -->
+					<Toolbar>
+						<SearchField width="100%" id="deliveryWorkListSearch"
+							search="handleShipmentSearch"
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_SEARCH_TOOLTIP}">
+						</SearchField>
+					</Toolbar>
+
+				</contentMiddle>
+			</Bar>
+
+		</subHeader>
+
+		<content>
+
+			<!-- Delivery line List with growing property for Pagination : growingThreshold 
+				= 20 by default -->
+
+			<List id="deliveryList" growing="true" growingScrollToLoad="true"
+				noDataText="{i18n>TXT_LIST_LOADING_LABEL}">
+
+				<!-- Info Bar for ViewSettings dialog Filtering -->
+				<infoToolbar>
+					<Toolbar id="deliveryListFilterBar" active="true" visible="false"
+						press="handleViewSettingsDialogOpen" design="Info">
+						<Label id="deliveryListFilterBarLabel" />
+					</Toolbar>
+				</infoToolbar>
+				<!-- List Item for each delivery line with attributes and status -->
+
+
+			</List>
+		</content>
+		<!-- Footer Bar -->
+		<footer>
+			<Bar>
+				<contentRight>
+
+					<!-- Button : Press event will trigger ViewSettingsDialog for filtering 
+						and sorting -->
+
+					<Button icon="sap-icon://drop-down-list" press="handleViewSettingsDialogOpen"
+						tooltip="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_FOOTERBUTTON_TOOLTIP}">
+					</Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

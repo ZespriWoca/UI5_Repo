@@ -1,0 +1,61 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.admin.view.ScheduleRates"
+	xmlns:z="com.zespri.awct.control" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!-- Title of the page -->
+	<Page title="{i18n>TXT_ADMIN_SCHEDULE_RATES_PAGE_TITLE}" id="scheduleRatesPage">
+
+		<Table id="scheduleRateTable" mode="SingleSelectMaster"
+			itemPress="handleScheduleRateTableSelect" items="{/ScheduleSet}"
+			growing="true" growingThreshold="100" class="zAwctTableVerticalCenterCells">
+			<columns>
+
+				<!-- schedule name -->
+				<Column>
+					<Label text="{i18n>TXT_ADMIN_SCHEDULE_RATES_SCHEDULE_NAME}"
+						tooltip="{i18n>TXT_ADMIN_SCHEDULE_RATES_SCHEDULE_NAME}" />
+				</Column>
+
+				<!-- By Delivery -->
+				<Column>
+					<Label text="{i18n>TXT_ADMIN_SCHEDULE_RATES_SCHEDULE_TYPE}"
+						tooltip="{i18n>TXT_ADMIN_SCHEDULE_RATES_SCHEDULE_TYPE}" />
+				</Column>
+
+			</columns>
+
+			<items>
+
+				<ColumnListItem type="Navigation">
+					<cells>
+						<Text text="{ScheduleName}" tooltip="{i18n>TXT_ADMIN_SCHEDULE_RATES_SCHEDULE_NAME}" />
+						<Text text="{path:'ScheduleType', formatter:'.formatScheduleType'}"
+							tooltip="{i18n>TXT_ADMIN_SCHEDULE_RATES_SCHEDULE_TYPE}" />
+					</cells>
+
+				</ColumnListItem>
+
+			</items>
+
+		</Table>
+
+		<footer>
+			<Bar>
+				<contentRight>
+					<!-- Button to add new Schedule rate line -->
+					<Button  text="{i18n>TXT_ADMIN_SCHEDULE_RATES_TOOLBAR_BUTTON_ADD}"
+						press="handleAddScheduleRatePress" />
+
+				</contentRight>
+			</Bar>
+		</footer>
+
+	</Page>
+
+</core:View>

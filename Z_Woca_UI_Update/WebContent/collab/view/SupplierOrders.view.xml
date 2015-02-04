@@ -1,0 +1,449 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:awct="com.zespri.awct.control" controllerName="com.zespri.awct.collab.view.SupplierOrders">
+
+	<Page title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_PAGE_TITLE}" id="pageSupplierOrders">
+
+		<!-- Facet Filter -->
+		<awct:FacetFilter id="facetFilterCollaboration" type="Simple"
+			showPersonalization="true" showReset="true" reset="handleFacetFilterReset"
+			liveSearch="true" showPopoverOKButton="true">
+			<awct:lists>
+
+				<!-- Supplier ID -->
+				<awct:FacetFilterList id="facetFilterListSupplier"
+					title="{i18n>TXT_GENERIC_SUPPLIER}"
+					key="SupplierID" mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="true" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{SupplierID}" key="{SupplierID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Shipment Number -->
+				<awct:FacetFilterList id="facetFilterListShipmentNo"
+					title="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+					key="ShipmentID"
+					mode="MultiSelect" listOpen="handleListOpen" listClose="handleListClose"
+					selectionChange="handleFilterListSelectionChanged"
+					showInFacetFilterBar="true" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{ShipmentID}" key="{ShipmentID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Delivery Number -->
+				<awct:FacetFilterList id="facetFilterListDeliveryNo"
+					title="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+					key="DeliveryID"
+					mode="SingleSelectMaster" listClose="handleListClose"
+					selectionChange="handleFilterListSelectionChanged" listOpen="handleDependentListOpen"
+					showInFacetFilterBar="true" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{DeliveryHeaderID}" key="{DeliveryHeaderID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Container ID -->
+				<awct:FacetFilterList id="facetFilterListContainerID"
+					title="{i18n>TXT_GENERIC_CONTAINER_ID}"
+					key="ContainerID"
+					mode="MultiSelect" listClose="handleListClose" listOpen="handleDependentListOpen"
+					showInFacetFilterBar="true" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{ContainerID}" key="{ContainerID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Load Port -->
+				<awct:FacetFilterList id="facetFilterListLoadPort"
+					title="{i18n>TXT_GENERIC_LOAD_PORT}"
+					key="LoadPort" mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="true" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{PortID}" key="{PortID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Destination Port -->
+				<awct:FacetFilterList id="facetFilterListDestinationPort"
+					title="{i18n>TXT_GENERIC_DESTINATION_PORT}"
+					key="DestinationPort"
+					mode="MultiSelect" listClose="handleListClose" selectionChange="handleFilterListSelectionChanged"
+					listOpen="handleDependentListOpen" showInFacetFilterBar="true"
+					growing="false">
+					<awct:items>
+						<FacetFilterItem text="{PortID}" key="{PortID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Ship Name -->
+				<awct:FacetFilterList id="facetFilterListShipName"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_SHIP_NAME}"
+					key="ShipmentName"
+					mode="MultiSelect" listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Name}" key="{Name}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Shipment Type -->
+				<awct:FacetFilterList id="facetFilterListShipmentType"
+					title="{i18n>TXT_GENERIC_SHIPMENT_TYPE}"
+					key="ShipmentType"
+					mode="MultiSelect" listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{ShipmentTypeID}" key="{ShipmentTypeID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Market Access Area -->
+				<awct:FacetFilterList id="facetFilterListMarketAccessArea"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_MARKET_ACCESS_AREA}"
+					key="MarketAccessArea"
+					mode="MultiSelect" listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Marketer -->
+				<awct:FacetFilterList id="facetFilterListMarketer"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_MARKETER}"
+					key="Marketer" mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- C Load From -->
+				<awct:FacetFilterDateInputList
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_C_LOAD_FROM}"
+					id="facetFilterDateInputListLoadFrom" showInFacetFilterBar="false"
+					listClose="handleListClose" key="LoadFromDate">
+				</awct:FacetFilterDateInputList>
+
+				<!-- C Load To -->
+				<awct:FacetFilterDateInputList
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_C_LOAD_TO}"
+					id="facetFilterDateInputListLoadTo" showInFacetFilterBar="false"
+					listClose="handleListClose" key="LoadToDate">
+				</awct:FacetFilterDateInputList>
+
+				<!-- Days From Load -->
+				<awct:FacetFilterNumberInputList id="facetFilterListDaysFromLoad"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_DAYS_FROM_LOAD}"
+					key="DaysFromLoad" listClose="handleListClose"
+					showInFacetFilterBar="false">
+				</awct:FacetFilterNumberInputList>
+
+				<!-- Shortages Greater Than -->
+				<awct:FacetFilterNumberInputList
+					id="facetFilterListShortagesGreaterThan"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_SHORTAGES_GREATER_THAN}"
+					key="Shortage" listClose="handleListClose" showInFacetFilterBar="false">
+				</awct:FacetFilterNumberInputList>
+
+				<!-- Surpluses Greater Than -->
+				<awct:FacetFilterNumberInputList
+					id="facetFilterListSurplusesGreaterThan"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_SURPLUSES_GREATER_THAN}"
+					key="Surplus" listClose="handleListClose" showInFacetFilterBar="false">
+				</awct:FacetFilterNumberInputList>
+
+				<!-- Brand -->
+				<awct:FacetFilterList id="facetFilterListBrand"
+					title="{i18n>TXT_GENERIC_BRAND}" key="Characteristic/Brand"
+					mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Variety -->
+				<awct:FacetFilterList id="facetFilterListVariety"
+					title="{i18n>TXT_GENERIC_VARIETY}" key="Characteristic/Variety"
+					mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Class -->
+				<awct:FacetFilterList id="facetFilterListClass"
+					title="{i18n>TXT_GENERIC_CLASS}" key="Characteristic/Class"
+					mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Growing Method -->
+				<awct:FacetFilterList id="facetFilterListGrowingMethod"
+					title="{i18n>TXT_GENERIC_GROWING_METHOD}"
+					key="Characteristic/GrowingMethod"
+					mode="MultiSelect" listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Stack -->
+				<awct:FacetFilterList id="facetFilterListStack"
+					title="{i18n>TXT_GENERIC_STACK}" key="Characteristic/Stack"
+					mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Pack Style -->
+				<awct:FacetFilterList id="facetFilterListPackStyle"
+					title="{i18n>TXT_GENERIC_PACK_STYLE}"
+					key="Characteristic/PackStyle"
+					mode="MultiSelect" listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Size -->
+				<awct:FacetFilterList id="facetFilterListSize"
+					title="{i18n>TXT_GENERIC_SIZE}" key="Characteristic/Size"
+					mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Label -->
+				<awct:FacetFilterList id="facetFilterListLabel"
+					title="{i18n>TXT_GENERIC_LABEL}" key="Characteristic/Label"
+					mode="MultiSelect"
+					listOpen="handleListOpen" listClose="handleListClose"
+					showInFacetFilterBar="false" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+				
+				<!-- Charter or Container -->
+				<awct:FacetFilterList id="facetFilterListCharterOrContainer"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_CHARTER_OR_CONTAINER}"
+					key="CharterOrContainer" mode="SingleSelectMaster" listClose="handleListClose"
+					listOpen="handleListOpen" showInFacetFilterBar="false"
+					growing="false">
+					<awct:items>
+						<FacetFilterItem text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_CHARTER}" key="01" />
+						<FacetFilterItem text="{i18n>TXT_GENERIC_CONTAINER}" key="02" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Show Demand Lines -->
+				<awct:FacetFilterCheckboxList id="facetFilterListShowDemandLines"
+					title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_FILTER_SHOW_DEMAND_LINES}"
+					key="ShowDemandLines" listClose="handleListClose"
+					showInFacetFilterBar="false">
+				</awct:FacetFilterCheckboxList>
+
+			</awct:lists>
+		</awct:FacetFilter>
+
+		<!-- Toolbar to display filters applied when supplier orders is navigated 
+			from 'Search Form' view, else hidden -->
+		<Toolbar id="toolbarFilterString" active="true" design="Info"
+			height="2rem" press="handleToolbarPress" visible="false">
+			<Text id="textFilter" />
+		</Toolbar>
+
+		<Table mode="SingleSelectMaster" id="supplierOrdersTable"
+			growing="true" growingThreshold="100" >
+			<headerToolbar>
+				<Toolbar>
+					<ToolbarSpacer />
+					<Button icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressed"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_BUTTON_TABLE_SETTINGS_TOOLTIP}" />
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<!-- Supplier -->
+				<Column width="40px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_SUPPLIER}"
+						tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+				</Column>
+
+				<!-- Shipment Number -->
+				<Column width="60px">
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_SHIPMENT_NUMBER}"
+						tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+				</Column>
+
+				<!-- Load Port -->
+				<Column width="65px">
+					<Label text="{i18n>TXT_GENERIC_LOAD_PORT}"
+						tooltip="{i18n>TXT_GENERIC_LOAD_PORT}" />
+				</Column>
+
+				<!-- Destination Port -->
+				<Column width="60px">
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_DESTINATION_PORT}"
+						tooltip="{i18n>TXT_GENERIC_DESTINATION_PORT}" />
+				</Column>
+
+				<!-- Delivery Instruction Number -->
+				<Column width="80px">
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_DELIVERY_INSTRUCTION_NUMBER}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_DELIVERY_INSTRUCTION_NUMBER}" />
+				</Column>
+
+				<!-- Delivery Number -->
+				<Column>
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_DELIVERY_NUMBER}"
+						tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+				</Column>
+
+				<!-- Line -->
+				<Column width="30px">
+					<Label text="{i18n>TXT_GENERIC_LINE}"
+						tooltip="{i18n>TXT_GENERIC_LINE}" />
+				</Column>
+
+				<!-- Container ID -->
+				<Column>
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_CONTAINER_ID}"
+						tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+				</Column>
+
+				<!-- Access -->
+				<Column>
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_ACCESS}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_ACCESS}" />
+				</Column>
+
+				<!-- Start -->
+				<Column hAlign="Right">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_START}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_START}" />
+				</Column>
+
+				<!-- End -->
+				<Column hAlign="Right">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_END}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_END}" />
+				</Column>
+
+				<!-- Brand -->
+				<Column width="10px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_BRAND}"
+						tooltip="{i18n>TXT_GENERIC_BRAND}" />
+				</Column>
+
+				<!-- Variety-Class-Growing Method -->
+				<Column>
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_VARIETY_CLASS_GROWING_METHOD}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_VARIETY_CLASS_GROWING_METHOD}" />
+				</Column>
+
+				<!-- Size -->
+				<Column width="20px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_SIZE}"
+						tooltip="{i18n>TXT_GENERIC_SIZE}" />
+				</Column>
+
+				<!-- Palette Base-Stack-Pack -->
+				<Column>
+					<Label
+						text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_PALETTE_BASE_STACK_PACK}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_PALETTE_BASE_STACK_PACK}" />
+				</Column>
+
+				<!-- Label -->
+				<Column width="25px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_LABEL}"
+						tooltip="{i18n>TXT_GENERIC_LABEL}" />
+				</Column>
+
+				<!-- Quantity -->
+				<Column hAlign="Right" width="30px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_QUANTITY}"
+						tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+				</Column>
+
+				<!-- Shortage -->
+				<Column hAlign="Right" width="40px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_SHORTAGE}"
+						tooltip="{i18n>TXT_GENERIC_SHORTAGE}" />
+				</Column>
+
+				<!-- Surplus -->
+				<Column hAlign="Right" width="40px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_SURPLUS}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_SURPLUS}" />
+				</Column>
+
+				<!-- Trade -->
+				<Column hAlign="Right" width="40px">
+					<Label text="{i18n>TXT_GENERIC_TRADE}"
+						tooltip="{i18n>TXT_GENERIC_TRADE}" />
+				</Column>
+
+				<!-- UOM -->
+				<Column width="40px">
+					<Label text="{i18n>TXT_GENERIC_UOM}"
+						tooltip="{i18n>TXT_GENERIC_UOM}" />
+				</Column>
+
+				<!-- Cons -->
+				<Column width="40px">
+					<Label text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_CONS}"
+						tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_CONS}" />
+				</Column>
+
+				<!-- For 'actions'. No header needed. -->
+				<Column width="50px">
+				</Column>
+			</columns>
+
+		</Table>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="orderHistoryExportAsCSVButton"
+						text="{i18n>TXT_COLLABORATION_ORDERHISTORY_EXPORT_AS_CSV_BUTTON_LABEL}"
+						press="handleExportAsCSVPressed"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+
+</core:View>

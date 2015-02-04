@@ -1,0 +1,264 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.admin.view.TimeBasedRateMaintenance"
+	xmlns:z="com.zespri.awct.control" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!-- Title of the page -->
+	<Page title="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_PAGE_TITLE}"
+		id="pageTimeBasedRates">
+
+		<!-- Facet filter is used as a search form for time rate listing. Provides 
+			a feature of narrowing down the records in time rate table -->
+		<z:FacetFilter id="facetFilterTimeRateMaintenance"
+			reset="handleFacetFilterReset" showPopoverOKButton="true">
+
+			<!-- Filter : Season -->
+			<z:FacetFilterList id="seasonFacetList" title="{i18n>TXT_GENERIC_SEASON}"
+				mode="MultiSelect" listOpen="handleListOpen" key="Season"
+				showInFacetFilterBar="true" growing="false" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem key="{Key}" text="{Key}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Variety -->
+			<z:FacetFilterList id="varietyFacetList" title="{i18n>TXT_GENERIC_VARIETY}"
+				key="Characteristic/Variety" showInFacetFilterBar="true" growing="false"
+				mode="MultiSelect" listOpen="handleListOpen" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem text="{Key}" key="{Key}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Class -->
+			<z:FacetFilterList id="classFacetList" title="{i18n>TXT_GENERIC_CLASS}"
+				mode="MultiSelect" listOpen="handleListOpen" key="Characteristic/Class"
+				showInFacetFilterBar="true" growing="false" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem text="{Key}" key="{Key}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Growing method -->
+			<z:FacetFilterList id="growingMethodFacetList"
+				title="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_FACET_FILTER_GROWING_METHOD}"
+				key="Characteristic/GrowingMethod" mode="MultiSelect" listOpen="handleListOpen"
+				showInFacetFilterBar="true" growing="false" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem text="{Key}" key="{Key}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter :Country -->
+			<z:FacetFilterList id="countryFacetList"
+				title="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_FACET_FILTER_COUNTRY}"
+				key="Country" showInFacetFilterBar="true" growing="false" mode="MultiSelect"
+				listOpen="handleListOpen" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem key="{CountryCode}" text="{CountryCode}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Shipment Type -->
+			<z:FacetFilterList id="shipmentTypeFacetList"
+				title="{i18n>TXT_GENERIC_SHIPMENT_TYPE}" key="ShipmentType"
+				showInFacetFilterBar="true" growing="false" mode="MultiSelect"
+				listOpen="handleListOpen" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem text="{ShipmentTypeID}" key="{ShipmentTypeID}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Charge code -->
+			<z:FacetFilterList id="chargeCodeFacetList"
+				title="{i18n>TXT_GENERIC_CHARGE_CODE}" key="ChargeCode"
+				showInFacetFilterBar="true" growing="false" mode="MultiSelect"
+				listOpen="handleListOpen" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem key="{Key}" text="{Key}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Schedule Name -->
+			<z:FacetFilterList id="scheduleNameFacetList"
+				title="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_FACET_FILTER_SCHEDULE_NAME}"
+				key="ScheduleName" showInFacetFilterBar="true" growing="false" mode="MultiSelect"
+				listOpen="handleListOpen" listClose="handleFacetListClose">
+				<z:items>
+					<FacetFilterItem key="{ScheduleName}" text="{ScheduleName}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Active -->
+
+			<z:FacetFilterList id="activeFacetList"
+				title="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_FACET_FILTER_ACTIVE}"
+				key="Active" showInFacetFilterBar="true" listClose="handleFacetListClose"
+				growing="false" mode="MultiSelect">
+				<z:items>
+					<FacetFilterItem text="{ActiveValue}" key="{ActiveKey}" />
+				</z:items>
+			</z:FacetFilterList>
+
+		</z:FacetFilter>
+
+		<!-- End of search-facet filter -->
+
+		<Table id="timeBasedRateTable" mode="SingleSelectMaster"
+			itemPress="handleTimeRatePress" growing="true" growingThreshold="100">
+			<columns>
+
+				<!-- Variety -->
+				<Column width="50px">
+					<Label text="{i18n>TXT_GENERIC_VARIETY}" tooltip="{i18n>TXT_GENERIC_VARIETY}" />
+				</Column>
+
+				<!-- Class -->
+				<Column width="50px">
+					<Label text="{i18n>TXT_GENERIC_CLASS}" tooltip="{i18n>TXT_GENERIC_CLASS}" />
+				</Column>
+
+				<!-- Growing Method -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_GROWING_METHOD}" tooltip="{i18n>TXT_GENERIC_GROWING_METHOD}" />
+				</Column>
+
+				<!-- Pack Style -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_PACK_STYLE}" tooltip="{i18n>TXT_GENERIC_PACK_STYLE}" />
+				</Column>
+
+				<!-- Size -->
+				<Column width="30px">
+					<Label text="{i18n>TXT_GENERIC_SIZE}" tooltip="{i18n>TXT_GENERIC_SIZE}" />
+				</Column>
+
+				<!-- Country -->
+				<Column>
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_COUNTRY}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_COUNTRY}" />
+				</Column>
+
+				<!-- Shipment Type -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_SHIPMENT_TYPE}" tooltip="{i18n>TXT_GENERIC_SHIPMENT_TYPE}" />
+				</Column>
+
+				<!-- Charge Code -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_CHARGE_CODE}" tooltip="{i18n>TXT_GENERIC_CHARGE_CODE}" />
+				</Column>
+
+				<!--Schedule -->
+				<Column>
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_SCHEDULE}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_SCHEDULE}" />
+				</Column>
+
+				<!-- Multiplier -->
+				<Column hAlign="Right" width="50px">
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_MULTIPLIER}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_MULTIPLIER}" />
+				</Column>
+
+				<!-- Valid From -->
+				<Column hAlign="Right">
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_VALID_FROM}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_VALID_FROM}" />
+				</Column>
+
+				<!-- Valid To -->
+				<Column hAlign="Right">
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_VALID_TO}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_VALID_TO}" />
+				</Column>
+
+				<!-- Priority -->
+				<Column hAlign="Right" width="50px">
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_PRIORITY}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_PRIORITY}" />
+				</Column>
+
+				<!-- Short Notice -->
+				<Column>
+					<Label text="{i18n>TXT_ADMIN_EXCEPTION_RATES_DETAIL_LABEL_SHORT_NOTICE}"
+						tooltip="{i18n>TXT_ADMIN_EXCEPTION_RATES_DETAIL_LABEL_SHORT_NOTICE}" />
+				</Column>
+
+				<!-- Created Date -->
+				<Column hAlign="Right">
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_CREATED_DATE}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_CREATED_DATE}" />
+				</Column>
+
+				<!-- Created By -->
+				<Column>
+					<Label
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_CREATED_BY}"
+						tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_CREATED_BY}" />
+				</Column>
+
+			</columns>
+
+			<items>
+
+				<ColumnListItem type="Navigation">
+					<cells>
+						<Text text="{Characteristic/Variety}" tooltip="{i18n>TXT_GENERIC_VARIETY}" />
+						<Text text="{Characteristic/Class}" tooltip="{i18n>TXT_GENERIC_CLASS}" />
+						<Text text="{Characteristic/GrowingMethod}" tooltip="{i18n>TXT_GENERIC_GROWING_METHOD}" />
+						<Text text="{Characteristic/PackStyle}" tooltip="{i18n>TXT_GENERIC_PACK_STYLE}" />
+						<Text text="{Characteristic/Size}" tooltip="{i18n>TXT_GENERIC_SIZE}" />
+						<Text text="{Country}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_COUNTRY}" />
+						<Text text="{ShipmentType}" tooltip="{i18n>TXT_GENERIC_SHIPMENT_TYPE}" />
+						<Text text="{ChargeCode}" tooltip="{i18n>TXT_GENERIC_CHARGE_CODE}" />
+						<Text text="{ScheduleName}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_SCHEDULE}" />
+						<Text text="{Multiplier}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_MULTIPLIER}" />
+						<Text
+							text="{path:'ValidFrom', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_VALID_FROM}" />
+						<Text
+							text="{path:'ValidTo', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_VALID_TO}" />
+						<Text text="{Priority}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_PRIORITY}" />
+						<Text
+							text="{path: 'ShortNoticeFlag', formatter: '.formatShortNoticeFlagValue'}"
+							tooltp="{i18n>TXT_ADMIN_EXCEPTION_RATES_DETAIL_LABEL_SHORT_NOTICE}" />
+						<Text
+							text="{path:'AdministrativeInfo/CreatedTime', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_CREATED_DATE}" />
+						<Text text="{AdministrativeInfo/CreatedBy}"
+							tooltip="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_COLUMN_CREATED_BY}" />
+					</cells>
+
+				</ColumnListItem>
+
+			</items>
+
+		</Table>
+
+		<footer>
+			<Bar>
+				<contentRight>
+					<!-- Button to add new Time rate record -->
+					<Button id="addTimeRateButton"
+						text="{i18n>TXT_ADMIN_TIME_BASED_RATES_MAINTENANCE_TOOLBAR_BUTTON_ADD}"
+						press="handleAddTimeRatePress" />
+
+				</contentRight>
+			</Bar>
+		</footer>
+
+	</Page>
+
+</core:View>

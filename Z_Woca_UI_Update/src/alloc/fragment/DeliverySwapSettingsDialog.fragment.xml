@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<!-- Table Settings -->
+	<ViewSettingsDialog confirm="handleViewSettingsDialogClose"
+		title="{i18n>TXT_ALLOCATION_DELIVERYSWAP_LISTING_SORTING_DIALOG_TITLE}">
+
+		<!-- Sort Delivery Swap items -->
+		<sortItems>
+			<!-- Shipment From -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SHIPMENT_FROM}"
+				key="SourceShipmentID" />
+
+			<!-- Delivery From -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_DELIVERY_FROM}"
+				key="SourceDeliveryNumber" />
+
+			<!-- Shipment To -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SHIPMENT_TO}"
+				key="TargetShipmentID" />
+
+			<!-- Delivery To -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_DELIVERY_TO}"
+				key="TargetShipmentID" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

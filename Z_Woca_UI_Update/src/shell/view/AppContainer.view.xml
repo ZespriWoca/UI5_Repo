@@ -1,0 +1,141 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:unified="sap.ui.unified" controllerName="com.zespri.awct.shell.view.AppContainer"
+	xmlns:html="http://www.w3.org/1999/xhtml" height="100%">
+
+	<unified:Shell id="unifiedShell" mode="HideMode"
+		icon="image/Zespri_WOCA_title_44x165px.png" showPane="false" class="zAwctUnifiedShell">
+		<unified:paneContent>
+			<Page showHeader="false">
+				<content>
+					<List class="zAwctPaneContentListItem">
+						<!-- Make visible false after demo for dashboard -->
+						<GroupHeaderListItem 
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_DASHBOARD}" visible="true" />
+						<StandardListItem type="Navigation" id="launchPad"
+							visible="true" title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_DASHBOARD}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+						<!-- Allocation Workbench -->
+						<GroupHeaderListItem id="allocationGroupHeader"
+							title="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_ALLOCATION_WORKBENCH}"
+							description="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_ALLOCATION_WORKBENCH}"
+							visible="false" />
+						<StandardListItem type="Navigation" id="deliveryLines"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_DELIVERY_LINES}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+						<StandardListItem type="Navigation" id="deliverySwapListing"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_DELIVERY_SWAP_LISTING}"
+							visible="false" press="handleListItemPress">
+						</StandardListItem>
+
+						<!-- Collaboration -->
+						<GroupHeaderListItem id="collaborationGroupHeader"
+							title="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_COLLABORATION}"
+							description="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_COLLABORATION}"
+							visible="false" />
+						<StandardListItem type="Navigation" id="supplierOrderListing"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_SUPPLIER_ORDER_LISTING}"
+							press="handleListItemPress">
+						</StandardListItem>
+						<StandardListItem type="Navigation" id="findOrders"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_FIND_ORDERS}" press="handleListItemPress">
+						</StandardListItem>
+						<StandardListItem type="Navigation" id="tradeListing"
+							visible="false" title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_TRADE_LISTING}"
+							press="handleListItemPress">
+						</StandardListItem>
+						<StandardListItem type="Navigation" id="trackOrders"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_TRACK_ORDERS}" press="handleListItemPress">
+						</StandardListItem>
+						<StandardListItem type="Navigation" id="trackOrdersSearchForm"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_TRACK_ORDERS_SEARCH_FORM}"
+							press="handleListItemPress">
+						</StandardListItem>
+						<StandardListItem type="Navigation" id="printOrders"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_ORDER_TRACK_PRINT}"
+							visible="false" press="handleListItemPress">
+						</StandardListItem>
+
+
+						<!-- Reporting -->
+						<GroupHeaderListItem id="reportGroupHeader"
+							title="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_REPORTING}"
+							visible="false" description="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_REPORTING}" />
+							
+						<StandardListItem type="Navigation" id="generateReports"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_GENERATE_PERFORMANCE_REPORTS}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+
+						<!-- Administration -->
+						<GroupHeaderListItem id="administrationGroupHeader"
+							title="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_ADMINISTRATION}"
+							visible="false" description="{i18n>TXT_SHELL_PANECONTENT_GROUPHEADER_ADMINISTRATION}" />
+
+						<StandardListItem type="Navigation"
+							id="maintainSchedulesRatesItem" visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_MAINTAIN_SCHEDULES_RATES}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+						<StandardListItem type="Navigation"
+							id="timeBasedRateMaintenanceItem" visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_TIME_BASED_RATE_MAINTENANCE}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+						<StandardListItem type="Navigation"
+							id="exceptionRateMaintenanceItem" visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_EXCEPTION_RATE_MAINTENANCE}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+						<StandardListItem type="Navigation" id="maintainLibraryTextItem"
+							visible="false"
+							title="{i18n>TXT_SHELL_PANECONTENT_LISTITEM_MAINTAIN_LIBRARY_TEXT}"
+							press="handleListItemPress">
+						</StandardListItem>
+
+					</List>
+
+				</content>
+				<footer>
+					<Bar  class="zAwctPaneFooterContentVerticalAlign">
+						<contentMiddle>
+							<core:Icon src="sap-icon://customer"  tooltip="{currentUserDetails>/UserName}"></core:Icon>
+							<Text text="{currentUserDetails>/UserName}"  tooltip="{currentUserDetails>/UserName}"/>
+						</contentMiddle>
+					</Bar>
+				</footer>
+			</Page>
+		</unified:paneContent>
+		<unified:content>
+			<NavContainer id="unifiedShellNavContainer">
+
+			</NavContainer>
+		</unified:content>
+		<unified:headItems>
+			<unified:ShellHeadItem icon="sap-icon://menu"
+				press="handleToggleMenu" tooltip="{i18n>TXT_SHELL_PANE_MENU_TOOLTIP}"/>
+			<unified:ShellHeadItem icon="sap-icon://nav-back"
+				press="handleNavigationBack" tooltip="{i18n>TXT_SHELL_NAV_BACK_BUTTON_TOOLTIP}"/>
+		</unified:headItems>
+		<unified:headEndItems>
+			<unified:ShellHeadItem icon="sap-icon://log"
+				press="handleLogOut" tooltip="{i18n>TXT_SHELL_LOGOUT_BUTTON_TOOLTIP}"/>
+		</unified:headEndItems>
+	</unified:Shell>
+
+
+
+</core:View>

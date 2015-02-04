@@ -1,0 +1,129 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:awct="com.zespri.awct.control" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="com.zespri.awct.collab.view.DeliverySwapListing"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_PAGE_TITLE}">
+		<content>
+
+			<!-- Facet Filter -->
+			<awct:FacetFilter id="facetFilterDeliverySwap" type="Simple"
+				showPersonalization="true" showReset="true" reset="handleFacetFilterReset"
+				liveSearch="true" showPopoverOKButton="true"
+				disabledText="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FACET_FILTER_DISABLED_TEXT}">
+				<awct:lists>
+
+					<!-- Season -->
+					<awct:FacetFilterList id="facetFilterListSeason"
+						title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FACET_FILTER_SEASON}"
+						key="Season" mode="MultiSelect" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="true" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Shipment From -->
+					<awct:FacetFilterList id="facetFilterListShipmentFrom"
+						title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FACET_FILTER_SHIPMENT_FROM}"
+						key="SourceShipmentID" mode="SingleSelectMaster" listOpen="handleFacetFilterOpen"
+						listClose="handleFacetFilterClose" growing="false"
+						showInFacetFilterBar="true">
+						<awct:items>
+							<FacetFilterItem text="{ShipmentID}" key="{ShipmentID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Shipment To -->
+					<awct:FacetFilterList id="facetFilterListShipmentTo"
+						title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FACET_FILTER_SHIPMENT_TO}"
+						key="TargetShipmentID" mode="SingleSelectMaster" listOpen="handleFacetFilterOpen"
+						listClose="handleFacetFilterClose" showInFacetFilterBar="true"
+						growing="false">
+						<awct:items>
+							<FacetFilterItem text="{ShipmentID}" key="{ShipmentID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Date from -->
+					<awct:FacetFilterDateInputList id="facetFilterListDateWeekFrom"
+						title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FACET_FILTER_DATE_WEEKFROM}"
+						key="ISOWeekFrom" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="false" growing="false">
+					</awct:FacetFilterDateInputList>
+
+					<!-- Date TO -->
+					<awct:FacetFilterDateInputList id="facetFilterListDateWeekTo"
+						title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FACET_FILTER_DATE_WEEKTO}"
+						key="ISOWeekTo" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="false" growing="false">
+					</awct:FacetFilterDateInputList>
+				</awct:lists>
+			</awct:FacetFilter>
+
+			<!-- Delivery Swap Listing Table -->
+			<Table mode="SingleSelectMaster" id="deliverySwapListTable"
+				busy="true" itemPress="handleTableItemPress" inset="false">
+				<headerToolbar>
+					<Toolbar>
+						<Label
+							text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TABLE_HEADER}"></Label>
+						<ToolbarSpacer />
+						<Button icon="sap-icon://drop-down-list" press="handleViewSettingsDialogOpen"
+							tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TABLE_SORTING_DIALOG_BUTTON_TOOLTIP}" />
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!-- ShipmentFrom -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TOOLTIP_TABLE_COLUMN_SHIPMENT_FROM}"
+							text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TABLE_COLUMN_SHIPMENT_FROM}" />
+					</Column>
+
+					<!-- DeliveryFrom -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TOOLTIP_TABLE_COLUMN_DELIVERY_FROM}"
+							text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TABLE_COLUMN_DELIVERY_FROM}" />
+					</Column>
+
+					<!-- ShipmentTo -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TOOLTIP_TABLE_COLUMN_SHIPMENT_TO}"
+							text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TABLE_COLUMN_SHIPMENT_TO}" />
+					</Column>
+
+					<!-- DeliveryTo -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TOOLTIP_TABLE_COLUMN_DELIVERY_TO}"
+							text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_TABLE_COLUMN_DELIVERY_TO}" />
+					</Column>
+
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<Text text="{SourceShipmentID}" />
+							<Text text="{SourceDeliveryNumber}" />
+							<Text text="{TargetShipmentID}" />
+							<Text text="{TargetDeliveryNumber}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<!-- CREATE SWAP BUTTON -->
+					<Button
+						text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_FOOTER_CREATE_SWAP_BUTTON}"
+						icon="sap-icon://add" press="handeleNavToSwapCreate">
+					</Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

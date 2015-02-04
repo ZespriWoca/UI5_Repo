@@ -1,0 +1,73 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Dialog title="{i18n>TXT_ALLOCATION_ADDSUPPLIER_DIALOG_TITLE}"
+		contentWidth="400px" contentHeight="50%" busyIndicatorDelay="0">
+		<!-- Search Field -->
+		<subHeader>
+			<Bar>
+				<contentRight>
+					<SearchField width="100%" liveChange="handleAddSupplierSearch"
+						id="addSupplierSearchField" />
+				</contentRight>
+			</Bar>
+		</subHeader>
+		<content>
+			<!-- Supplier Rel2 Relevant -->
+				<CheckBox id="supplierRel2RelevantCheckbox" text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_SUPPLIER_REL2_RELEVANT_CHECKBOX}" visible="false">
+				</CheckBox>
+			<!-- Table listing available suppliers -->
+			<Table id="addSupplierTable" items="{addSuppliersModel>/results}" showSeparators="Inner"
+				noDataText="{i18n>TXT_ALLOCATION_ADDSUPPLIER_TABLE_SEARCH_NO_FILTER_RESULTS}">
+				<columns>
+					<!-- SupplierID -->
+					<Column hAlign="Center">
+
+						<header>
+							<Text text="{i18n>TXT_GENERIC_SUPPLIER_ID}"
+								tooltip="{i18n>TXT_GENERIC_SUPPLIER_ID}">
+							</Text>
+						</header>
+					</Column>
+					<!-- Quantity -->
+					<Column hAlign="Center">
+						<header>
+							<Text text="{i18n>TXT_GENERIC_QUANTITY}"
+								tooltip="{i18n>TXT_GENERIC_QUANTITY}">
+							</Text>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem class="zAwctTableCenterAlignedRows">
+						<cells>
+							<!-- Supplier ID -->
+							<Text text="{addSuppliersModel>Supplier}" class="zAwctTextFontWeight"
+								tooltip="{i18n>TXT_GENERIC_SUPPLIER_ID}" />
+
+							<!-- Allocation quantity with UOM -->
+							<layout:HorizontalLayout class="zAwctLayoutPadding">
+								<Input class="zAwctInputTextAlign" type="Text" value="0"
+									change="handleAddSupplierInputValueChange" tooltip="{i18n>TXT_GENERIC_QUANTITY}"
+									valueStateText="{i18n>TXT_ALLOCATION_ADDSUPPLIER_INPUT_VALUE_STATE_TEXT}"
+									maxLength="10"></Input>
+								<Text text="{addSuppliersModel>/UOM}" class="zAwctTextPadding"
+									tooltip="{i18n>TXT_GENERIC_QUANTITY}">
+								</Text>
+							</layout:HorizontalLayout>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<beginButton>
+			<!-- Confirm Button -->
+			<Button text="{i18n>TXT_GENERIC_OK}"
+				press="handleAddSuppliersConfirm" />
+		</beginButton>
+		<endButton>
+			<!-- Cancel Button -->
+			<Button text="{i18n>TXT_GENERIC_CANCEL}"
+				press="handleAddSupplierClose" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

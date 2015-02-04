@@ -1,0 +1,50 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<!-- Settings Dialog for Sorting Trade Opportunities Table -->
+	<ViewSettingsDialog confirm="handleTableSettingsDialogClose"
+		title="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_SETTINGSDIALOG_TITLE}">
+
+		<!-- Sort Items -->
+		<sortItems>
+
+			<!-- Initiating Supplier -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_SETTINGSDIALOG_SORTBY_INITIATING_SUPPLIER}"
+				key="InitiatingSupplierID" />
+
+			<!-- Receiving Supplier -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_SETTINGSDIALOG_SORTBY_RECEIVING_SUPPLIER}"
+				key="ReceivingSupplierID" />
+
+			<!-- Shipment Number -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+				key="ShipmentID" />
+
+			<!-- Delivery Number -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+				key="DeliveryID" />
+
+			<!-- Line -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_LINE}"
+				key="DeliveryLineNumber" />
+
+			<!-- Container ID -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_CONTAINER_ID}"
+				key="ContainerID" />
+
+		</sortItems>
+
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,39 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" controllerName="com.zespri.awct.alloc.view.Empty"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!-- Empty View Page to display the information of current status -->
+
+	<Page id="emptyViewPage"  showFooter="true">
+
+		<content>
+
+			<!-- Vertical layout Container to hold the Text and position the layout 
+				to center of the page using the CSS class -->
+
+			<layout:VerticalLayout 
+				class="zAwctVerticalLayoutEmptyViewPositioning">
+
+				<!-- Text Field which contains the Info Text . Align to center inside 
+					the above container using CSS class -->
+
+				<Text id="emptyLabel" maxLines="2" class="zAwctTextCenterAlignment"
+					text=""></Text>
+
+			</layout:VerticalLayout>
+		</content>
+
+		<!-- Dummy Custom Footer -->
+		<footer>
+			<Bar>
+			</Bar>
+		</footer>
+	</Page>
+
+</core:View>

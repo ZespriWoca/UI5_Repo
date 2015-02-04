@@ -1,0 +1,20 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.shell.view.Dashboard"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Page showHeader="false" enableScrolling="false">
+		<!-- <Image src="./image/back-vine.png" class="zAwctDashboardBackground" />
+		<Image src="./image/front-vine.png" class="zAwctDashboardBackground" /> -->
+
+		<!-- Tile Container for Tiles -->
+		<TileContainer id="tileContainer">
+			<!-- Tiles are added from the controller based on the user roles -->
+		</TileContainer>
+	</Page>
+</core:View>

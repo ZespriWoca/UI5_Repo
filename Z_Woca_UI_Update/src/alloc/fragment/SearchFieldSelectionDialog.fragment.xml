@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog id="tableSelect" search="handleValueHelpDialogSearch"
+		multiSelect="true" confirm="handleValueHelpDialogOKPress" rememberSelections="true" liveChange="handleValueHelpDialogSearch"
+		contentWidth="10em">
+		<columns>
+			<Column>
+				<Label id="searchFieldLabel" />
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

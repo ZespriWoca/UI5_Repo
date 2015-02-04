@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+
+	<!-- Dialog Control for Confirming Delivery Unlock -->
+	<Dialog
+		title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TITLE_UNLOCK_CONFIRM_DIALOG}"
+		type="Message">
+
+		<!-- DIFOTIS charges -->
+		<layout:VerticalLayout>
+			<Text class="zAwctTextPaddingTop" id="textDifotis" visible="false" />
+		</layout:VerticalLayout>
+		<!-- Batch Characteristics Unmaintained -->
+		<layout:VerticalLayout>
+			<Text class="zAwctTextPaddingTop" id="textBatchCharUndefined"
+				visible="false" />
+		</layout:VerticalLayout>
+		<!-- Demand greater than Supply -->
+		<layout:VerticalLayout>
+			<Text class="zAwctTextPaddingTop" id="textDemandGTSupply"
+				visible="false" />
+		</layout:VerticalLayout>
+		<!-- Supply greater than Demand -->
+		<layout:VerticalLayout>
+			<Text class="zAwctTextPaddingTop" id="textSupplyGTDemand"
+				visible="false" />
+		</layout:VerticalLayout>
+
+		<!--OK button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_UNLOCKCONFIRMDIALOG_BUTTON_CONFIRM}"
+				press="handleUnlockConfirmContinuePress" />
+		</beginButton>
+
+		<!-- Cancel button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_UNLOCKCONFIRMDIALOG_BUTTON_CANCEL}"
+				press="handleUnlockConfirmCancelPress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

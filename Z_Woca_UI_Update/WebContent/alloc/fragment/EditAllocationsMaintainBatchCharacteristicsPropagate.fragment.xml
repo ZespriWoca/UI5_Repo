@@ -1,0 +1,98 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:awct="com.zespri.awct.control" xmlns:core="sap.ui.core">
+	<TableSelectDialog rememberSelections="true"
+		contentWidth="800px" height="50%"
+		confirm="handleMaintainBatchCharacteristicsPropagateLinesValueHelpConfirm"
+		multiSelect="true"
+		liveChange="handleMaintainBatchCharacteristicsPropagateLinesValueHelpLiveChange"
+		items="{maintainBC>/PropagateToLines}"
+		title="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_DIALOG_TITLE}">
+		<columns>
+			<!-- Line -->
+			<Column>
+				<Text
+					text="{i18n>TXT_GENERIC_LINE}"
+					tooltip="{i18n>TXT_GENERIC_LINE}" />
+			</Column>
+
+			<!-- Material -->
+			<Column>
+				<Text
+					text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_MATERIAL}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_MATERIAL}" />
+			</Column>
+
+			<!-- Brand -->
+			<Column>
+				<Text
+					text="{i18n>TXT_GENERIC_BRAND}"
+					tooltip="{i18n>TXT_GENERIC_BRAND}" />
+			</Column>
+
+			<!-- Fruit Group -->
+			<Column>
+				<Text
+					text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_FRUIT_GROUP}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_FRUIT_GROUP}" />
+			</Column>
+
+			<!-- Size -->
+			<Column>
+				<Text
+					text="{i18n>TXT_GENERIC_SIZE}"
+					tooltip="{i18n>TXT_GENERIC_SIZE}" />
+			</Column>
+
+			<!-- Pack -->
+			<Column>
+				<Text
+					text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_PACK}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_PACK}" />
+			</Column>
+
+			<!-- Label -->
+			<Column>
+				<Text
+					text="{i18n>TXT_GENERIC_LABEL}"
+					tooltip="{i18n>TXT_GENERIC_LABEL}" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem selected="{maintainBC>selected}">
+				<!-- Delivery Line Number -->
+				<Text text="{maintainBC>DeliveryLineNumber}"
+					tooltip="{i18n>TXT_GENERIC_LINE}" />
+
+				<!-- Material -->
+				<Text text="{maintainBC>MaterialNumber}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_MATERIAL}" />
+
+				<!-- Brand -->
+				<Text text="{maintainBC>Brand}"
+					tooltip="{i18n>TXT_GENERIC_BRAND}" />
+
+				<!-- Fruit Group -->
+				<Text text="{maintainBC>FruitGroup}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_FRUIT_GROUP}" />
+
+				<!-- Size -->
+				<Text text="{maintainBC>Size}"
+					tooltip="{i18n>TXT_GENERIC_SIZE}" />
+
+				<!-- Pack -->
+				<Text text="{maintainBC>Pack}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_PROPAGATE_COLUMN_PACK}" />
+
+				<!-- Label -->
+				<Text text="{maintainBC>Label}"
+					tooltip="{i18n>TXT_GENERIC_LABEL}" />
+			</ColumnListItem>
+		</items>
+	</TableSelectDialog>
+</core:FragmentDefinition>

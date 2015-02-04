@@ -1,0 +1,26 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Dialog title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_LOCKED_DELIVERY_SAVE_DIALOG_TITLE}">
+	<content>
+		<!-- Supplier Rel2 Relevant -->
+		<CheckBox id="supplierRel2RelevantCheckbox" text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_SUPPLIER_REL2_RELEVANT_CHECKBOX}">
+		</CheckBox>
+	</content>
+		<beginButton>
+			<!-- Confirm Button -->
+			<Button text="{i18n>TXT_GENERIC_OK}"
+				press="handleEditAllocationsLockedDeliveryOKPress" />
+		</beginButton>
+		<endButton>
+			<!-- Cancel Button -->
+			<Button text="{i18n>TXT_GENERIC_CANCEL}"
+				press="handleEditAllocationsLockedDeliveryClose" />
+		</endButton>
+</Dialog>
+</core:FragmentDefinition>

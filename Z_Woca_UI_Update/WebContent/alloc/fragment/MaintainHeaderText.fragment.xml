@@ -1,0 +1,78 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<!-- Dialog for maintain Line Text -->
+	<Dialog title="{i18n>TXT_ALLOCATION_MAINTAINHEADERTEXT_DIALOG_TITLE}"
+		contentWidth="600px" horizontalScrolling="false" verticalScrolling="false" busyIndicatorDelay="0">
+		<content>
+			<layout:VerticalLayout>
+				<!-- Text Area -->
+				<TextArea rows="5" cols="90" id="maintainHeaderTextTextArea"
+					class="zAwctMaintainTextTextAreaFontSize" />
+
+				<!-- Toolbar (text) for table of library texts -->
+				<Toolbar>
+					<layout:VerticalLayout>
+						<Label text="{i18n>TXT_ALLOCATION_MAINTAINHEADERTEXT_TABLE_TITLE}"
+							design="Bold"></Label>
+					</layout:VerticalLayout>
+				</Toolbar>
+				
+				<!-- Search Field -->
+				<Toolbar>
+					<Bar>
+						<contentMiddle>
+							<SearchField width="100%" id="maintainHeaderTextSearchField"
+								liveChange="handleDeliveryHeaderTextSearchLiveChange" />
+						</contentMiddle>
+					</Bar>
+				</Toolbar>
+				
+				<!-- Div Tag to Hold the Table. Only this DIV will be scrollable. -->
+				<html:div class="zAwctMaintainTextTableScrollable">
+					<!-- Library Text Table -->
+					<Table noDataText="{i18n>TXT_ALLOCATION_MAINTAINHEADERTEXT_TABLE_SEARCH_NO_VALUE}"
+						items="{standardTexts>/results}" id="maintainHeaderTextTable"
+						rememberSelections="false">
+						<columns>
+							<Column>
+							</Column>
+						</columns>
+						<items>
+							<!-- Table Content -->
+							<ColumnListItem class="zAwctMaintainTextTableCellAlign">
+								<cells>
+									<layout:HorizontalLayout>
+										<!-- Display Button -->
+										<Button icon="sap-icon://add" width="45px" class="zAwctMaintainTextTableActionButton"
+											press="handleDeliveryHeaderTextAddButtonPress" type="Transparent" />
+										<!-- Library Text -->
+										<Text text="{standardTexts>TextStandardID}" class="zAwctMaintainTextTableTextAlign"></Text>
+									</layout:HorizontalLayout>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</html:div>
+			</layout:VerticalLayout>
+		</content>
+		
+		<!-- Confirm Button -->
+		<beginButton>
+			<Button text="{i18n>TXT_ALLOCATION_MAINTAINHEADERTEXT_TABLE_DIALOG_OK}" id="deliveryHeaderTextOKButton"
+				press="handleDeliveryHeaderTextOKPress" />
+		</beginButton>
+		
+		<!-- Cancel Button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_GENERIC_CANCEL}"
+				press="handleDeliveryHeaderTextCancelPress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

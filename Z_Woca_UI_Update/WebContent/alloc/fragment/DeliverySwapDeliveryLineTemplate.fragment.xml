@@ -1,0 +1,84 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<ColumnListItem xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout">
+	<cells>
+		<!-- Supplier -->
+		<Text text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_COLUMN_SUPPLIER_ID_ALL}"
+			tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+
+		<!-- Product -->
+		<Text text="{initiateSwapLines>Product}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_PRODUCT}" />
+
+		<!-- Source Delivery Number -->
+		<Text text="{initiateSwapLines>SourceDeliveryLineNumber}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_DELIVERY_NUMBER}" />
+
+		<!-- Source BC -->
+		<Link text="{initiateSwapLines>CharacteristicsCountFrom}" press="handleViewSourceBatchCharacteristicsOpen"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_BC}" />
+
+		<!-- Source Container -->
+		<Text text="{initiateSwapLines>SourceContainerID}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_CONT}" />
+
+		<!-- Source Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>SourceAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_OLD_QTY}" />
+
+		<!-- Source New Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>SourceAllocationQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_NEW_QTY}" />
+
+		<!-- Swap Quantity -->
+		<ObjectNumber
+			number="{path:'initiateSwapLines>SwapQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			state="{path:'initiateSwapLines>SwapQuantity', formatter: '.formatDeliveryLineSwapQuantityState'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SWAP_QUANTITY}" />
+
+		<layout:HorizontalLayout id="warningIconCell">
+			<!-- No Batch Characteristics Match -->
+			<ObjectStatus state="Warning" icon="sap-icon://dimension"
+				class="zAwctObjectStatusPaddingRight" visible="{initiateSwapLines>NoCharMatch}"
+				tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_CREATE_TABLE_WARNING_BC_MISMATCH}"></ObjectStatus>
+
+			<!-- No Line Text Match -->
+			<ObjectStatus state="Warning" icon="sap-icon://document-text"
+				visible="{initiateSwapLines>NoTextMatch}"
+				tooltip="{i18n>TXT_COLLABORATION_DELIVERYSWAP_CREATE_TABLE_WARNING_TEXT_MISMATCH}"></ObjectStatus>
+		</layout:HorizontalLayout>
+
+		<!-- Target Delivery Number -->
+		<Text text="{initiateSwapLines>TargetDeliveryLineNumber}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_DELIVERY_NUMBER}" />
+
+		<!-- Target BC -->
+		<Link text="{initiateSwapLines>CharacteristicsCountTo}" press="handleViewTargetBatchCharacteristicsOpen"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_BC}" />
+
+		<!-- Target Container -->
+		<Text text="{initiateSwapLines>TargetContainerID}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_CONT}" />
+
+		<!-- Target Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>TargetAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_OLD_QTY}" />
+
+		<!-- Target New Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>TargetAllocationQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_NEW_QTY}" />
+
+		<!-- UOM -->
+		<Text text="{initiateSwapLines>UoM}"
+			tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_UOM}" />
+	</cells>
+</ColumnListItem>

@@ -1,0 +1,220 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:z="com.zespri.awct.control" controllerName="com.zespri.awct.alloc.view.EditOrderAllocation" busyIndicatorDelay="0">
+	<Page id="pageEditOrderAllocation" title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_PAGE_TITLE}">
+		<!-- Facet filter -->
+		<z:FacetFilter id="facetFilterAllocation" reset="handleFacetFilterReset"
+			showPopoverOKButton="true">
+			<!-- Filter : Container -->
+			<z:FacetFilterList id="containerFacetList"
+				title="{i18n>TXT_GENERIC_CONTAINER}"
+				key="ContainerID" showInFacetFilterBar="true" growing="false"
+				listClose="handleFacetListClose" listOpen="handleFacetListOpen">
+				<z:items>
+					<FacetFilterItem key="{ContainerID}" text="{ContainerID}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Supplier -->
+			<z:FacetFilterList id="supplierFacetList" title="{i18n>TXT_GENERIC_SUPPLIER}"
+				key="SupplierID" showInFacetFilterBar="true" growing="false"
+				listClose="handleFacetListClose" listOpen="handleFacetListOpen">
+				<z:items>
+					<FacetFilterItem key="{Supplier}" text="{Supplier}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Container Type -->
+			<z:FacetFilterList id="containerTypeFacetList"
+				title="{i18n>TXT_GENERIC_CONTAINER_TYPE}"
+				key="ContainerType" showInFacetFilterBar="true" listClose="handleFacetListClose"
+				listOpen="handleFacetListOpen">
+				<z:items>
+					<FacetFilterItem key="{ContainerType}" text="{ContainerType}" />
+				</z:items>
+			</z:FacetFilterList>
+
+			<!-- Filter : Material -->
+			<!-- Binding is to {/results} because the data for it comes from a function 
+				import (using the custom getJSONModelForRead() helper -->
+			<z:FacetFilterList id="materialFacetList"
+				title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_FACET_FILTER_MATERIAL}"
+				key="MaterialNumber" showInFacetFilterBar="true" growing="false"
+				listClose="handleFacetListClose" listOpen="handleFacetListOpen">
+				<z:items>
+					<FacetFilterItem key="{Material}" text="{Material}" />
+				</z:items>
+			</z:FacetFilterList>
+		</z:FacetFilter>
+
+		<!-- Object header -->
+		<ObjectHeader id="deliveryObjectHeader"
+			intro="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_SHIPMENT_NUMBER_LABEL} {ShipmentID}"
+			titleActive="true"
+			title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_DELIVERY_LABEL} {DeliveryHeaderID}"
+			number="{path:'/result/DemandQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			numberUnit="{/result/UOM}" condensed="true" backgroundDesign="Solid"
+			titlePress="handleObjectHeaderTitlePress">
+			<attributes>
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_LOAD_START_LABEL} {path:'LoadStartDate', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_LOAD_END_LABEL} {path:'LoadEndDate', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_SEASON_LABEL} {Season}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_LOAD_PORT_LABEL} {LoadPort}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_DESTINATION_PORT_LABEL} {DestinationPort}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_HEADER_SHIP_NAME_LABEL} {ShipmentName}" />
+			</attributes>
+		</ObjectHeader>
+
+		<!-- items aggregation for the table is bound from the controller, as it 
+			depends on the delivery header. -->
+		<Table id="allocationTable" mode="SingleSelectMaster" growing="true"
+			growingThreshold="100" busy="true" class="zAwctTableVerticalCenterCells">
+			<columns>
+				<!-- Container ID -->
+				<Column id="containerIDColumn" mergeDuplicates="true">
+					<Label text="{i18n>TXT_GENERIC_CONTAINER_ID}"
+						tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+				</Column>
+
+				<!-- Line Number -->
+				<Column mergeDuplicates="true">
+					<Label text="{i18n>TXT_GENERIC_LINE}"
+						tooltip="{i18n>TXT_GENERIC_LINE_NUMBER}" />
+				</Column>
+
+				<!-- Supplier -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_SUPPLIER}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+				</Column>
+
+				<!-- Container Type -->
+				<Column id="containerTypeColumn">
+					<Label
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_CONTAINER_TYPE}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_CONTAINER_TYPE}" />
+				</Column>
+
+				<!-- Material Number -->
+				<Column>
+					<Label
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_MATERIAL_NUMBER}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_MATERIAL_NUMBER}" />
+				</Column>
+
+				<!-- Brand -->
+				<Column>
+					<Label text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_BRAND}"
+						tooltip="{i18n>TXT_GENERIC_BRAND}" />
+				</Column>
+
+				<!-- Fruit Group -->
+				<Column>
+					<Label text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_FRUIT_GROUP}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_FRUIT_GROUP}" />
+				</Column>
+
+				<!-- Size -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_SIZE}"
+						tooltip="{i18n>TXT_GENERIC_SIZE}" />
+				</Column>
+
+				<!-- Pack -->
+				<Column>
+					<Label text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_PACK}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_PACK}" />
+				</Column>
+
+				<!-- Label -->
+				<Column>
+					<Label text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_LABEL}"
+						tooltip="{i18n>TXT_GENERIC_LABEL}" />
+				</Column>
+
+				<!-- UoM -->
+				<Column>
+					<Label text="{i18n>TXT_GENERIC_UOM}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_UOM}" />
+				</Column>
+
+				<!-- Quantity -->
+				<Column hAlign="Right">
+					<Label text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_QUANTITY}"
+						tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+				</Column>
+
+				<!-- Allocation Quantity -->
+				<Column hAlign="Right">
+					<Label
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_ALLOCATION_QUANTITY}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_ALLOCATION_QUANTITY}" />
+				</Column>
+
+				<!-- Batch Characteristics -->
+				<Column hAlign="Right">
+					<Label
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_BATCH_CHARACTERISTICS}"
+						tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_BATCH_CHARACTERISTICS}" />
+				</Column>
+
+				<!-- For 'actions'. No header needed. -->
+				<Column width="50px">
+				</Column>
+			</columns>
+		</Table>
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+					<!-- Save -->
+					<Button id="saveButton" press="handleSavePress"
+						text="{i18n>TXT_GENERIC_SAVE}"
+						type="Emphasized" enabled="false" visible="false" />
+
+					<!-- Discard Changes -->
+					<Button id="discardChangesButton" press="handleDiscardChangesPress"
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TOOLBAR_BUTTON_DISCARD_CHANGES}"
+						enabled="false" visible="false" />
+
+					<!-- Release -->
+					<Button id="releaseButton"
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TOOLBAR_BUTTON_RELEASE}"
+						press="handleDeliveryReleaseDialogOpen" visible="false" />
+
+					<!-- Lock -->
+					<Button id="lockButton"
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TOOLBAR_BUTTON_LOCK}"
+						press="handleDeliveryLockPress" visible="false" />
+
+					<!-- Unlock -->
+					<Button id="unlockButton"
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TOOLBAR_BUTTON_UNLOCK}"
+						press="handleDeliveryUnLockPress" visible="false" />
+
+					<!-- Add Suppliers to Container -->
+					<Button id="addSuppliersToContainerButton"
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TOOLBAR_BUTTON_ADD_SUPPLIERS_TO_CONTAINER}"
+						press="handleAddSuppliersToContainerOpen" visible="false"></Button>
+
+					<!-- Maintain Header Text -->
+					<Button id="maintainHeaderTextButton"
+						text="{i18n>TXT_ALLOCATION_MAINTAINHEADERTEXT_BUTTON_TEXT}" press="handleDeliveryHeaderTextOpen"
+						visible="false"></Button>
+
+					<!-- View Market Info Button -->
+					<Button text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_BUTTON_MARKET_INFO}"
+						press="handleMarketInfoOpen"></Button>
+
+					<!-- Macros... -->
+					<Button id="macrosButton" press="handleMacrosButtonPress"
+						text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_MACROS_BUTTON}"
+						visible="false" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

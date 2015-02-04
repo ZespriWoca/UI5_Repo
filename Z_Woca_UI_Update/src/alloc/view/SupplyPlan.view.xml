@@ -1,0 +1,196 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:commons="sap.ui.commons" xmlns:awct="com.zespri.awct.control"
+	controllerName="com.zespri.awct.alloc.view.SupplyPlan">
+
+	<Page id="pageSupplyPlan" title="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_PAGE_TITLE}">
+
+		<!-- Facet filter -->
+		<awct:FacetFilter id="facetFilterSupplyPlan" type="Simple"
+			showReset="true" liveSearch="true" reset="handleFacetFilterReset"
+			showPopoverOKButton="true">
+			<awct:lists>
+
+				<!-- Season -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanSeason"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_GENERIC_SEASON}"
+					key="Season" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleListOpen" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Supplier -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanSupplier"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_GENERIC_SUPPLIER}"
+					key="Supplier" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleListOpen" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{SupplierID}" key="{SupplierID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Period -->
+				<awct:FacetFilterList id="facetFilterListPeriod"
+					title="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_FACET_FILTER_PERIOD}" mode="MultiSelect"
+					key="SupplyPeriod" listClose="handleListClose"
+					showInFacetFilterBar="true" listOpen="handleListOpen" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Period}" key="{Period}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Size -->
+				<awct:FacetFilterList id="facetFilterListSize"
+					title="{i18n>TXT_GENERIC_SIZE}" mode="MultiSelect"
+					key="SizeCode" listClose="handleListClose" showInFacetFilterBar="true"
+					listOpen="handleListOpen" growing="false">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+			</awct:lists>
+		</awct:FacetFilter>
+
+		<Toolbar id="toolbarActiveVersionsString" active="false"
+			design="Info" height="2rem">
+			<Text text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_TOOLBAR_TEXT}" />
+		</Toolbar>
+
+
+		<!-- Object header -->
+		<ObjectHeader id="supplyPlanObjectHeader" titleActive="true"
+			title="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_DELIVERY_LINE_ID_LABEL} {/DeliveryLineID}"
+			condensed="true" backgroundDesign="Solid" titlePress="handleObjectHeaderTitlePress">
+			<attributes>
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_LOAD_PORT_LABEL} {/LoadPort}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_BRAND_LABEL} {/Characterisitic/Brand}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_VARIETY_LABEL} {/Characterisitic/Variety}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_CLASS_LABEL} {/Characterisitic/Class}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_GROWING_METHOD_LABEL} {/Characterisitic/GrowingMethod}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_SIZE_LABEL} {/Characterisitic/Size}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_PALLET_BASE_LABEL} {/Characterisitic/PalletBase}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_STACK_LABEL} {/Characterisitic/Stack}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_PACK_STYLE_LABEL} {/Characterisitic/PackStyle}" />
+				<ObjectAttribute
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_HEADER_LABEL_LABEL} {/Characterisitic/Label}" />
+
+
+			</attributes>
+		</ObjectHeader>
+
+		<IconTabBar id="supplyPlanIconTabBar" select="handleNavigateToAnotherTab">
+			<items>
+				<IconTabFilter icon="sap-icon://order-status"
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_ICON_TAB_FILTER_VIEW_ALLOCATION_SHARE_TEXT}"
+					key="ViewAllocationShare">
+					<!-- Table -->
+					<Table id="viewAllocationShareTable" growing="true"
+						growingThreshold="100">
+						<headerToolbar>
+							<Toolbar>
+								<Label
+									text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_LABEL}"></Label>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<!-- Supplier -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_SUPPLIER}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+							</Column>
+
+							<!-- Supply Period -->
+							<Column>
+								<Label
+									text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLY_PERIOD_LABEL}"
+									tooltip="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLY_PERIOD_LABEL}" />
+							</Column>
+
+							<!-- Allocation Quantity -->
+							<Column hAlign="Right">
+								<Label
+									text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_ALLOCATION_QUANTITY_LABEL}"
+									tooltip="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_ALLOCATION_QUANTITY_LABEL}" />
+							</Column>
+
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<!-- Supplier -->
+									<Text text="{Supplier}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+									<!-- Supply Period -->
+									<Text text="{SupplyPeriod}"
+										tooltip="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLY_PERIOD_LABEL}" />
+									<!-- Allocation Quantity -->
+									<Text
+										text="{path:'AllocationQuantity', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityWithDecimals'}"
+										tooltip="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_ALLOCATION_QUANTITY_LABEL}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://list"
+					text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_ICON_TAB_FILTER_VIEW_RATIO_PER_SIZE_TEXT}"
+					key="ViewRatioPerSize">
+					<!-- Table -->
+					<Table id="viewRatioPerSizeTable" growing="true"
+						growingThreshold="100" busy="true">
+						<headerToolbar>
+							<Toolbar>
+								<Label
+									text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_LABEL}"></Label>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+
+							<!-- Supplier -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_SUPPLIER}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+							</Column>
+
+							<!-- Size -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_SIZE}"
+									tooltip="{i18n>TXT_GENERIC_SIZE}" />
+							</Column>
+
+							<!-- Size Ratio -->
+							<Column>
+								<Label
+									text="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_RATIO_LABEL}"
+									tooltip="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_RATIO_LABEL}" />
+							</Column>
+
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<!-- Supplier -->
+									<Text text="{Supplier}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+									<!-- Size -->
+									<Text text="{SizeCode}"
+										tooltip="{i18n>TXT_GENERIC_SIZE}" />
+									<!-- Size Ratio -->
+									<Text text="{SizeRatio}"
+										tooltip="{i18n>TXT_ALLOCATION_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_RATIO_LABEL}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</core:View>

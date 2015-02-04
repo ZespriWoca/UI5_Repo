@@ -1,0 +1,5 @@
+/*----------------------------------------------------------------------* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ *----------------------------------------------------------------------*/ 
+	!function(){"use strict";jQuery.sap.require({modName:"com.zespri.awct.core.Controller",type:"controller"}),jQuery.sap.require("com.zespri.awct.util.I18NHelper"),com.zespri.awct.core.Controller.extend("com.zespri.awct.alloc.view.Empty",{onInit:function(){this.getRouter().attachRoutePatternMatched(function(a){if("Allocation/DeliveryWorkList/NoResults"===a.getParameter("name")){var b=a.getParameter("arguments");this.setTitleAndMessage(b.viewTitle,b.infoText)}},this)},setTitleAndMessage:function(a,b){var c=this.byId("emptyViewPage");c.setTitle(a?a:com.zespri.awct.util.I18NHelper.getText("TXT_ALLOCATION_DELIVERYWORKLIST_EMPTY_VIEW_TITLE"));var d=this.byId("emptyLabel");d.setText(b?b:com.zespri.awct.util.I18NHelper.getText("TXT_ALLOCATION_DELIVERYWORKLIST_EMPTY_INFO_TEXT"))}})}();

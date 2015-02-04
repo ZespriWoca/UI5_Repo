@@ -1,0 +1,162 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout">
+	<!-- Dialog Control for Delivery Releasing -->
+	<Dialog title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_TITLE_RELEASE_DIALOG}"
+		type="Message" class="zAwctDialogPaddingTop" busyIndicatorDelay="0">
+
+		<layout:VerticalLayout class="zAwctTableLayoutPadding">
+			<!-- Toolbar (text) -->
+			<Toolbar>
+				<Text text="{i18n>TXT_GENERIC_CHARGE_CODE}" class="zAwctLabelStyling" />
+			</Toolbar>
+
+			<!-- Chargecode table -->
+			<Table id="chargeCodeTable" class="zAwctTableVerticalScrollAndStyle"
+				busy="true" width="100%">
+				<columns>
+					<!-- ChargeCode -->
+					<Column width="60px">
+						<Text text="{i18n>TXT_GENERIC_CHARGE_CODE}" tooltip="{i18n>TXT_GENERIC_CHARGE_CODE}" />
+					</Column>
+
+					<!-- Supplier -->
+					<Column width="55px" hAlign="Left">
+						<Text text="{i18n>TXT_GENERIC_SUPPLIER}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+					</Column>
+
+					<!-- Line -->
+					<Column width="50px" hAlign="Left">
+						<Text text="{i18n>TXT_GENERIC_LINE}" tooltip="{i18n>TXT_GENERIC_LINE}" />
+					</Column>
+
+					<!-- Quantity + UOM -->
+					<Column hAlign="Right">
+						<Text text="{i18n>TXT_GENERIC_QUANTITY}" tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+					</Column>
+
+					<!-- Rate -->
+					<Column hAlign="Right">
+						<Text
+							text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_CHARGECODE_COLUMN_RATE}"
+							tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_CHARGECODE_COLUMN_RATE}" />
+					</Column>
+
+					<!-- Charges - Currency -->
+					<Column hAlign="Right">
+						<Text
+							text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_CHARGECODE_COLUMN_CHARGES}"
+							tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_CHARGECODE_COLUMN_CHARGES}" />
+					</Column>
+				</columns>
+			</Table>
+		</layout:VerticalLayout>
+		<layout:Grid class="zAwctDialogFormPaddingTop">
+			<layout:content>
+				<!-- Shipment Number -->
+				<Label text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+				<Text id="shipmentNumberText" class="zAwctDialogFormElementMarginBottom">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Text>
+
+				<!-- Delivery Number -->
+				<Label text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Label>
+				<Text id="deliveryNumberText" class="zAwctDialogFormElementMarginBottom">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Text>
+
+				<!-- Demand > Supply -->
+				<Label
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_LABEL_DEMAND_GREATER_THAN_SUPPLY}">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Label>
+				<Text id="demandGTSupplyText" class="zAwctDialogFormElementMarginBottom">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Text>
+
+				<!-- Delivery lines without Batch Characteristics -->
+				<Label
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_LABEL_BATCHCHARACTERISTICS_NOT_MAINTAINED}">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Label>
+				<Text id="batchCharNTMaintText" class="zAwctDialogFormElementMarginBottom">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Text>
+
+				<!-- Release Reason -->
+				<Label
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_LABEL_CHOOSE_A_RELEASE_REASON}">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Label>
+
+				<!-- Reason code filtered on Release Delivery -->
+				<Select id="releaseReasonSelect" width="100%"
+					items="{path: '/ReasonCodeSet',  filters : [{path : 'EventType', 
+					operator: 'EQ' , value1 : 'ZWRL' }]}" class="zAwctDialogFormElementMarginBottom">
+					<core:Item text="{ReasonCodeID} - {ReasonCodeDescription}"
+						key="{ReasonCodeID}" />
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Select>
+
+				<!--Comment -->
+				<Label text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_LABEL_COMMENT}">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</Label>
+				<TextArea id="commentTextArea" class="zAwctDialogFormElementMarginBottom" width="100%">
+					<layoutData>
+						<layout:GridData span="L12 M12 S12" linebreakL="true"
+							linebreakM="true" linebreakS="true" />
+					</layoutData>
+				</TextArea>
+			</layout:content>
+		</layout:Grid>
+
+		<!--Release button -->
+		<beginButton>
+			<Button text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_BUTTON_RELEASE_DIALOG}"
+				press="handleDeliveryRelease" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button text="{i18n>TXT_GENERIC_CANCEL}" press="handleDeliveryReleaseCancel" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

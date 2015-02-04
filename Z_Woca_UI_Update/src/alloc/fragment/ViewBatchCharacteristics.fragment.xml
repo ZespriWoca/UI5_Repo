@@ -1,0 +1,83 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<!-- Dialog for View Batch Characteristics -->
+	<Dialog title="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_DIALOG_TITLE}"
+		contentWidth="650px" contentHeight="auto" busyIndicatorDelay="0">
+		<content>
+			<!-- Toolbar -->
+			<Toolbar id="viewBCToolBar" design="Info" height="2rem">
+				<Text
+					text="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_TOOLBAR_TEXT}" />
+			</Toolbar>
+
+			<!-- Table containing the Batch Characteristics -->
+			<Table
+				noDataText="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_TABLE_NODATA}"
+				items="{/results}" id="viewBatchCharacteristicsTable">
+				<!-- Table Header -->
+				<headerToolbar>
+					<Toolbar>
+						<Label id="viewBatchCharacteristicsTableHeader"></Label>
+					</Toolbar>
+				</headerToolbar>
+
+				<!-- Batch Characteristics Name column -->
+				<columns>
+					<Column>
+						<header>
+							<Text
+								text="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_COLUMN_NAME}"
+								tooltip="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_COLUMN_NAME}">
+							</Text>
+						</header>
+					</Column>
+
+					<!-- Incude/Exclude column -->
+					<Column>
+						<header>
+							<Text
+								text="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_COLUMN_OPTION}"
+								tooltip="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_COLUMN_OPTION}">
+							</Text>
+						</header>
+					</Column>
+
+					<!-- Batch Characteristics Value column -->
+					<Column>
+						<header>
+							<Text
+								text="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}"
+								tooltip="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}">
+							</Text>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<!-- Characteristic Name -->
+							<Text text="{CharacteristicName}"
+								tooltip="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_COLUMN_NAME}" />
+
+							<!-- Include/Exclude -->
+							<Text
+								text="{path: 'Operation', formatter: '.formatViewBatchCharacteristicsOptionText'}"
+								tooltip="{i18n>TXT_ALLOCATION_VIEW_BATCH_CHARACTERISTICS_COLUMN_OPTION}"></Text>
+
+							<!-- Values -->
+							<Text
+								text="{path: 'BatchCharacteristicsValueSet', formatter: '.formatViewBatchCharacteristicsValuesText'}"
+								tooltip="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+
+		<!-- OK button for the dialog -->
+		<beginButton>
+			<Button text="{i18n>TXT_GENERIC_OK}"
+				press="handleViewBatchCharacteristicsOKPress" />
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

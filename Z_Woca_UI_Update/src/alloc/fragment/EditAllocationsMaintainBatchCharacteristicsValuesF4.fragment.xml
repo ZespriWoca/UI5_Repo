@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:awct="com.zespri.awct.control" xmlns:core="sap.ui.core">
+	<TableSelectDialog contentWidth="200px"
+		contentHeight="70%" confirm="handleMaintainBatchCharacteristicsValueHelpConfirm"
+		multiSelect="true" liveChange="handleMaintainBatchCharacteristicsValueHelpLiveChange"
+		items="{maintainBC>/SearchHelpValues}"
+		title="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_VALUE_HELP_DIALOG_TITLE}">
+		<columns>
+			<!-- Batch Characteristics Value -->
+			<Column width="50px">
+				<Label
+					text="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}"
+					tooltip="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}" />
+			</Column>
+
+			<!-- Value Description -->
+			<Column>
+				<Label
+					text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_VALUE_HELP_COLUMN_DESCRIPTION}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_VALUE_HELP_COLUMN_DESCRIPTION}" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem selected="{maintainBC>selected}">
+				<!-- BC Value -->
+				<Text text="{maintainBC>Key}"
+					tooltip="{i18n>TXT_GENERIC_BATCH_CHARACTERISTICS_VALUE}" />
+
+				<!-- BC Value Description -->
+				<Text text="{maintainBC>Value}"
+					tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_VALUE_HELP_COLUMN_DESCRIPTION}" />
+			</ColumnListItem>
+		</items>
+	</TableSelectDialog>
+</core:FragmentDefinition>

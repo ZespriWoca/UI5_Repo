@@ -1,0 +1,45 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<!-- Sorting and Grouping Track Orders Table -->
+	<ViewSettingsDialog confirm="handleOrderHistorySettingsDialogOKPress"
+		title="{i18n>TXT_COLLABORATION_ORDERHISTORY_SETTINGS_DIALOG_TITLE}">
+
+		<!-- Sort Items for Supplier Code , Shipment Number, Delivery Line, Container 
+			Number, User and Time -->
+		<sortItems>
+			<!-- Supplier Code -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SUPPLIER}"
+				key="SupplierID" />
+
+			<!-- Shipment Number -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_SETTINGSDIALOG_SORTBY_SHIPMENT_NUMBER}"
+				key="ShipmentID" />
+
+			<!-- Delivery Line -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_LINE}"
+				key="DeliveryLineNumber" />
+
+			<!-- Container Number -->
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_CONTAINER}"
+				key="ContainerID" />
+
+			<!-- User -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_SETTINGSDIALOG_SORTBY_USER}"
+				key="ExemptionUserID" />
+
+		</sortItems>
+
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,220 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:commons="sap.ui.commons" xmlns:awct="com.zespri.awct.control"
+	controllerName="com.zespri.awct.report.view.SupplyPlan">
+
+	<Page title="{i18n>TXT_REPORTS_SUPPLY_PLAN_PAGE_TITLE}">
+
+		<!-- Facet filter -->
+		<awct:FacetFilter id="facetFilterSupplyPlan" type="Simple"
+			showReset="true" liveSearch="true" reset="handleFacetFilterReset"
+			showPopoverOKButton="true">
+			<awct:lists>
+
+				<!-- Season -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanSeason"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_SEASON}"
+					key="Season" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Supplier -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanSupplier"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_SUPPLIER}"
+					key="SupplierID" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{SupplierID}" key="{SupplierID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Item Group -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanItemGroup"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_ITEM_GROUP}"
+					key="D3_ItemGroup" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Load Port -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanLoadPort"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_LOAD_PORT}"
+					key="D3_LoadPort" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{PortID}" key="{PortID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Origin -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanOrigin"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_ORIGIN}"
+					key="D3_Origin" mode="MultiSelect" listOpen="handleListOpen"
+					showInFacetFilterBar="true" listClose="handleListClose">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Variety -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanVariety"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_VARIETY}"
+					key="D3_Characteristics/Variety" mode="MultiSelect"
+					showInFacetFilterBar="true" listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Class -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanClass"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}" title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_CLASS}"
+					key="D3_Characteristics/Class" mode="MultiSelect"
+					showInFacetFilterBar="true" listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Growing Method -->
+				<awct:FacetFilterList id="facetFilterListSupplyPlanGrowingMethod"
+					noDataText="{i18n>TXT_LIST_NO_ITEMS_LABEL}"
+					title="{i18n>TXT_REPORTS_SUPPLY_PLAN_FACET_FILTER_GROWING_METHOD}"
+					key="D3_Characteristics/GrowingMethod" mode="MultiSelect"
+					showInFacetFilterBar="true" listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+			</awct:lists>
+		</awct:FacetFilter>
+
+		<Toolbar id="toolbarActiveVersionsString" active="false"
+			design="Info" height="2rem">
+			<Text text="{i18n>TXT_REPORTS_SUPPLY_PLAN_TOOLBAR_TEXT}" />
+		</Toolbar>
+
+		<IconTabBar id="supplyPlanIconTabBar" select="handleNavigateToAnotherTab">
+			<items>
+				<IconTabFilter icon="sap-icon://order-status"
+					text="{i18n>TXT_REPORTS_SUPPLY_PLAN_ICON_TAB_FILTER_VIEW_ALLOCATION_SHARE_TEXT}"
+					key="ViewAllocationShare">
+					<!-- Table -->
+					<Table id="viewAllocationShareTable" growing="true"
+						growingThreshold="100">
+						<headerToolbar>
+							<Toolbar>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_LABEL}"></Label>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<!-- Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLIER_LABEL}"
+									tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLIER_LABEL}" />
+							</Column>
+
+							<!-- Supply Period -->
+							<Column>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLY_PERIOD_LABEL}"
+									tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLY_PERIOD_LABEL}" />
+							</Column>
+
+							<!-- Allocation Quantity -->
+							<Column>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_ALLOCATION_QUANTITY_LABEL}"
+									tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_ALLOCATION_QUANTITY_LABEL}" />
+							</Column>
+
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<!-- Supplier -->
+									<Text text="{SupplierID}"
+										tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLIER_LABEL}" />
+									<!-- Supply Period -->
+									<!-- TODO:Verify binding -->
+									<Text text="{SupplyPeriod}"
+										tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_SUPPLY_PERIOD_LABEL}" />
+									<!-- Allocation Quantity -->
+									<Text
+										text="{path:'Quantity', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityWithDecimals'}"
+										tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_ALLOCATION_SHARE_TABLE_ALLOCATION_QUANTITY_LABEL}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://list"
+					text="{i18n>TXT_REPORTS_SUPPLY_PLAN_ICON_TAB_FILTER_VIEW_RATIO_PER_SIZE_TEXT}"
+					key="ViewRatioPerSize">
+					<!-- Table -->
+					<Table id="viewRatioPerSizeTable" growing="true"
+						growingThreshold="100" busy="true">
+						<headerToolbar>
+							<Toolbar>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_LABEL}"></Label>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+
+							<!-- Supplier -->
+							<Column>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SUPPLIER_LABEL}"
+									tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SUPPLIER_LABEL}" />
+							</Column>
+
+							<!-- Size -->
+							<Column>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_LABEL}"
+									tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_LABEL}" />
+							</Column>
+
+							<!-- Size Ratio -->
+							<Column>
+								<Label
+									text="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_RATIO_LABEL}"
+									tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_RATIO_LABEL}" />
+							</Column>
+
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<!-- Supplier -->
+									<Text text="{SupplierID}"
+										tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SUPPLIER_LABEL}" />
+									<!-- Size -->
+									<!-- TODO:Verify binding -->
+									<Text text="{Size}"
+										tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_LABEL}" />
+									<!-- Size Ratio -->
+									<Text text="{SizeRatio}"
+										tooltip="{i18n>TXT_REPORTS_SUPPLY_PLAN_VIEW_RATIO_PER_SIZE_TABLE_SIZE_RATIO_LABEL}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</core:View>

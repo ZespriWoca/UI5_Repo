@@ -1,0 +1,88 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	controllerName="com.zespri.awct.admin.view.LibraryTextDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml" busyIndicatorDelay="0">
+
+	<!-- Adding New/Details sLibrary Text View Page -->
+
+	<Page id="libraryTextDetailPage">
+		<content>
+			<form:Form class="zAwctAdminDetailLabelPadding">
+				<form:layout>
+					<form:ResponsiveGridLayout labelSpanL="4"
+						labelSpanM="3" labelSpanS="2" emptySpanL="3" emptySpanM="3"
+						emptySpanS="2" />
+				</form:layout>
+				<form:formContainers>
+					<form:FormContainer>
+						<form:formElements>
+
+							<!-- Header -->
+							<form:FormElement
+								label="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_HEADERLABEL}">
+								<form:fields>
+									<Input id="addLibraryHeaderText" type="Text" width="85%"
+										change="handleTextInputChanges" maxLength="70" enabled="false" />
+								</form:fields>
+							</form:FormElement>
+
+							<!-- Text -->
+							<form:FormElement
+								label="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_TEXTLABEL}">
+								<form:fields>
+									<TextArea id="addLibraryText" rows="4" width="85%"
+										change="handleTextInputChanges" enabled="false">
+									</TextArea>
+
+								</form:fields>
+							</form:FormElement>
+
+							<!--Active -->
+							<form:FormElement
+								label="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_ACTIVELABEL}">
+								<form:fields>
+									<Switch id="addLibraryActive" change="handleTextInputChanges"
+										customTextOff="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_ACTIVE_CUSTOM_TEXT_NO}"
+										customTextOn="{i18n>TXT_GENERIC_YES}"
+										enabled="false" />
+								</form:fields>
+							</form:FormElement>
+
+							<!-- Sequence -->
+							<form:FormElement
+								label="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_SEQUENCELABEL}">
+								<form:fields>
+									<Input id="addLibrarySequence" type="Text" width="85%"
+										change="handleTextInputChanges" maxLength="5" enabled="false" />
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+			</form:Form>
+		</content>
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+					<!-- Save button for added new library text and to save edit library 
+						text and navigate to library text maintenance details page -->
+					<Button id="adminSaveButton"
+						text="{i18n>TXT_GENERIC_SAVE}"
+						type="Emphasized" press="handleSavePress" />
+
+					<!-- Delete button to delete the existing record -->
+					<Button id="adminDeleteButton"
+						text="{i18n>TXT_ADMINISTRATION_LIBRARY_TEXT_MAINTENANCE_DELETEBUTTON}"
+						press="handleDeletePress" />
+
+					<!-- Cancel button to go back library text list -->
+					<Button id="adminCancelButton"
+						text="{i18n>TXT_GENERIC_CANCEL}"
+						press="handleCancelPress" />
+
+
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

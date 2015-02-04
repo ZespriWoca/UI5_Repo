@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+	<!-- Split Container for Delivery WorkList -->
+	<SplitContainer id="idSplitDeliveyLine" class="zAwctSplitContainerFullHeight">
+		<!-- Master Page Aggregation -->
+		<masterPages>
+			<!-- Master Page for Delivery WorkList Header -->
+			<mvc:XMLView viewName="com.zespri.awct.alloc.view.MasterDeliveryWorkList"
+				width="100%" />
+		</masterPages>
+	</SplitContainer>
+</core:FragmentDefinition>

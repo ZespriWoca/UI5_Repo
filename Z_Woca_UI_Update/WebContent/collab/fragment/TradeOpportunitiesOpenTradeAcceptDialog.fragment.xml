@@ -1,0 +1,43 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<Dialog
+		title="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITY_DIALOG_TITLE_ACCEPTTRADE}"
+		type="Message" busyIndicatorDelay="0">
+		<form:SimpleForm id="SimpleFormSupplier"
+			maxContainerCols="2" layout="ResponsiveGridLayout">
+			<form:content>
+				<!-- Supplier -->
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITY_ACCEPTDIALOG_LABEL_ONBEHALF}" />
+				<Select id="tradeSupplierSelect">
+					<core:Item key="{Supplier}" text="{Supplier}" />
+				</Select>
+				
+				<!-- Quantity -->
+				<Label
+					text="{i18n>TXT_GENERIC_QUANTITY}" />
+					<Input type="Number" id="tradeQuantityInput" />
+			</form:content>
+		</form:SimpleForm>
+
+		<!-- Continue button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITY_ACCEPTDIALOG_BUTTON_CONTINUE}"
+				dialogType="Message" press="handleAcceptContinuePress" />
+		</beginButton>
+
+		<!-- Close Button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_GENERIC_CANCEL}"
+				dialogType="Message" press="handleAcceptCancelPress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

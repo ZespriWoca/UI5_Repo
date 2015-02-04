@@ -1,0 +1,196 @@
+/* Fix for UI5 bug : Facet filter list width becomes 100% while opening/filtering etc. */
+.sapMPopoverHorScrollDisabled .sapMPopoverScroll {
+	width: auto;
+}
+
+/* Following classes are for custom controls. */
+/* Used by FacetFilterDateInputList and FacetFilterTextInputList control renderers. Not suitable for reuse elsewhere. */
+.zAwctFacetFilterInputListVerticalLayoutMargin {
+	margin: 15px !important;
+	width: ~"calc(100% - 30px)";
+}
+
+/* Used by FacetFilterDateInputList and FacetFilterTextInputList control renderers. Not suitable for reuse elsewhere. */
+.zAwctFacetFilterInputListHorizontalLayoutAdjustment {
+	width: 100%;
+	
+	.sapUiHLayoutChildWrapper:first-child {
+		width: ~"calc(100% - 55px)";
+		padding-right: 5px;
+	}
+	
+	/* Clear button */
+	.sapMBtn {
+		margin: 0.25rem 0;
+	}
+	
+	/* DateTimeInput */
+	.sapMInputBase input {
+		height: 48px;
+	}
+}
+/* Used by SharedContainerLink control renderer. Not suitable for reuse elsewhere. */
+.zAwctLinkDashedUnderline
+{
+	text-decoration: none !important;
+	border-bottom: dashed;
+	border-bottom-width: 1px;
+	border-bottom-color: #009de0;
+}
+
+/* Used by SharedContainerLink control renderer. Padding the popover content. Not suitable for reuse elsewhere. */
+.zAwctPopoverPadding .sapMPopoverScroll 
+{
+	padding-left: 16px;
+	padding-top: 13px;
+	padding-right: 16px;
+	padding-bottom: 14px;
+}
+
+/* Used by the 'TableRowActionsExtension' custom class. This provides row-level actions for tables */
+.zAwctTableRowActions {
+	position: absolute;
+	
+	.sapUiHLayout {
+		height: 100%;
+		
+		.sapUiHLayoutChildWrapper {
+			height: 100%;
+		}
+	}
+	
+	.sapMBtn {
+		background-color: #666666;
+		height: 100%;
+		width: 70px;
+		border : 0px !important;
+		border-right: 1px solid rgba(100, 114, 123, 0.96) !important;
+		
+		.sapMBtnInner{
+			background-color:#666666 !important;	
+			background : #666666 !important;
+			border : 0px !important;
+			border-radius :0px !important;
+				.sapMBtnCustomIcon {
+					text-shadow: none;
+					color: white;
+				}
+		}
+		
+		&:focus>.sapMBtnInner.sapMFocusable{
+			outline : none !important;
+		}
+		
+		&:hover {
+			background-color: #666666;
+		}
+		
+		&.sapMBtnActive {
+			border-color: black;
+		}
+		
+		.sapMBtnContent {
+			background-color: #666666;
+		
+			.sapMBtnCustomIcon {
+				text-shadow: none;
+				color: white;
+			}
+		}
+		
+		&.sapMBtnDisabled .sapMBtnCustomIcon{
+			color: gray;
+		} 
+		&.sapMBtnDisabled {
+			opacity: 1 !important;
+		}
+	}
+}
+
+.zAwctFileUploadIE {
+	width: 300px;
+	height: 30px;
+	padding: 5px;
+	
+}
+
+/*DatePicker - commons date picker styling*/
+/*DatePicker - Setting the size of the input field in date picker*/
+.sapUiTfStd {
+	width: 100% !important;
+	height: 47px !important;
+	margin-top: 5px;
+}
+
+/*DatePicker - Setting the selection size of the date picker icon */
+.sapUiTfDateIcon {
+	height: 45px !important;
+	width: 40px !important;
+}
+
+/*DatePicker - Setting the size of the date picker icon*/
+.sapUiTfStd>.sapUiTfDateIcon, .sapUiTfRo>.sapUiTfDateIcon {
+background-size: 17px 17px;
+}
+
+/*DatePicker - Setting the Font Size for the date picker*/
+.hasDatepicker
+{
+	font-size: 0.875rem;
+}
+
+/*DatePicker - Setting the width for the calender popover in the date time picker*/
+.sapUi-jQdatePicker {
+	min-width: 20.3em;
+}
+
+/*DatePicker - Setting the size of the table in the calender popover in the date picker*/
+.ui-datepicker-calendar {
+	min-width: 22em !important;
+	min-height: 13em !important;
+	margin-left: 8px !important;
+}
+
+/*DatePicker - Setting the height and font of the select operator in the date picker*/
+.ui-datepicker-month, .ui-datepicker-year  {
+	min-height: 2.2em !important;
+	font-size: 0.875rem !important;
+}
+
+/*DatePicker - Setting the size of the select operator and the navigator*/
+.ui-icon-circle-triangle-w, .ui-icon-circle-triangle-e, .ui-corner-all {
+	min-height: 3em !important;
+}
+
+/*DatePicker - Setting the selection space for each date column in the table*/
+.sapUi-jQdatePicker.ui-datepicker .ui-state-default {
+	width: 42px !important;
+	height: 37px !important;
+	line-height: 30px !important;
+}
+
+/*DatePicker - Setting the display of the table*/
+.sapUi-jQdatePicker.ui-datepicker .ui-datepicker-week-col, .sapUi-jQdatePicker.ui-datepicker th>span, .sapUi-jQdatePicker.ui-datepicker .ui-state-default
+{
+	display: inline-table !important;
+}
+
+/*DatePicker - Aligning the Cells in the table*/
+.sapUi-jQdatePicker.ui-datepicker
+{
+	line-height: 30px !important;
+}
+
+/*DatePicker - Setting the Top Margin for the datepicker*/
+.sapUi-jQdatePicker.ui-datepicker .ui-datepicker-title
+{
+	margin-top: 10px !important;
+}
+
+/* More Filters Icon Color Change */
+.zAwctSecondaryFiltersApplied {
+	.sapMBtnContent>.sapUiIcon, .sapMBtnInner>.sapMBtnCustomIcon {
+		color: #009de0 ;
+	}	
+	
+}

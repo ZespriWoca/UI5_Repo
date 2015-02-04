@@ -1,0 +1,22 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<ObjectListItem xmlns="sap.m" xmlns:core="sap.ui.core" type="Active" press="handleItemPress"
+	intro="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_SHIPMENTNO_LIST_ITEM_INTRO}"
+	title="{ShipmentID}"
+	number="{path: 'DemandQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+	numberUnit="{UOM}">
+	<attributes>
+		<ObjectAttribute
+			text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_DELIVERYNO_ATTRIBUTE} {DeliveryHeaderID}" />
+		<ObjectAttribute
+			text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_ALLOCATION_QTY_LIST_ITEM_ATTRIBUTE} 
+							{path: 'AllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}  {UOM}" />
+		<ObjectAttribute
+			text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_MASTER_LOAD_START_DATE_LIST_ITEM_ATTRIBUTE} 
+							 {path: 'LoadStartDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+	</attributes>
+</ObjectListItem>

@@ -1,0 +1,31 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<!-- Dialog -->
+	<Dialog contentWidth="500px">
+		<content>
+			<!-- Text to display line text -->
+
+			<layout:VerticalLayout>
+				<!-- Header Text -->
+				<Label text="{i18n>TXT_COLLABORATION_HEADER_TEXT}"></Label>
+				<Text id="viewItemHeaderTextText" class="zAwctDeliveryTextAlign"></Text>
+				
+				<!-- Line Text -->
+				<Label text="{i18n>TXT_COLLABORATION_LINE_TEXT}" class="zAwctDeliveryLineLabelAlign"></Label>
+				<Text id="viewItemLineTextText" class="zAwctDeliveryTextAlign"></Text>
+
+			</layout:VerticalLayout>
+		</content>
+		<endButton>
+			<!-- OK button -->
+			<Button text="{i18n>TXT_COLLABORATION_VIEW_ITEM_BUTTON_OK}"
+				press="handleViewItemTextOKPress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

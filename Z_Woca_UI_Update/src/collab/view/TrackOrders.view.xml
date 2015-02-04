@@ -1,0 +1,568 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:commons="sap.ui.commons" xmlns:awct="com.zespri.awct.control"
+	controllerName="com.zespri.awct.collab.view.TrackOrders">
+
+	<Page title="{i18n>TXT_COLLABORATION_ORDERHISTORY_PAGE_TITLE}" id="pageOrderHistory">
+
+		<!-- Facet filter -->
+		<awct:FacetFilter id="facetFilterOrderHistory" type="Simple"
+			showPersonalization="true" showReset="true" liveSearch="true"
+			reset="handleFacetFilterReset" showPopoverOKButton="true">
+			<awct:lists>
+
+				<!-- Season -->
+				<awct:FacetFilterList id="facetFilterListOrderHistorySeason"
+					title="{i18n>TXT_GENERIC_SEASON}" key="Season"
+					mode="MultiSelect" showInFacetFilterBar="true" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Shipment ID -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryShipment"
+					title="{i18n>TXT_COLLABORATION_ORDERHISTORY_FILTER_SHIPMENT}" key="ShipmentID"
+					mode="MultiSelect" showInFacetFilterBar="true" listClose="handleListClose"
+					listOpen="handleDependentListOpen" selectionChange="handleFilterListSelectionChanged">
+					<awct:items>
+						<FacetFilterItem text="{ShipmentID}" key="{ShipmentID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Delivery Number -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryDeliveryNumber"
+					title="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+					key="DeliveryID" mode="SingleSelectMaster" selectionChange="handleFilterListSelectionChanged"
+					showInFacetFilterBar="true" listClose="handleListClose" listOpen="handleDependentListOpen">
+					<awct:items>
+						<FacetFilterItem text="{DeliveryHeaderID}" key="{DeliveryHeaderID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Line Number -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryLineNumber"
+					title="{i18n>TXT_GENERIC_LINE_NUMBER}"
+					key="DeliveryLineNumber" mode="MultiSelect" listOpen="handleDependentListOpen"
+					showInFacetFilterBar="true" listClose="handleListClose">
+					<awct:items>
+						<FacetFilterItem text="{LineNumber}" key="{LineNumber}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Container ID -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryContainerID"
+					title="{i18n>TXT_GENERIC_CONTAINER_ID}"
+					key="ContainerID" mode="MultiSelect" showInFacetFilterBar="true"
+					listClose="handleListClose" listOpen="handleDependentListOpen">
+					<awct:items>
+						<FacetFilterItem text="{ContainerID}" key="{ContainerID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Supplier ID -->
+				<awct:FacetFilterList id="facetFilterListOrderHistorySupplier"
+					title="{i18n>TXT_GENERIC_SUPPLIER_ID}" key="SupplierID"
+					listOpen="handleListOpen" mode="MultiSelect" showInFacetFilterBar="false"
+					listClose="handleListClose">
+					<awct:items>
+						<FacetFilterItem text="{SupplierID}" key="{SupplierID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- From Date -->
+				<awct:FacetFilterDateInputList
+					title="{i18n>TXT_COLLABORATION_ORDERHISTORY_FILTER_FROM_DATE}" id="facetFilterOrderHistoryFromDate"
+					showInFacetFilterBar="false" listClose="handleListClose" key="FromDate">
+				</awct:FacetFilterDateInputList>
+
+				<!-- To Date -->
+				<awct:FacetFilterDateInputList
+					title="{i18n>TXT_COLLABORATION_ORDERHISTORY_FILTER_TO_DATE}" id="facetFilterOrderHistoryToDate"
+					showInFacetFilterBar="false" listClose="handleListClose" key="ToDate">
+				</awct:FacetFilterDateInputList>
+
+				<!-- User -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryUser"
+					title="{i18n>TXT_COLLABORATION_ORDERHISTORY_FILTER_USER}" key="ExemptionUserID"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{UserID}" key="{UserID}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Brand -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryBrand"
+					title="{i18n>TXT_GENERIC_BRAND}" key="Characteristics/Brand"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Variety -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryVariety"
+					title="{i18n>TXT_GENERIC_VARIETY}" key="Characteristics/Variety"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Class -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryClass"
+					title="{i18n>TXT_GENERIC_CLASS}" key="Characteristics/Class"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Growing Method -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryGrowingMethod"
+					title="{i18n>TXT_GENERIC_GROWING_METHOD}"
+					key="Characteristics/GrowingMethod" mode="MultiSelect"
+					showInFacetFilterBar="false" listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Pallet -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryPallet"
+					title="{i18n>TXT_GENERIC_PALLET}" key="Characteristics/PalletBase"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+				
+				<!-- Delivery Status -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryDeliveryStatus"
+					title="{i18n>TXT_GENERIC_DELIVERY_STATUS}" key="DeliveryStatusBeforeOrAfterRelease"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{DeliveryStatusValue}" key="{DeliveryStatusKey}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Exemption Status -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryExemptionStatus"
+					title="{i18n>TXT_COLLABORATION_ORDERHISTORY_FILTER_EXEMPTION_STATUS}"
+					key="ExemptionStatus" mode="MultiSelect" showInFacetFilterBar="false"
+					listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{ExemptionStatusValue}" key="{ExemptionStatusKey}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Stack -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryStack"
+					title="{i18n>TXT_GENERIC_STACK}" key="Characteristics/Stack"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Pack Style -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryPackStyle"
+					title="{i18n>TXT_GENERIC_PACK_STYLE}"
+					key="Characteristics/PackStyle" mode="MultiSelect"
+					showInFacetFilterBar="false" listClose="handleListClose" listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Size -->
+				<awct:FacetFilterList id="facetFilterListOrderHistorySize"
+					title="{i18n>TXT_GENERIC_SIZE}" key="Characteristics/Size"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+
+				<!-- Label -->
+				<awct:FacetFilterList id="facetFilterListOrderHistoryLabel"
+					title="{i18n>TXT_GENERIC_LABEL}" key="Characteristics/Label"
+					mode="MultiSelect" showInFacetFilterBar="false" listClose="handleListClose"
+					listOpen="handleListOpen">
+					<awct:items>
+						<FacetFilterItem text="{Key}" key="{Key}" />
+					</awct:items>
+				</awct:FacetFilterList>
+			</awct:lists>
+		</awct:FacetFilter>
+
+		<!-- Toolbar to display filters applied when track orders is navigated 
+			from 'Track Orders Search Form' view, else hidden -->
+		<Toolbar id="toolbarFilterString" active="true" design="Info"
+			height="2rem" press="handleToolbarPress" visible="false">
+			<Text id="textFilter" />
+		</Toolbar>
+
+		<IconTabBar id="orderHistoryIconTabBar" select="handleNavigateToAnotherTab"
+			expandable="false">
+			<items>
+				<IconTabFilter icon="sap-icon://order-status"
+					text="{i18n>TXT_COLLABORATION_TRACKLINES_ICON_TAB_BAR_TITLE}" key="TrackLines">
+					<!-- Table -->
+					<Table id="trackLinesTable" growing="true" growingThreshold="100" mode="SingleSelectMaster">
+						<headerToolbar>
+							<Toolbar>
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_TABLE_TITLE}"></Label>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://drop-down-list" press="handleSortTrackOrdersTableButtonPressed" />
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<!-- Checkbox -->
+							<Column width="30px">
+								<Label text="" />
+							</Column>
+
+							<!-- Shipment Number -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+							</Column>
+
+							<!-- Delivery Number -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+							</Column>
+
+							<!-- Line -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_LINE_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_LINE_NUMBER}" />
+							</Column>
+
+							<!-- Container ID -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_CONTAINER_ID}"
+									tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}"
+									/>
+							</Column>
+
+							<!-- User ID -->
+							<Column>
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_USER_ID}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_USER_ID}" />
+							</Column>
+
+							<!-- Time -->
+							<Column hAlign="Right" width="76px">
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_TIME}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_TIME}" />
+							</Column>
+
+							<!-- Product -->
+							<Column width="60px">
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_PRODUCT}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_PRODUCT}" />
+							</Column>
+
+							<!-- Quantity -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_GENERIC_QUANTITY}"
+									tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+							</Column>
+
+							<!-- Shortage -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_GENERIC_SHORTAGE}"
+									tooltip="{i18n>TXT_GENERIC_SHORTAGE}" />
+							</Column>
+
+							<!-- Surplus -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_SURPLUS}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_SURPLUS}" />
+							</Column>
+
+							<!-- Trade -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_GENERIC_TRADE}"
+									tooltip="{i18n>TXT_GENERIC_TRADE}" />
+							</Column>
+
+							<!-- UOM -->
+							<Column width="40px">
+								<Label text="{i18n>TXT_GENERIC_UOM}"
+									tooltip="{i18n>TXT_GENERIC_UOM}" />
+							</Column>
+
+							<!-- Consumed -->
+							<Column width="35px">
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CONSUMED}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CONSUMED}" />
+							</Column>
+
+							<!-- Charge Quantity -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CHARGE_QUANTITY}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CHARGE_QUANTITY}" />
+							</Column>
+
+							<!-- Charge Rate -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CHARGE_RATE}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CHARGE_RATE}" />
+							</Column>
+
+							<!-- Charge Amount -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CHARGE_AMOUNT}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_CHARGE_AMOUNT}" />
+							</Column>
+
+							<!-- Charge Code -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_CHARGE_CODE}"
+									tooltip="{i18n>TXT_GENERIC_CHARGE_CODE}" />
+							</Column>
+
+							<!-- Delivery Status -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_DELIVERY_STATUS}"
+									tooltip="{i18n>TXT_GENERIC_DELIVERY_STATUS}" />
+							</Column>
+
+							<!-- Exemption Requested -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_EXEMPTION_REQUESTED}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_EXEMPTION_REQUESTED}" />
+							</Column>
+
+							<!-- Exemption Accepted -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_EXEMPTION_ACCEPTED}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_EXEMPTION_ACCEPTED}" />
+							</Column>
+
+							<!-- Exemption Status -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_EXEMPTION_STATUS}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_EXEMPTION_STATUS}" />
+							</Column>
+
+							<!-- Reason -->
+							<Column>
+								<Label text="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_REASON}"
+									tooltip="{i18n>TXT_COLLABORATION_TRACKLINES_COLUMN_REASON}" />
+							</Column>
+
+							<!-- Actions -->
+							<Column width="50px">
+							</Column>
+						</columns>
+					</Table>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://list"
+					text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_ICON_TAB_BAR_TITLE}"
+					key="SupplierLines">
+					<!-- Table -->
+					<Table id="supplierLinesTable" growing="true"
+						growingThreshold="100" mode="SingleSelectMaster">
+						<headerToolbar>
+							<Toolbar>
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_TABLE_TITLE}"></Label>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://drop-down-list" press="handleSortTrackOrdersTableButtonPressed" />
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<!-- Checkbox -->
+							<Column width="30px">
+								<Label text="" />
+							</Column>
+							<!-- Supplier -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_SUPPLIER}"
+									tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+							</Column>
+
+							<!-- Shipment Number -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+							</Column>
+
+							<!-- Delivery Number -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+							</Column>
+
+							<!-- Line -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_LINE_NUMBER}"
+									tooltip="{i18n>TXT_GENERIC_LINE_NUMBER}" />
+							</Column>
+
+							<!-- Container ID -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_CONTAINER_ID}"
+									tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+							</Column>
+
+							<!-- User ID -->
+							<Column>
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_USER_ID}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_USER_ID}" />
+							</Column>
+
+							<!-- Time -->
+							<Column hAlign="Right" width="76px">
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_TIME}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_TIME}" />
+							</Column>
+
+							<!-- Product -->
+							<Column width="60px">
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_PRODUCT}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_PRODUCT}" />
+							</Column>
+
+							<!-- Quantity -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_GENERIC_QUANTITY}"
+									tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+							</Column>
+
+							<!-- Shortage -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_GENERIC_SHORTAGE}"
+									tooltip="{i18n>TXT_GENERIC_SHORTAGE}" />
+							</Column>
+
+							<!-- Surplus -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_SURPLUS}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_SURPLUS}" />
+							</Column>
+
+							<!-- Trade -->
+							<Column hAlign="Right" width="35px">
+								<Label text="{i18n>TXT_GENERIC_TRADE}"
+									tooltip="{i18n>TXT_GENERIC_TRADE}" />
+							</Column>
+
+							<!-- UOM -->
+							<Column width="40px">
+								<Label text="{i18n>TXT_GENERIC_UOM}"
+									tooltip="{i18n>TXT_GENERIC_UOM}" />
+							</Column>
+
+							<!-- Consumed -->
+							<Column width="35px">
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CONSUMED}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CONSUMED}" />
+							</Column>
+
+							<!-- Charge Quantity -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_QUANTITY}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_QUANTITY}" />
+							</Column>
+
+							<!-- Charge Rate -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_RATE}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_RATE}" />
+							</Column>
+
+							<!-- Charge Amount -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_AMOUNT}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_AMOUNT}" />
+							</Column>
+
+							<!-- Charge Code -->
+							<Column>
+								<Label
+									text="{i18n>TXT_GENERIC_CHARGE_CODE}"
+									tooltip="{i18n>TXT_GENERIC_CHARGE_CODE}" />
+							</Column>
+
+							<!-- Delivery Status -->
+							<Column>
+								<Label text="{i18n>TXT_GENERIC_DELIVERY_STATUS}"
+									tooltip="{i18n>TXT_GENERIC_DELIVERY_STATUS}" />
+							</Column>
+
+							<!-- Exemption Requested -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_REQUESTED}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_REQUESTED}" />
+							</Column>
+
+							<!-- Exemption Accepted -->
+							<Column hAlign="Right" width="35px">
+								<Label
+									text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_ACCEPTED}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_ACCEPTED}" />
+							</Column>
+
+							<!-- Exemption Status -->
+							<Column>
+								<Label
+									text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_STATUS}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_STATUS}" />
+							</Column>
+
+							<!-- Reason -->
+							<Column>
+								<Label text="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_REASON}"
+									tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_REASON}" />
+							</Column>
+							
+							<!-- Actions -->
+							<Column width="50px">
+							</Column>
+						</columns>
+					</Table>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="orderHistoryExportAsCSVButton"
+						text="{i18n>TXT_COLLABORATION_ORDERHISTORY_EXPORT_AS_CSV_BUTTON_LABEL}"
+						press="handleExportAsCSVButtonPressed" visible="false"/>
+					<!-- Action Sheet -->
+					<Button id="orderHistoryActionSheetButton" icon="sap-icon://overflow"
+						press="handleOrderHistoryActionSheetOpen" visible="false"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

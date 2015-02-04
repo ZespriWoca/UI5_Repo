@@ -1,0 +1,117 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:awct="com.zespri.awct.control" xmlns:core="sap.ui.core">
+	<Dialog
+		title="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_DIALOG_TITLE}"
+		contentWidth="700px" height="60%" busyIndicatorDelay="0">
+		<content>
+			<!-- Batch Characteristics Table -->
+			<Table id="maintainBCTable" items="{maintainBC>/BatchCharacteristics}"
+				class="zAwctTableReducedCellPadding">
+				<columns>
+					<!-- Copy flag -->
+					<Column width="40px" hAlign="Center">
+						<Text text="" />
+					</Column>
+
+					<!-- BC Name -->
+					<Column width="230px">
+						<Text
+							text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_NAME}"
+							tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_NAME}" />
+					</Column>
+
+					<!-- Include/Exclude/Delete -->
+					<Column width="120px">
+						<Text
+							text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_INCLUDE_EXCLUDE}"
+							tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_INCLUDE_EXCLUDE}" />
+					</Column>
+
+					<!-- Values -->
+					<Column>
+						<Text
+							text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_VALUES}"
+							tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_VALUES}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<!-- Copy -->
+							<CheckBox
+								enabled="{parts: ['maintainBC>/isPropagateSelected', 'maintainBC>BCNameSelected'], formatter: '.formatCopyFlagCheckBoxEnabled'}"
+								selected="{maintainBC>CopyFlag}" />
+
+							<!-- BC Name -->
+							<Select change="handleMaintainBatchCharacteristicsNameSelectChange"
+								selectedKey="{maintainBC>CharacteristicName}" items="{maintainBC>/BatchCharacteristicsDomainValues}"
+								enabled="{maintainBC>editable}"
+								tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_NAME}">
+								<items>
+									<core:Item key="{maintainBC>BatchCharName}" text="{maintainBC>BatchCharName}"
+										enabled="{maintainBC>enabled}" />
+								</items>
+							</Select>
+
+							<!-- Include/Exclude/Delete -->
+							<Select enabled="{maintainBC>BCNameSelected}" selectedKey="{maintainBC>Operation}"
+								tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_INCLUDE_EXCLUDE}">
+								<items>
+									<core:Item key="I"
+										text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_SELECT_INCLUDE}" />
+									<core:Item key="E"
+										text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_SELECT_EXCLUDE}" />
+									<core:Item key="D"
+										text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_SELECT_DELETE}" />
+								</items>
+							</Select>
+
+							<!-- Values -->
+							<awct:SearchHelpInput
+								valueState="{path: 'maintainBC>error', formatter: '.formatBatchCharacteristicsValuesValueState'}"
+								valueStateText="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_ERROR_VALUES_NOT_SELECTED}"
+								value="{path:'maintainBC>BatchCharacteristicsValueSet', formatter: '.formatBatchCharacteristicsValues'}"
+								showValueHelp="true" valueHelpRequest="handleMaintainBatchCharacteristicsValueHelpOpen"
+								enabled="{maintainBC>BCNameSelected}"
+								tooltip="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_COLUMN_BC_VALUES}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+
+			<!-- 'Also apply to lines...' checkbox -->
+			<CheckBox id="propagateToLinesCheckBox"
+				select="handleMaintainBatchCharacteristicsPropagateSelect"
+				text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_CHECKBOX_PROPAGATE}"></CheckBox>
+
+			<!-- Propagate Options -->
+			<RadioButton id="propagateUpdateRadioButton"
+				text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_LABEL_UPDATE}"
+				groupName="propagateOptions" enabled="false" selected="true" />
+			<RadioButton id="propagateOverwriteRadioButton"
+				text="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_LABEL_OVERWRITE}"
+				groupName="propagateOptions" enabled="false" />
+
+			<!-- F4 for lines to propagate to -->
+			<awct:SearchHelpInput id="propagateToLinesInput"
+				value="{path: 'maintainBC>/PropagateToLines', formatter: '.formatBatchCharacteristicsPropagateToLinesText'}"
+				valueStateText="{i18n>TXT_ALLOCATION_MAINTAIN_BATCH_CHARACTERISTICS_ERROR_NO_TARGET_LINES}"
+				showValueHelp="true" enabled="false"
+				valueHelpRequest="handleMaintainBatchCharacteristicsPropagateLinesValueHelpOpen" />
+		</content>
+
+		<!-- Save button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_GENERIC_OK}"
+				press="handleMaintainBatchCharacteristicsSave" />
+		</beginButton>
+
+		<!-- Cancel button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_GENERIC_CANCEL}"
+				press="handleMaintainBatchCharacteristicsCancel" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

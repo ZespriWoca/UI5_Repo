@@ -1,0 +1,52 @@
+<ColumnListItem xmlns="sap.m" xmlns:core="sap.ui.core">
+	<cells>
+		<!-- Supplier -->
+		<Text text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_COLUMN_SUPPLIER_ID_ALL}" />
+
+		<!-- Product -->
+		<Text text="{initiateSwapLines>Product}" />
+
+		<!-- Source Delivery Number -->
+		<Text text="{initiateSwapLines>SourceDeliveryLineNumber}" />
+
+		<!-- Source BC -->
+		<Link text="{initiateSwapLines>CharacteristicsCountFrom}" press="handleViewSourceBatchCharacteristicsOpen" />
+
+		<!-- Source Container -->
+		<Text text="{initiateSwapLines>SourceContainerID}" />
+
+		<!-- Source Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>SourceAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+		<!-- Source New Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>SourceAllocationQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+		<!-- Swap Quantity -->
+		<ObjectNumber
+			number="{path:'initiateSwapLines>SwapQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			state="{path:'initiateSwapLines>SwapQuantity', formatter: '.formatDeliveryLineSwapQuantityState'}" />
+
+		<!-- Target Delivery Number -->
+		<Text text="{initiateSwapLines>TargetDeliveryLineNumber}" />
+
+		<!-- Target BC -->
+		<Link text="{initiateSwapLines>CharacteristicsCountTo}" press="handleViewTargetBatchCharacteristicsOpen" />
+
+		<!-- Target Container -->
+		<Text text="{initiateSwapLines>TargetContainerID}" />
+
+		<!-- Target Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>TargetAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+		<!-- Target New Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>TargetAllocationQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+		<!-- UOM -->
+		<Text text="{initiateSwapLines>UoM}" />
+
+	</cells>
+</ColumnListItem>

@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<!-- Table Settings -->
+	<ViewSettingsDialog confirm="handleViewSettingsDialogClose"
+		title="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_SORTING_DIALOG_TITLE}">
+
+		<!-- Sort Delivery Swap items -->
+		<sortItems>
+			<!-- Shipment From -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_SORTING_DIALOG_SORTING_ITEM_SHIPMENT_FROM}"
+				key="D2_ShipmentFromID" />
+
+			<!-- Delivery From -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_SORTING_DIALOG_SORTING_ITEM_DELIVERY_FROM}"
+				key="D2_DeliveryFromID" />
+
+			<!-- Shipment To -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_SORTING_DIALOG_SORTING_ITEM_SHIPMENT_TO}"
+				key="D2_ShipmentToID" />
+
+			<!-- Delivery To -->
+			<ViewSettingsItem
+				text="{i18n>TXT_COLLABORATION_DELIVERYSWAP_LISTING_SORTING_DIALOG_SORTING_ITEM_DELIVERY_TO}"
+				key="D2_DeliveryToID" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,137 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Table id="tradeOpportunitiesTable" mode="SingleSelectMaster"
+		items="{/TradeSet}" itemPress="handleItemPress" growing="true"
+		growingThreshold="100" busy="true">
+
+		<headerToolbar>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button icon="sap-icon://drop-down-list" press="handleTableSettingsDialogButtonPress"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_BUTTON_TABLE_SETTINGS_TOOLTIP}" />
+			</Toolbar>
+		</headerToolbar>
+
+		<columns>
+			<!-- Initiating Supplier -->
+			<Column>
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}" />
+			</Column>
+
+			<!-- Receiving Supplier -->
+			<Column>
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}" />
+			</Column>
+
+			<!-- Shipment Number -->
+			<Column>
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_NUMBER}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_NUMBER}" />
+			</Column>
+
+			<!-- Shipment Start Date -->
+			<Column>
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}" />
+			</Column>
+
+			<!-- Delivery Number -->
+			<Column>
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_DELIVERY_NUMBER}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_DELIVERY_NUMBER}" />
+			</Column>
+
+			<!-- Line -->
+			<Column>
+				<Label text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_LINE}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_LINE}" />
+			</Column>
+
+			<!-- Container -->
+			<Column>
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_CONTAINER}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_CONTAINER}" />
+			</Column>
+
+			<!-- Trade Initiated On -->
+			<Column hAlign="Right">
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}" />
+			</Column>
+
+			<!-- Trade Expiry Date -->
+			<Column hAlign="Right">
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}" />
+			</Column>
+
+			<!-- Trade Quantity -->
+			<Column hAlign="Right">
+				<Label
+					text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}" />
+			</Column>
+
+			<!-- UoM -->
+			<Column>
+				<Label text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_UOM}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_UOM}" />
+			</Column>
+
+			<!-- Status -->
+			<Column>
+				<Label text="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}"
+					tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}" />
+			</Column>
+
+		</columns>
+
+
+		<items>
+			<ColumnListItem type="Navigation">
+				<cells>
+					<Text text="{InitiatingSupplierID}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_INITIATING_SUPPLIER}" />
+					<Text text="{ReceivingSupplierID}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_RECEIVING_SUPPLIER}" />
+					<Text text="{ShipmentID}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_NUMBER}" />
+					<Text
+						text="{path:'ShipmentStartDate',  formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_SHIPMENT_START_DATE}" />
+					<Text text="{DeliveryID}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_DELIVERY_NUMBER}" />
+					<Text text="{DeliveryLineNumber}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_LINE}" />
+					<Text text="{ContainerID}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_CONTAINER}" />
+					<Text
+						text="{path:'TradeRequestDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_INITIATED_ON}" />
+					<Text
+						text="{path:'TradeExpiryDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADE_EXPIRY_DATE}" />
+					<Text
+						text="{path:'TradeQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_TRADEQUANTITY}" />
+					<Text text="{TradeUoM}"
+						tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_UOM}" />
+					<ObjectStatus text="{path:'Status', formatter:'.formatStatusText'}"
+						state="{path:'Status', formatter:'.formatStatusState'}" tooltip="{i18n>TXT_COLLABORATION_TRADEOPPORTUNITIES_COLUMN_STATUS}" />
+
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+</core:FragmentDefinition>

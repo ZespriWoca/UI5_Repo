@@ -1,0 +1,80 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:layout="sap.ui.layout"
+  xmlns:form="sap.ui.layout.form">
+  <Dialog title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_CONFIRM_SHORTAGE_TITLE}" type="Message" busyIndicatorDelay="0">
+  	<layout:VerticalLayout>
+  	
+  		<!-- Warning message box -->
+  		<layout:HorizontalLayout class="zAwctWarningOrangeBorder" id="warningMessageBox">
+  			<layout:VerticalLayout width="2em">
+  				<core:Icon src="sap-icon://warning2" color="#D14900" class="zAwctWarningIconSize"/>
+  			</layout:VerticalLayout>
+  			<layout:VerticalLayout>
+  	   			<Text text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SURPLUS_WARNING_LABEL}:"/>
+    			<Text id="surplusShipmentsText" class="zAwctSurplusShipmentsTextBold"/>
+    		</layout:VerticalLayout>
+    	</layout:HorizontalLayout>
+    	
+		<Text class="zAwctTextPaddingTop" id="showPenaltyText" />
+    	
+    	<!-- Request Exemption CheckBox -->
+    	<CheckBox id="requestExemptionCheckBox" text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_REQUEST_EXEMPTION_TITLE}" select="handleRequestExemptionChecked" />
+    	 
+    	<form:Form id="requestExemptionForm" visible="false">
+  			<form:layout>
+        		<form:ResponsiveGridLayout />
+        	</form:layout>
+        	
+  			<form:formContainers>
+  				<form:FormContainer>
+            		<form:formElements>
+            			<form:FormElement label="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_EXEMPTION_QUANTITY_TITLE}">
+            				<form:fields>
+            					<!-- Exemption Quantity -->
+    							<Input type="Number" id="exemptionQuantityInput" maxLength="10" />
+    						</form:fields>
+    					</form:FormElement>
+    							
+            			<form:FormElement label="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_EXEMPTION_REASON_TITLE}"  class="zAwctPaddingTopFormFields">
+            				<form:fields>
+            					<!-- Exemption Reason -->
+            					<!-- Event type REXM is for Request exemption -->
+            					<Select id="exemptionReasonSelect" items="{path:'/ReasonCodeSet', filters:[{path:'EventType', operator:'EQ', value1:'REXM'}]}">
+              							<core:Item key="{ReasonCodeID}" text="{ReasonCodeID} - {ReasonCodeDescription}">
+            							</core:Item>
+            					</Select>
+            				</form:fields>
+            			</form:FormElement>
+            					
+            			<form:FormElement label="{i18n>TXT_GENERIC_COMMENTS}" class="zAwctPaddingTopFormFields">
+            				<form:fields>
+            					<!-- Comments -->
+            					<TextArea id="commentsTextArea"/>
+            				</form:fields>
+            			</form:FormElement>
+                		
+            		</form:formElements>
+            	</form:FormContainer>
+    		</form:formContainers>
+   		</form:Form>
+    </layout:VerticalLayout>
+    
+    <!-- Accept Penalty Button -->
+    <beginButton>
+      <Button text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_ACCEPT_PENALTY_TITLE}" dialogType="Message" press="handleAcceptPenaltyPress" />
+    </beginButton>
+    
+    <!-- Close Button -->
+    <endButton>
+      <Button text="{i18n>TXT_GENERIC_CLOSE}" dialogType="Message" press="handleConfirmShortageClose" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

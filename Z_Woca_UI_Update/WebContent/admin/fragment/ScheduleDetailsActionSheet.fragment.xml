@@ -1,0 +1,20 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<ActionSheet showCancelButton="true" placement="Top">
+		<buttons>
+			<Button id="viewTimeBasedRatesButton"
+				text="{i18n>TXT_ADMIN_SCHEDULE_LINE_ACTION_SHEET_TIME_BASED_RATES_BUTTON}"
+				press="handleNavToRatesView"></Button>
+			
+			<Button id="viewExceptionBasedRatesButton"
+				text="{i18n>TXT_ADMIN_SCHEDULE_LINE_ACTION_SHEET_EXCEPTION_BASED_RATES_BUTTON}"
+				press="handleNavToRatesView"></Button>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

@@ -1,0 +1,63 @@
+<ColumnListItem xmlns="sap.m">
+	<cells>
+		<!-- Container ID -->
+		<Text id="containerIDCell" text="{ContainerID}"
+			tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+
+		<!-- Line Number -->
+		<Text id="deliveryLineIDCell" text="{DeliveryLineNumber}"
+			tooltip="{i18n>TXT_GENERIC_LINE_NUMBER}" />
+
+		<!-- Supplier -->
+		<Text text="{SupplierID}"
+			tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+
+		<!-- Container Type -->
+		<Text id="containerTypeCell" text="{ContainerType}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_CONTAINER_TYPE}" />
+
+		<!-- Material Number -->
+		<Text text="{MaterialNumber}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_MATERIAL_NUMBER}" />
+
+		<!-- Brand -->
+		<Text text="{Brand}"
+			tooltip="{i18n>TXT_GENERIC_BRAND}" />
+
+		<!-- Fruit Group -->
+		<Text text="{FruitGroup}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_FRUIT_GROUP}" />
+
+		<!-- Size -->
+		<Text text="{Size}"
+			tooltip="{i18n>TXT_GENERIC_SIZE}" />
+
+		<!-- Pack -->
+		<Text text="{Pack}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_PACK}" />
+
+		<!-- Label -->
+		<Text text="{Label}"
+			tooltip="{i18n>TXT_GENERIC_LABEL}" />
+
+		<!-- UoM -->
+		<Text />
+
+		<!-- Quantity -->
+		<Text />
+
+		<!-- Allocation Quantity -->
+		<Input id="allocationQuantityCell" enabled="{path: 'viewState>/allowAllocationChange', formatter : '.formatAllocationQuantityEnableState'}"
+			value="{path:'AllocationQuantity', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityAsInteger'}"
+			type="Number" change="handleAllocationQuantityChange" class="zAwctInputRightAlign"
+			valueStateText="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_QUANTITY_INPUT_VALUE_STATE_TEXT}"
+			tooltip="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_COLUMN_TOOLTIP_ALLOCATION_QUANTITY}"
+			maxLength="10"></Input>
+
+		<!-- Batch Characteristics -->
+		<Text />
+
+		<!-- Text -->
+		<Text />
+	</cells>
+</ColumnListItem>

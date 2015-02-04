@@ -1,0 +1,146 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+
+	<!-- Settings Dialog for Sorting and Filtering Delivery Line -->
+	<ViewSettingsDialog confirm="handleViewSettingsDialogClose"
+		resetFilters="handleResetViewSettingDialogFilters"
+		title="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_TITLE}">
+
+		<!-- Sort Items for Shipment No , Delivery No and Load Start Date -->
+		<sortItems>
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}"
+				key="ShipmentID" />
+			<ViewSettingsItem
+				text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+				selected="true" key="DeliveryHeaderID" />
+			<ViewSettingsItem
+				text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_LOAD_START_DATE_TEXT}"
+				key="LoadStartDate" />
+		</sortItems>
+
+		<!-- Filter Items for Shipment No , Delivery No and Status -->
+		<filterItems>
+			<!-- Shipment Number ('items' binding is done in the controller, since 
+				we need to pass current season as a filter.) -->
+			<ViewSettingsCustomItem id="viewSettingsFilterShipment"
+				text="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}">
+				<customControl>
+
+					<!-- Vertical Layout with SearchField and List -->
+					<layout:VerticalLayout width="100%"
+						class="zAwctSettingsDialogVerticalLayoutHeight">
+
+						<!-- Shipment List Search field -->
+						<SearchField width="100%" id="viewSettingsDialogShipmentSearch"
+							search="handleviewSettingShipmentListSearch"></SearchField>
+
+						<!-- Page Scroll bar is disabled in the Controller (to make SearchBar 
+							Fixed as header .If page scroll bar is enabled, while scrolling down searchField 
+							will be hidden) -->
+
+						<!-- Since Default dialog page scroll bar is disabled , Scroll contained 
+							is used only for list -->
+
+						<ScrollContainer horizontal="false" vertical="true"
+							class="zAwctScrollContainerHeight">
+
+							<!-- Shipment List -->
+							<List id="viewSettingsFilterShipmentList" mode="MultiSelect"
+								includeItemInSelection="true" select="handleShipmentFilterSelect"
+								busy="true">
+								<items>
+									<StandardListItem title="{ShipmentID}">
+										<customData>
+											<core:CustomData key="filterKey"
+												value="ShipmentID__EQ__{ShipmentID}" />
+											<core:CustomData key="key" value="{ShipmentID}" />
+										</customData>
+									</StandardListItem>
+								</items>
+							</List>
+						</ScrollContainer>
+					</layout:VerticalLayout>
+				</customControl>
+			</ViewSettingsCustomItem>
+
+			<!-- Delivery Number -->
+			<ViewSettingsCustomItem id="viewSettingsFilterDelivery"
+				text="{i18n>TXT_GENERIC_DELIVERY_NUMBER}"
+				busy="true">
+				<customControl>
+
+					<!-- Vertical Layout with SearchField and List -->
+					<layout:VerticalLayout width="100%"
+						class="zAwctSettingsDialogVerticalLayoutHeight">
+
+						<!-- Delivery List Search field -->
+						<SearchField width="100%" id="viewSettingsDialogDeliverySearch"
+							search="handleviewSettingDeliveryListSearch"></SearchField>
+
+						<!-- Page Scroll bar is disabled in the Controller (to make SearchBar 
+							Fixed as header .If page scroll bar is enabled, while scrolling down searchField 
+							will be hidden) -->
+
+						<!-- Since Default dialog page scroll bar is disabled , Scroll contained 
+							is used only for list -->
+
+						<ScrollContainer horizontal="false" vertical="true"
+							class="zAwctScrollContainerHeight">
+
+							<!-- Delivery List -->
+							<List id="viewSettingsFilterDeliveryList" mode="MultiSelect"
+								includeItemInSelection="true" select="handleDeliveryFilterSelect"
+								busy="true">
+								<items>
+									<StandardListItem title="{DeliveryHeaderID}">
+										<customData>
+											<core:CustomData key="filterKey"
+												value="DeliveryHeaderID__EQ__{DeliveryHeaderID}" />
+											<core:CustomData key="key" value="{DeliveryHeaderID}" />
+										</customData>
+									</StandardListItem>
+								</items>
+							</List>
+						</ScrollContainer>
+					</layout:VerticalLayout>
+				</customControl>
+			</ViewSettingsCustomItem>
+
+			<!-- Status -->
+			<ViewSettingsFilterItem id="viewSettingStatus"
+				text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_STATUS_TEXT}">
+				<items>
+					<ViewSettingsItem id="viewSettingStatusNotStarted"
+						text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_NOT_STARTED_TEXT}"
+						key="Status__EQ__E0001" selected="true" />
+					<ViewSettingsItem id="viewSettingStatusInProgress"
+						text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_IN_PROGRESS_TEXT}"
+						key="Status__EQ__E0002" selected="true" />
+					<ViewSettingsItem
+						text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_RELEASED_TEXT}"
+						key="Status__EQ__E0003" />
+					<ViewSettingsItem
+						text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_LOCKED_TEXT}"
+						key="Status__EQ__E0004" />
+				</items>
+			</ViewSettingsFilterItem>
+
+			<!-- Supply > Demand -->
+			<ViewSettingsFilterItem id="viewSettingsSuppplyGTDemand"
+				text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_OPTIONS_TEXT}">
+				<items>
+					<ViewSettingsItem
+						text="{i18n>TXT_ALLOCATION_DELIVERYWORKLIST_SETTINGSDIALOG_SUPPLY_GT_DEMAND_TEXT}"
+						key="IsSupplyGtDemandFlag__EQ__true" />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,318 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:awct="com.zespri.awct.control" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" controllerName="com.zespri.awct.alloc.view.DeliverySwapCreate"
+	xmlns:html="http://www.w3.org/1999/xhtml" busyIndicatorDelay="0">
+	<Page title="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_PAGE_TITLE}"
+		id="createSwapPage">
+		<content>
+			<!-- Facet Filter -->
+			<awct:FacetFilter id="facetFilterInitiateSwap" type="Simple"
+				showPersonalization="true" showReset="true" reset="handleFacetFilterReset"
+				liveSearch="true" showPopoverOKButton="true"
+				disabledText="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_FACET_FILTER_DISABLED_TEXT}">
+				<awct:lists>
+					<!-- Shipment From -->
+					<awct:FacetFilterList id="facetFilterListShipmentFrom"
+						title="{i18n>TXT_GENERIC_SHIPMENT_FROM}"
+						key="SourceShipmentID" mode="SingleSelectMaster" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="true" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{ShipmentID}" key="{ShipmentID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Delivery From -->
+					<awct:FacetFilterList id="facetFilterListDeliveryFrom"
+						title="{i18n>TXT_GENERIC_DELIVERY_FROM}"
+						key="SourceDeliveryNumber" mode="SingleSelectMaster" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="true" listOpen="handleDependentListOpen"
+						growing="false">
+						<awct:items>
+							<FacetFilterItem text="{DeliveryHeaderID}" key="{DeliveryHeaderID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Shipment To -->
+					<awct:FacetFilterList id="facetFilterListShipmentTo"
+						title="{i18n>TXT_GENERIC_SHIPMENT_TO}"
+						key="TargetShipmentID" mode="SingleSelectMaster" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="true" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{ShipmentID}" key="{ShipmentID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Delivery To -->
+					<awct:FacetFilterList id="facetFilterListDeliveryTo"
+						title="{i18n>TXT_GENERIC_DELIVERY_TO}"
+						key="TargetDeliveryNumber" mode="SingleSelectMaster" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="true" listOpen="handleDependentListOpen"
+						growing="false">
+						<awct:items>
+							<FacetFilterItem text="{DeliveryHeaderID}" key="{DeliveryHeaderID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Supplier ID -->
+					<awct:FacetFilterList id="facetFilterListSupplier"
+						title="{i18n>TXT_GENERIC_SUPPLIER}"
+						key="Supplier" mode="MultiSelect" listClose="handleFacetFilterClose"
+						showInFacetFilterBar="true" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{SupplierID}" key="{SupplierID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Container ID -->
+					<awct:FacetFilterList id="facetFilterListContainerID"
+						title="{i18n>TXT_GENERIC_CONTAINER}"
+						key="SourceContainerID" mode="SingleSelectMaster" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{ContainerID}" key="{ContainerID}" />
+						</awct:items>
+					</awct:FacetFilterList>
+					<!-- Brand -->
+					<awct:FacetFilterList id="facetFilterListBrand"
+						title="{i18n>TXT_GENERIC_BRAND}"
+						key="Characteristic/Brand" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Variety -->
+					<awct:FacetFilterList id="facetFilterListVariety"
+						title="{i18n>TXT_GENERIC_VARIETY}"
+						key="Characteristic/Variety" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Class -->
+					<awct:FacetFilterList id="facetFilterListClass"
+						title="{i18n>TXT_GENERIC_CLASS}"
+						key="Characteristic/Class" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Growing Method -->
+					<awct:FacetFilterList id="facetFilterListGrowingMethod"
+						title="{i18n>TXT_GENERIC_GROWING_METHOD}"
+						key="Characteristic/GrowingMethod" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Pallet -->
+					<awct:FacetFilterList id="facetFilterListPallet"
+						title="{i18n>TXT_GENERIC_PALLET}"
+						key="Characteristic/Pallet" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Stack -->
+					<awct:FacetFilterList id="facetFilterListStack"
+						title="{i18n>TXT_GENERIC_STACK}"
+						key="Characteristic/Stack" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Pack Style -->
+					<awct:FacetFilterList id="facetFilterListPackStyle"
+						title="{i18n>TXT_GENERIC_PACK_STYLE}"
+						key="Characteristic/PackStyle" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Size -->
+					<awct:FacetFilterList id="facetFilterListSize"
+						title="{i18n>TXT_GENERIC_SIZE}"
+						key="Characteristic/Size" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+
+					<!-- Label -->
+					<awct:FacetFilterList id="facetFilterListLabel"
+						title="{i18n>TXT_GENERIC_LABEL}"
+						key="Characteristic/Label" mode="MultiSelect" listClose="handleListClose"
+						showInFacetFilterBar="false" listOpen="handleListOpen" growing="false">
+						<awct:items>
+							<FacetFilterItem text="{Value}" key="{Key}" />
+						</awct:items>
+					</awct:FacetFilterList>
+				</awct:lists>
+			</awct:FacetFilter>
+
+			<!-- Warning Info Layout for Line Text and BC mismatch -->
+			<l:VerticalLayout id="textAndBCMisMatchInfoLayout"
+				visible="false" class="zAwctVerticalLayoutPositioningAndStyling">
+				<!-- Warning Header Info -->
+				<Text
+					text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_WARNING_INFO_LAYOUT_HEADER}"
+					class="zAwctLayoutHeaderTextBold" />
+
+				<!-- BC Mismatch Info -->
+				<l:HorizontalLayout class="zAwctHorizontalLayoutPaddingBottom">
+					<core:Icon src="sap-icon://dimension" color="#d14900"
+						class="zAwctIconPositioning" />
+					<Text class="zAwctWarningTextVerticalAlign"
+						text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_WARNING_INFO_LAYOUT_BC_MISMATCH}" />
+				</l:HorizontalLayout>
+
+				<!-- Line Text Mismatch -->
+				<l:HorizontalLayout>
+					<core:Icon src="sap-icon://document-text" color="#d14900"
+						class="zAwctIconPositioning" />
+					<Text
+						text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_WARNING_INFO_LAYOUT_TEXT_MISMATCH}" />
+				</l:HorizontalLayout>
+			</l:VerticalLayout>
+
+			<!-- Delivery Swap Proposal Items -->
+			<Table id="deliverySwapCreateTable" growing="false" inset="false"
+				class="zAwctTableVerticalCenterCells"
+				noDataText="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_NO_DATA_TEXT_MANDATORY}">
+				<headerToolbar>
+					<Toolbar>
+						<Label text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TITLE}"></Label>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!-- Supplier -->
+					<Column>
+						<Label
+							tooltip="{i18n>TXT_GENERIC_SUPPLIER}"
+							text="{i18n>TXT_GENERIC_SUPPLIER}" />
+					</Column>
+
+					<!-- Product -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_PRODUCT}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_PRODUCT}" />
+					</Column>
+
+					<!-- Source Delivery Number -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_DELIVERY_NUMBER}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_SOURCE_DELIVERY_LINENUMBER}" />
+					</Column>
+
+					<!--SOURCE BC -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_BC}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_SOURCE_BC}" />
+					</Column>
+
+					<!-- Source Cont. -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_CONT}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_SOURCE_CONT}" />
+					</Column>
+
+					<!-- Source Old Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_OLD_QTY}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_SOURCE_OLD_QUANTITY}" />
+					</Column>
+
+					<!-- Source New Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorFrom">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SOURCE_NEW_QTY}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_SOURCE_NEW_QUANTITY}" />
+					</Column>
+
+					<!-- Swap Quantity -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_SWAP_QUANTITY}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_SWAP_QUANTITY}" />
+					</Column>
+
+					<!-- Target Delivery Number -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_DELIVERY_NUMBER}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_TARGET_DELIVERY_LINENUMBER}" />
+					</Column>
+
+					<!--Target BC -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_BC}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_TARGET_BC}" />
+					</Column>
+
+					<!-- Target Cont -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_CONT}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_TARGET_CONT}" />
+					</Column>
+
+					<!-- Target Old Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_OLD_QTY}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_TARGET_OLD_QUANTITY}" />
+					</Column>
+
+					<!-- Target New Quantity -->
+					<Column hAlign="Center" styleClass="zAwctTableSwapColumnColorTo">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_TARGET_NEW_QTY}"
+							text="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_COLUMN_TARGET_NEW_QUANTITY}" />
+					</Column>
+
+					<!-- UOM -->
+					<Column hAlign="Center">
+						<Label
+							tooltip="{i18n>TXT_ALLOCATION_DELIVERYSWAP_CREATE_TABLE_TOOLTIP_UOM}"
+							text="{i18n>TXT_GENERIC_UOM}" />
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+					<!-- Save -->
+					<Button type="Emphasized" enabled="false" id="createSwapButton"
+						text="{i18n>TXT_GENERIC_SAVE}"
+						press="handleSwapCreate" />
+
+					<!-- Cancel -->
+					<Button enabled="false" id="discardChangesButton"
+						text="{i18n>TXT_GENERIC_CANCEL}"
+						press="handleDiscardChanges" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

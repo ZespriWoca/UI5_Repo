@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog
+		title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_DECLARE_SHORTAGE_TITLE}"
+		type="Message" busyIndicatorDelay="0">
+		<layout:HorizontalLayout>
+			<Label
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_ALLOCATED_QUANTITY_TITLE}" />
+			<Text
+				text=": {path:'Quantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'} {UOM}" />
+		</layout:HorizontalLayout>
+		<Input id="shortageQuantityInput" class="zAwctInputPaddingTop"
+			type="Number"
+			placeholder="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_ENTER_SHORTAGE_QUANTITY_TITLE} ({UOM})"
+			value="{path:'Shortage', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityAsInteger'}"
+			maxLength="10" />
+
+		<!-- Shortage button -->
+		<beginButton>
+			<Button text="{i18n>TXT_GENERIC_SHORTAGE}"
+				dialogType="Message" press="handleConfirmShortageOpen" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button text="{i18n>TXT_GENERIC_CLOSE}"
+				dialogType="Message" press="handleDeclareShortageClose" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

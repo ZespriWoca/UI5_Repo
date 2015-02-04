@@ -1,0 +1,380 @@
+!!STRDEL!!{"results":[
+    {
+    	"baseURL" : "/sap/opu/odata/sap/Z_AWCT_SRV",
+    	 "requests" : [{
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID asc,DeliveryLineID asc&$filter=DeliveryHeaderID eq '0080000005' and ((SupplierID eq '100' or SupplierID eq '207'))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=100&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/ShipmentSet?$skip=0&$top=100&$filter=Season%20eq%20%272014%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20asc&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=ShipmentID%20desc&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=ShipmentID%20asc&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=DeliveryHeaderID%20asc&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=ShipmentID%20eq%20%270000010000%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20asc&$filter=(ShipmentID%20eq%20%270000010000%27%20or%20ShipmentID%20eq%20%270000010003%27%20or%20ShipmentID%20eq%20%270000010004%27)&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20asc&$filter=(DeliveryHeaderID%20eq%20%270080000000%27%20or%20DeliveryHeaderID%20eq%20%270080000001%27)&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20asc&$filter=Status%20eq%20%27NotStarted%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=ShipmentID%20eq%20%270000010000%27%20and%20DeliveryHeaderID%20eq%20%270080000001%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=(ShipmentID%20eq%20%270000010000%27%20or%20ShipmentID%20eq%20%270000010003%27)%20and%20(DeliveryHeaderID%20eq%20%270080000000%27%20or%20DeliveryHeaderID%20eq%20%270080000001%27)&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=(ShipmentID%20eq%20%270000010000%27%20or%20ShipmentID%20eq%20%270000010003%27)%20and%20(DeliveryHeaderID%20eq%20%270080000000%27%20or%20DeliveryHeaderID%20eq%20%270080000002%27)%20and%20Status%20eq%20%27NotStarted%27%20and%20IsSupplyGtDemandFlag%20eq%20true&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$filter=(substringof(%27008%27,DeliveryHeaderID))&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=IsSupplyGtDemandFlag%20eq%20true&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=Status%20eq%20%27NotStarted%27&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000154%27&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((SupplierID%20eq%20%27100%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000154%27&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000154%27%20and%20((ContainerType%20eq%20%2720%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/ContainerSet?%24filter=DeliveryID%20eq%20%270080000154%27&%24select=ContainerID"         
+                },
+                 {
+                                "group" : "Allocation",
+                                "url" : "/LockDelivery?DeliveryID=%2780000102%27"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/GetAdditionalDeliveryInfo?DeliveryID=%2780000102%27"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/GetChargeCodesForUnlock?DeliveryID=%2780000102%27"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/ReasonCodeSet?$skip=0&$top=10000&$filter=EventType%20eq%20%27ZWUL%27&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/ReasonCodeSet?$skip=0&$top=10000&$filter=EventType%20eq%20%27ZWRL%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Allocation",
+                                "url" : "/GetChargeCodesForRelease?DeliveryID=%2781839650%27"         
+                },
+                {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=Status%20eq%20%27Released%27&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Delivery WorkList",
+                                "url" : "/DeliveryHeaderSet?$skip=0&$top=20&$orderby=LoadStartDate%20desc&$filter=Status%20eq%20%27InProgress%27&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((SupplierID%20eq%20%27100%27%20or%20SupplierID%20eq%20%27207%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((ContainerID%20eq%20%27SUDU4754585%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((MaterialNumber%20eq%20%27000000000000012615%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((MaterialNumber%20eq%20%27000000000000012615%27%20or%20MaterialNumber%20eq%20%27000000000000033842%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((ContainerID%20eq%20%27SUDU4754585%27)%20and%20(SupplierID%20eq%20%27100%27%20or%20SupplierID%20eq%20%27207%27)%20and%20(ContainerType%20eq%20%2720%27)%20and%20(MaterialNumber%20eq%20%27000000000000012615%27%20or%20MaterialNumber%20eq%20%27000000000000033842%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((ContainerID%20eq%20%27SUDU4754585%27)%20and%20(ContainerType%20eq%20%2720%27)%20and%20(MaterialNumber%20eq%20%27000000000000012615%27%20or%20MaterialNumber%20eq%20%27000000000000033842%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((ContainerID%20eq%20%27SUDU4754585%27)%20and%20(MaterialNumber%20eq%20%27000000000000012615%27%20or%20MaterialNumber%20eq%20%27000000000000033842%27))&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Allocation",
+                                "url" : "/AllocationLineSet?$skip=0&$top=100&$orderby=ContainerID%20asc,DeliveryLineID%20asc&$filter=DeliveryHeaderID%20eq%20%270080000005%27%20and%20((ContainerID%20eq%20%27SUDU4754585%27)%20and%20(MaterialNumber%20eq%20%27000000000000012615%27%20or%20MaterialNumber%20eq%20%27000000000000033842%27))&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Allocation",
+                                "url" : "/ReleaseDelivery?DeliveryID=%270080000001%27&Comment=%27%27&Reason=%27%27"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/ReasonCodeSet?$skip=0&$top=100&$filter=EventType%20eq%20%2703%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/SetShortage?ShortageQuantity=1&CalculateFlag=true&AcceptPenaltyFlag=false&RequestExemptionFlag=false&ExemptionComment=%27%27&ExemptionReason=%27%27&DeliveryLineID=%271100000699%27&AllocationID=%271200000975%27&AllocationUpdateTime=datetime%272014-08-08T08%3a41%3a27%27&DeliveryLineUpdateTime=datetime%272014-08-08T08%3a41%3a27%27"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/SetSurplus?DeliveryLineID=%271100000699%27&AllocationID=%271200000975%27&SurplusQuantity=1&AllocationUpdateTime=datetime%272014-08-08T08%3a41%3a27%27&DeliveryLineUpdateTime=datetime%272014-08-08T08%3a41%3a27%27"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/ChangeAllocationQuantity?DeliveryLineID=%271100000699%27&AllocationLineID=%271200000983%27&NewAllocationQuantity=1&ReasonCode=%27%27&Comments=%27asdsa%27&AllocationUpdateTime=datetime%272014-08-13T13%3a45%3a24%27&DeliveryLineUpdateTime=datetime%272014-08-13T13%3a45%3a24%27"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/ReasonCodeSet?$skip=0&$top=100&$filter=EventType%20eq%20%2701%27&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/ShipmentSet?%24select=ShipmentID&%24filter=Season%20eq%20%272014%27"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$filter=((ShipmentID%20eq%20%270000010003%27))&$inlinecount=allpages"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/PortSet?%24filter=PortType%20eq%20%27D%27"         
+                },
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$filter=((DestinationPort%20eq%20%27ILHFA%27%20or%20DestinationPort%20eq%20%27EGDAM%27%20or%20DestinationPort%20eq%20%27DEBRE%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$filter=((ShipmentID%20eq%20%270000010003%27)%20and%20(DestinationPort%20eq%20%27KRICH%27))&$inlinecount=allpages"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/DeliveryHeaderSet?%24filter=&%24select=DeliveryHeaderID"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$filter=((DeliveryID%20eq%20%270080000001%27))&$inlinecount=allpages"         
+                }, 
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/ContainerSet?%24filter=DeliveryID%20eq%20%270080000001%27"         
+                }, 
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$filter=((ShipmentID%20eq%20%270000010058%27)%20and%20(DestinationPort%20eq%20%27TWKEL%27)%20and%20(DeliveryID%20eq%20%270080000226%27))&$inlinecount=allpages"         
+                }, 
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/DeliveryHeaderSet?%24filter=ShipmentID%20eq%20%270000010058%27&%24select=DeliveryHeaderID"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/ShipmentSet"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/PortSet"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/DeliveryHeaderSet"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/ContainerSet"         
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/GenericSearchSet"         
+                },       
+                 {
+                                "group" : "Collaboration",
+                                "url" : "/CollaborationLineSet?$skip=0&$top=100&$orderby=DeliveryLineNumber%20asc,SupplierID%20asc&$filter=((DaysFromLoad%20eq%201)%20and%20Shortage%20gt%202M%20and%20Surplus%20gt%202M)&$inlinecount=allpages"         
+                } ,
+                 {
+                                "group" : "Administration",
+                                "url" : "/GenericSearchSet?%24filter=Scenario%20eq%20%27SHIPMENT_TYPE%27"
+                },
+                 {
+                                "group" : "Administration",
+                                "url" : "/GenericSearchSet?%24filter=Scenario%20eq%20%27VARIETY%27"
+                },
+                {
+                                "group" : "Administration",
+                                "url" : "/GenericSearchSet?%24filter=Scenario%20eq%20%27CLASS%27"
+                },
+                {
+                                "group" : "Administration",
+                                "url" : "/GenericSearchSet?%24filter=Scenario%20eq%20%27GROWING_METHOD%27"
+                },
+                {
+                				"group" : "Administration",
+                				"url" : "/TimeBasedRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Active%20eq%20true))&$inlinecount=allpages"
+                },
+                {
+                				"group" : "Administration",
+                				"url" : "/TimeBasedRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Country%20eq%20%27NZ%27)%20and%20(Active%20eq%20true))&$inlinecount=allpages"
+                },
+                {
+                				"group" : "Administration",
+                				"url" : "/TimeBasedRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Characteristic/Class%20eq%20%271%27%20or%20Characteristic/Class%20eq%20%272%27)%20and%20(Active%20eq%20true))&$inlinecount=allpages"
+                },
+                {
+                				"group" : "Administration",
+                				"url" : "/TimeBasedRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Characteristic/GrowingMethod%20eq%20%27CK%27)%20and%20(Active%20eq%20false))&$inlinecount=allpages"
+                },
+                {
+                				"group" : "Administration",
+                				"url" : "/ExceptionRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Active%20eq%20true))&$inlinecount=allpages"
+                },
+                {
+                				"group" : "Administration",
+                				"url" : "/ExceptionRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Characteristic/Variety%20eq%20%27EG%27)%20and%20(Active%20eq%20true))&$inlinecount=allpages"
+                },
+                 {
+                				"group" : "Administration",
+                				"url" : "/ExceptionRateSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(Characteristic/GrowingMethod%20eq%20%27OB%27)%20and%20(Active%20eq%20false))&$inlinecount=allpages"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/ScheduleSet?$skip=0&$top=100&$inlinecount=allpages"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/ScheduleSet('PPREMINDIA')/ScheduleLineSet?$skip=0&$top=100&$inlinecount=allpages"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/ScheduleSet('PPREMINDIA')?%24expand=ScheduleLineSet"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/LibraryTextSet?$skip=0&$top=10000&$inlinecount=allpages"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/LibraryTextSet('0080000516')"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/ScheduleSet?$skip=0&$top=100&$inlinecount=allpages"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/ScheduleSet?$skip=0&$top=100&$inlinecount=allpages"
+                },
+                {				
+                				"group" : "Administration",
+                				"url" : "/ScheduleSet?$skip=0&$top=100&$inlinecount=allpages"
+                },
+                {
+                                "group" : "Collaboration",
+                                "url" : "/DeliverySwapSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27))&$inlinecount=allpages"
+				},
+				{
+                                "group" : "Collaboration",
+                                "url" : "/DeliverySwapSet?$skip=0&$top=100&$filter=((Season%20eq%20%272014%27)%20and%20(SourceShipmentID%20eq%20%270000010222%27)%20and%20(TargetShipmentID%20eq%20%270000010222%27))&$inlinecount=allpages"
+				},
+				{
+                                "group" : "Collaboration",
+								"url" : "/SwapOpportunitySet?%24filter=SourceDeliveryNumber%20eq%20%270080000113%27%20and%20TargetDeliveryNumber%20eq%20%270080000114%27"
+				},
+				{
+                                "group" : "Collaboration",
+								"url" : "/SwapOpportunitySet?%24filter=SourceShipmentID%20eq%20%270000010222%27%20and%20SourceDeliveryNumber%20eq%20%270080000113%27%20and%20TargetDeliveryNumber%20eq%20%270080000114%27"
+				},
+				{
+                                "group" : "Collaboration",
+								"url" : "/SwapOpportunitySet?%24filter=SourceShipmentID%20eq%20%270000010222%27%20and%20SourceDeliveryNumber%20eq%20%270080000113%27%20and%20TargetDeliveryNumber%20eq%20%270080000114%27%20and%20%28Supplier%20eq%20%27100%27%20or%20Supplier%20eq%20%27207%27%29"
+				},
+				{
+								"group" : "Collaboration",
+								"url" : "/OrderHistorySet?$skip=0&$top=100&$filter=(RecordType%20eq%20%27D%27%20and%20((Season%20eq%20%272014%27)))&$inlinecount=allpages"
+				},
+				{
+								"group" : "Collaboration",
+								"url" : "/OrderHistorySet?$skip=0&$top=100&$filter=(((Season%20eq%20%272014%27)%20and%20(ShipmentID%20eq%20%2720120%27))%20and%20RecordType%20eq%20%27D%27)&$inlinecount=allpages"
+				},
+				{
+								"group" : "Collaboration",
+								"url" : "/OrderHistorySet?$skip=0&$top=100&$orderby=ShipmentID%20desc&$filter=(RecordType%20eq%20%27A%27%20and%20((Season%20eq%20%272014%27)))"
+				},
+				{
+								"group" : "Collaboration",
+								"url" : "/OrderHistorySet?$skip=0&$top=29&$orderby=CreationTimestamp%20asc&$filter=(((Season%20eq%20%272014%27)%20and%20(ShipmentID%20eq%20%2710222%27))%20and%20RecordType%20eq%20%27D%27)"
+				},
+				{
+								"group" : "Collaboration",
+								"url" : "/OrderHistorySet?$skip=0&$top=100&$filter=(((Season%20eq%20%272014%27)%20and%20(ShipmentID%20eq%20%2710222%27%20or%20ShipmentID%20eq%20%2710214%27))%20and%20RecordType%20eq%20%27D%27)&$inlinecount=allpages"
+				},
+				{
+								"group" : "DashBoard",
+								"url"   : "/GetTilesCount"
+				},
+				{
+								"group" : "DashBoard",
+								"url"   : "/GetShipmentConfirmDue"
+				} 
+               ]
+    }
+],
+"groups" : [{"grouplist" : "ALL"},{"grouplist" : "DashBoard"},{"grouplist" : "Allocation"},{"grouplist" : "Collaboration"},{"grouplist" : "Delivery WorkList"},{"grouplist" : "Administration"}]
+}!!STRDEL!!

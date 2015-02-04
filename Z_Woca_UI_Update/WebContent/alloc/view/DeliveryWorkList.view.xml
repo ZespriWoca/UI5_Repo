@@ -1,0 +1,28 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.alloc.view.DeliveryWorkList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	
+	<!-- 
+		For Routing between Master and Detail, we need target control ID i.e. Id of the splitContainer.
+		Assigning ID for the splitContainer in View , generates runtime ID with the
+		combination of both xmlView ID and SplitContainer ID.   	
+		So Split Container is created in fragment to assign Fixed ID (for target control) to perform Routing. 
+		 
+	-->
+	
+	<!-- Page Control for Split Container , hiding header and footer -->
+	
+	<Page id="deliveryWorkList" showHeader="false" showFooter="false">
+		<content>
+
+		</content>
+	</Page>
+
+</core:View>

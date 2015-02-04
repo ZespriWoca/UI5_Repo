@@ -1,0 +1,20 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<ActionSheet placement="Top">
+		<buttons>
+			<!-- Pro-Rata Macro -->
+			<Button id="proRataMacroButton" press="handleProRataMacroButtonPress"
+				text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_PRO_RATA_MACRO_BUTTON}" />
+
+			<!-- Zero Macro -->
+			<Button id="zeroMacroButton" press="handleZeroMacroButtonPress"
+				text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_ZERO_MACRO_BUTTON}" />
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

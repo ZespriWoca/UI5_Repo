@@ -1,0 +1,56 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<Dialog title="{i18n>TXT_ADMIN_ADD_SCHEDULE_RATE_DIALOG_PAGE_TITLE}"
+		type="Message" busyIndicatorDelay="0">
+		<!-- Form -->
+		<form:Form id="addScheduleRateForm">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- schedule name -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_ADD_SCHEDULE_RATES_DIALOG_SCHEDULE_NAME}">
+							<form:fields>
+								<Input id="scheduleNameInput" maxLength="10" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Schedule Type -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_ADD_SCHEDULE_LINE_DIALOG_SCHEDULE_TYPE}">
+							<form:fields>
+								<Select id="deliveryPalleteInput">
+									<core:Item key="D" text="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_LABEL_SCHEDULE_TYPE_DELIVERY}" />
+									<core:Item key="S" text="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_LABEL_SCHEDULE_TYPE_SWAP}" />
+									<core:Item key="P" text="{i18n>TXT_GENERIC_PALLET}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+
+		<!-- Save button -->
+		<beginButton>
+			<Button text="{i18n>TXT_GENERIC_SAVE}"
+				press="handleAddScheduleRatesSavePress" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button text="{i18n>TXT_GENERIC_CLOSE}"
+				press="handleAddScheduleRatesClosePress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

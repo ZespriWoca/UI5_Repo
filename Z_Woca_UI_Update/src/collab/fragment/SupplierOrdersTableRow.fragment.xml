@@ -1,0 +1,65 @@
+<ColumnListItem xmlns="sap.m" xmlns:awct="com.zespri.awct.control">
+	<cells>
+		<Text
+			text="{parts: ['SupplierID', 'RecordType'], formatter:'.formatSupplierID'}"
+			tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+		<Text text="{ShipmentID}"
+			tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+		<Text text="{LoadPort}"
+			tooltip="{i18n>TXT_GENERIC_LOAD_PORT}" />
+		<Text text="{DestinationPort}"
+			tooltip="{i18n>TXT_GENERIC_DESTINATION_PORT}" />
+		<Text text="{path: 'DeliveryInstructionNumber', formatter:'.formatDeliveryInstructionNumber'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_DELIVERY_INSTRUCTION_NUMBER}" />
+		<Text text="{DeliveryID}"
+			tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+		<Text text="{DeliveryLineNumber}"
+			tooltip="{i18n>TXT_GENERIC_LINE}" />
+		<awct:SharedContainerLink text="{ContainerID}"
+			tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+		<Text text="{MarketAccessArea}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_ACCESS}" />
+		<Text tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_START}"
+			text="{path:'LoadFromDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}" />
+		<Text
+			text="{path:'LoadToDate', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateObject'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_END}" />
+		<Text text="{Characteristic/Brand}"
+			tooltip="{i18n>TXT_GENERIC_BRAND}" />
+		<Text
+			text="{parts:['Characteristic/Variety','Characteristic/Class','Characteristic/GrowingMethod'], formatter:'.formatCharacteristics'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_VARIETY_CLASS_GROWING_METHOD}" />
+		<Text text="{Characteristic/Size}"
+			tooltip="{i18n>TXT_GENERIC_SIZE}" />
+		<Text
+			text="{parts:['Characteristic/PalletBase','Characteristic/Stack','Characteristic/PackStyle'], formatter:'.formatCharacteristics'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_PALETTE_BASE_STACK_PACK}" />
+		<Text text="{Characteristic/Label}"
+			tooltip="{i18n>TXT_GENERIC_LABEL}" />
+		<Text
+			text="{path:'Quantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			visible="{path : 'Quantity' , formatter : '.formatQuantityCellVisibility'}"
+			tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+		<Text
+			text="{path:'Shortage', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			visible="{path : 'Shortage' , formatter : '.formatQuantityCellVisibility'}"
+			tooltip="{i18n>TXT_GENERIC_SHORTAGE}" />
+		<Text
+			text="{path:'Surplus', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			visible="{path : 'Surplus' , formatter : '.formatQuantityCellVisibility'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_SURPLUS}" />
+		<Text
+			text="{path:'TradeQuantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			visible="{path : 'TradeQuantity' , formatter : '.formatQuantityCellVisibility'}"
+			tooltip="{i18n>TXT_GENERIC_TRADE}" />
+		<Text text="{UOM}"
+			tooltip="{i18n>TXT_GENERIC_UOM}" />
+		<Text text="{path:'IsConsumed', formatter:'.formatIsConsumed'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_COLUMN_TOOLTIP_CONS}" />
+
+		<!-- Actions -->
+		<Button icon="sap-icon://overflow" press="handleRowActionsPress" id="actionsButton"
+			type="Transparent" tooltip ="{i18n>TXT_TABLE_ROW_ACTIONS_BUTTON_TOOLTIP}" visible="false"/>
+
+	</cells>
+</ColumnListItem>

@@ -1,0 +1,205 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.admin.view.TimeBasedRateDetail"
+	xmlns:form="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:awct="com.zespri.awct.control" busyIndicatorDelay="0">
+	<Page id="pageTimeRateDetail">
+
+		<!-- Form -->
+		<form:Form id="timeRateDetailForm" class="zAwctFormPaddingTop">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Variety -->
+						<form:FormElement label="{i18n>TXT_GENERIC_VARIETY}">
+							<form:fields>
+								<Select id="selectVariety" items="{domainValues>/Varieties}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>Key}"
+										text="{parts:[{path: 'domainValues>Key'},{path: 'domainValues>Value'}], formatter:'.formatSelectItems'}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Class -->
+						<form:FormElement label="{i18n>TXT_GENERIC_CLASS}">
+							<form:fields>
+								<Select id="selectClass" items="{domainValues>/Classes}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>Key}"
+										text="{parts:[{path: 'domainValues>Key'},{path: 'domainValues>Value'}], formatter:'.formatSelectItems'}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Growing Method -->
+						<form:FormElement label="{i18n>TXT_GENERIC_GROWING_METHOD}">
+							<form:fields>
+								<Select id="selectGrowingMethod" items="{domainValues>/GrowingMethods}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>Key}"
+										text="{parts:[{path: 'domainValues>Key'},{path: 'domainValues>Value'}], formatter:'.formatSelectItems'}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Pack style -->
+						<form:FormElement label="{i18n>TXT_GENERIC_PACK_STYLE}">
+							<form:fields>
+								<Select id="selectPackStyle" items="{domainValues>/PackStyles}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>Key}"
+										text="{parts:[{path: 'domainValues>Key'},{path: 'domainValues>Value'}], formatter:'.formatSelectItems'}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Size -->
+						<form:FormElement label="{i18n>TXT_GENERIC_SIZE}">
+							<form:fields>
+								<Select id="selectSize" items="{domainValues>/Sizes}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>Key}"
+										text="{parts:[{path: 'domainValues>Key'},{path: 'domainValues>Value'}], formatter:'.formatSelectItems'}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Country -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_LABEL_COUNTRY}">
+							<form:fields>
+								<Select id="selectCountry" items="{domainValues>/Countries}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>CountryCode}" text="{domainValues>CountryCode}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Shipment Type -->
+						<form:FormElement label="{i18n>TXT_GENERIC_SHIPMENT_TYPE}">
+							<form:fields>
+								<Select id="selectShipmentType" items="{domainValues>/ShipmentTypes}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>ShipmentTypeID}" text="{domainValues>ShipmentTypeID}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+
+				</form:FormContainer>
+
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Charge code -->
+						<form:FormElement label="{i18n>TXT_GENERIC_CHARGE_CODE}">
+							<form:fields>
+								<Select id="selectChargeCode" items="{domainValues>/ChargeCodes}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>Key}"
+										text="{parts:[{path: 'domainValues>Key'},{path: 'domainValues>Value'}], formatter:'.formatSelectItems'}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+
+						<!-- Schedule -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_LABEL_SCHEDULE}">
+							<form:fields>
+								<Select id="selectSchedule" items="{domainValues>/Schedules}"
+									change="handleInputChange">
+									<core:Item key="{domainValues>ScheduleName}"
+										text="{domainValues>ScheduleName}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Valid from -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_LABEL_VALID_FROM}">
+							<form:fields>
+								<awct:DatePicker id="dateValidFrom" type="Date"
+									change="handleInputChange" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Valid To -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_LABEL_VALID_TO}">
+							<form:fields>
+								<awct:DatePicker id="dateValidTo" type="Date"
+									change="handleInputChange" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Priority -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_LABEL_PRIORITY}">
+							<form:fields>
+								<Select id="selectPriority" change="handleInputChange">
+									<core:Item key="1" text="1" />
+									<core:Item key="2" text="2" />
+									<core:Item key="3" text="3" />
+									<core:Item key="4" text="4" />
+									<core:Item key="5" text="5" />
+									<core:Item key="6" text="6" />
+									<core:Item key="7" text="7" />
+									<core:Item key="8" text="8" />
+									<core:Item key="9" text="9" />
+									<core:Item key="10" text="10" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+						<!--Active -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_LABEL_ACTIVE}">
+							<form:fields>
+								<Switch id="selectActiveFlag" change="handleInputChange"
+									customTextOff="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_SWITCH_ACTIVE_CUSTOM_TEXT_NO}"
+									customTextOn="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_SWITCH_ACTIVE_CUSTOM_TEXT_YES}"
+									enabled="true" state="true" />
+							</form:fields>
+						</form:FormElement>
+						
+						<!-- Short Notice Flag -->
+						<form:FormElement label="{i18n>TXT_ADMIN_EXCEPTION_RATES_DETAIL_LABEL_SHORT_NOTICE}">
+							<form:fields>
+								<Switch id="switchShortNotice" change="handleInputChange"
+									customTextOff="{i18n>TXT_GENERIC_NO}"
+									customTextOn="{i18n>TXT_GENERIC_YES}"
+									enabled="true" />
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+
+			</form:formContainers>
+		</form:Form>
+
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+
+					<!-- Save Detail -->
+					<Button id="saveTimeRateButton" type="Emphasized" enabled="false"
+						text="{i18n>TXT_GENERIC_SAVE}" press="handleSavePress" />
+
+					<!-- Delete Detail -->
+					<Button id="deleteTimeRateButton"
+						text="{i18n>TXT_ADMIN_TIME_RATES_DETAIL_BUTTON_DELETE}" press="handleDeletePress" />
+
+					<!-- Cancel Detail -->
+					<Button id="cancelTimeRateButton" text="{i18n>TXT_GENERIC_CANCEL}"
+						press="handleCancelPress" />
+
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

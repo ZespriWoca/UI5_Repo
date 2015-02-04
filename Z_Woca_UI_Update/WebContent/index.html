@@ -1,0 +1,49 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+		<script src="/sap/public/bc/ui5_ui5/1/resources/sap-ui-cachebuster/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m, sap.ui.unified"
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-resourceroots='{
+					"com.zespri.awct": "",
+					"shell" : "shell"
+				}'
+				data-sap-ui-rootcomponent='com.zespri.awct'
+				data-sap-ui-theme="zawct_theme@http://appgwxdev01.zespri.zil:8000/sap/public/bc/themes/~client-165" 
+				data-sap-ui-appCacheBuster="./">
+		</script>
+
+		<link rel="shortcut icon" href="image/Zespri_favicon_16x16.ico">
+		<link rel="apple-touch-icon" href="image/Zespri_logo_76x76px.png" sizes="76x76">
+		<link rel="apple-touch-icon" href="image/Zespri_logo_152x152px.png" sizes="152x152">
+		<link rel="stylesheet" type="text/css" media="all" href="style/awct-root.css"/>	
+
+		<script>
+			sap.ui.getCore().attachInit(function() {	
+				document.title = "Zespri WOCA (AWCT)";				
+				//Create a component and place it in the Shell
+	            new sap.m.Shell("AWCTShell", {
+	            	appWidthLimited: false,
+	            	app: new sap.ui.core.ComponentContainer({
+	                	height : "100%",
+	                    component: sap.ui.getCore().getRootComponent()
+	                })
+	            }).placeAt("content");
+	        });
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

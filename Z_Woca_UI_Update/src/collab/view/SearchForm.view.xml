@@ -1,0 +1,457 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:awct="com.zespri.awct.control" xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:commons="sap.ui.commons"
+	controllerName="com.zespri.awct.collab.view.SearchForm">
+	<Page title="{i18n>TXT_COLLABORATION_SEARCH_FORM_TITLE}" id="pageSearchForm">
+		<form:Form id="searchForm" class="zAwctTopPaddingSearchForm">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Supplier ID -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_SUPPLIER_ID}">
+							<form:fields>
+								<awct:SearchHelpInput id="supplierIDInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_SUPPLIER_ID}" />
+										<core:CustomData key="filterKey" value="SupplierID" />
+										<core:CustomData key="entitySet" value="/SupplierSet" />
+										<core:CustomData key="completeFilterKey"
+											value="SupplierID" />
+										<core:CustomData key="filter" value="" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- ShipmentID -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHIPMENTID_LABEL}">
+							<form:fields>
+								<awct:SearchHelpInput id="shipmentIDInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHIPMENTID_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="ShipmentID" />
+										<core:CustomData key="entitySet" value="/ShipmentSet" />
+										<core:CustomData key="completeFilterKey"
+											value="ShipmentID" />
+										<core:CustomData key="filter" value="" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Delivery Number -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_DELIVERY_NUMBER}">
+							<form:fields>
+
+								<awct:SearchHelpInput id="deliveryNumberInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+										<core:CustomData key="filterKey" value="DeliveryHeaderID" />
+										<core:CustomData key="entitySet" value="/DeliveryHeaderSet" />
+										<core:CustomData key="completeFilterKey"
+											value="DeliveryID" />
+										<core:CustomData key="filter" value="" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Container ID -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_CONTAINER_ID}">
+							<form:fields>
+								<awct:SearchHelpInput id="containerIDInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+										<core:CustomData key="filterKey" value="ContainerID" />
+										<core:CustomData key="entitySet" value="/ContainerSet" />
+										<core:CustomData key="completeFilterKey"
+											value="ContainerID" />
+										<core:CustomData key="filter" value="" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Load Port -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_LOAD_PORT}">
+							<form:fields>
+
+								<awct:SearchHelpInput id="loadPortInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_LOAD_PORT}" />
+										<core:CustomData key="filterKey" value="PortID" />
+										<core:CustomData key="entitySet" value="/PortSet" />
+										<core:CustomData key="completeFilterKey"
+											value="LoadPort" />
+										<core:CustomData key="filter"
+											value='\{"path":"PortType","operator":"eq","value1":"L"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Destination Port -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_DESTINATION_PORT}">
+							<form:fields>
+								<awct:SearchHelpInput id="destinationPortInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_DESTINATION_PORT}" />
+										<core:CustomData key="filterKey" value="PortID" />
+										<core:CustomData key="entitySet" value="/PortSet" />
+										<core:CustomData key="completeFilterKey"
+											value="DestinationPort" />
+										<core:CustomData key="filter"
+											value='\{"path":"PortType","operator":"eq","value1":"D"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Shipment Name -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHIPMENTNAME_LABEL}">
+							<form:fields>
+
+								<awct:SearchHelpInput id="shipmentNameInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHIPMENTNAME_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="Name" />
+										<core:CustomData key="entitySet" value="/GetShipmentNamesForSeason" />
+										<core:CustomData key="completeFilterKey"
+											value="ShipmentName" />
+										<core:CustomData key="filter" value="" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Shipment Type -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_SHIPMENT_TYPE}">
+							<form:fields>
+
+								<awct:SearchHelpInput id="shipmentTypeInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_SHIPMENT_TYPE}" />
+										<core:CustomData key="filterKey" value="ShipmentTypeID" />
+										<core:CustomData key="entitySet" value="/GetShipmentTypesForSeason" />
+										<core:CustomData key="completeFilterKey"
+											value="ShipmentType" />
+										<core:CustomData key="filter" value="" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Market Access Area -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_MARKETACCESSAREA_LABEL}">
+							<form:fields>
+								<awct:SearchHelpInput id="marketAccessAreaInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_MARKETACCESSAREA_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="MarketAccessArea" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"MARKET_ACCESS"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Marketer -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_MARKETER_LABEL}">
+							<form:fields>
+								<awct:SearchHelpInput id="marketerInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_MARKETER_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="Marketer" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"MARKETER"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Load From Date -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_LOADFROMDATE_LABEL}">
+							<form:fields>
+								<awct:DatePicker id="searchLoadFromDateInput"
+									class="zAwctSearchFormDate">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_LOADFROMDATE_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="LoadFromDate" />
+										<core:CustomData key="entitySet" value="/CollaborationLineSet" />
+										<core:CustomData key="completeFilterKey"
+											value="LoadFromDate" />
+									</awct:customData>
+								</awct:DatePicker>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Load To Date -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_LOADTODATE_LABEL}">
+							<form:fields>
+								<awct:DatePicker id="searchLoadToDateInput"
+									class="zAwctSearchFormDate">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_LOADTODATE_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="LoadToDate" />
+										<core:CustomData key="entitySet" value="/CollaborationLineSet" />
+										<core:CustomData key="completeFilterKey"
+											value="LoadToDate" />
+									</awct:customData>
+								</awct:DatePicker>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+
+				<form:FormContainer>
+					<form:formElements>
+						<!-- Days from Load -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_DAYSFROMLOAD_LABEL}">
+							<form:fields>
+								<Input id="daysFromLoadInput" type="Text" showSuggestion="true"
+									liveChange="handleNumberInputValueChanged" maxLength="5">
+									<customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_DAYSFROMLOAD_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="DaysFromLoad" />
+										<core:CustomData key="entitySet" value="/DeliveryHeaderSet" />
+										<core:CustomData key="completeFilterKey"
+											value="DaysFromLoad" />
+										<core:CustomData key="filter" value="" />
+									</customData>
+								</Input>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Shortage greater than -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHORTAGEGREATERTHAN_LABEL}">
+							<form:fields>
+								<Input id="searchShortageGreaterThan" type="Text"
+									showSuggestion="true" liveChange="handleNumberInputValueChanged"
+									maxLength="10">
+									<customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHORTAGEGREATERTHAN_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="Shortage" />
+										<core:CustomData key="completeFilterKey"
+											value="Shortage" />
+									</customData>
+								</Input>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Surplus greater than -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_SURPLUSGREATERTHAN_LABEL}">
+							<form:fields>
+								<Input id="searchSurplusGreaterThan" type="Text"
+									showSuggestion="true" liveChange="handleNumberInputValueChanged"
+									maxLength="10">
+									<customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_SURPLUSGREATERTHAN_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="filterKey" value="Surplus" />
+										<core:CustomData key="completeFilterKey"
+											value="Surplus" />
+									</customData>
+								</Input>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Brand -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_BRAND}">
+							<form:fields>
+								<awct:SearchHelpInput id="brandInput" type="Text"
+									valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_BRAND}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="Characteristic/Brand" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"BRAND"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Fruit group -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_FRUITGROUP_LABEL}">
+							<form:fields>
+								<Input id="fruitGroupInput" type="Text" maxLength="5">
+									<customData>
+										<core:CustomData key="varietyLabel"
+											value="{i18n>TXT_GENERIC_VARIETY}" />
+										<core:CustomData key="classLabel"
+											value="{i18n>TXT_GENERIC_CLASS}" />
+										<core:CustomData key="growingMethodLabel"
+											value="{i18n>TXT_GENERIC_GROWING_METHOD}" />
+									</customData>
+								</Input>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Stack -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_STACK}">
+							<form:fields>
+								<awct:SearchHelpInput id="stackInput" type="Text"
+									valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_STACK}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="Characteristic/Stack" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"STACKING_CONFIGURATION"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Pack Style -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_PACK_STYLE}">
+							<form:fields>
+								<awct:SearchHelpInput id="packStyleInput"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_PACK_STYLE}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="Characteristic/PackStyle" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"PACK_STYLE"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Size -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_SIZE}">
+							<form:fields>
+								<awct:SearchHelpInput id="sizeInput" type="Text"
+									valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_SIZE}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="Characteristic/Size" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"SIZE"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Label -->
+						<form:FormElement
+							label="{i18n>TXT_GENERIC_LABEL}">
+							<form:fields>
+								<awct:SearchHelpInput id="labelInput" type="Text"
+									valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_GENERIC_LABEL}" />
+										<core:CustomData key="filterKey" value="Key" />
+										<core:CustomData key="entitySet" value="/GenericSearchSet" />
+										<core:CustomData key="completeFilterKey"
+											value="Characteristic/Label" />
+										<core:CustomData key="filter"
+											value='\{"path":"Scenario","operator":"eq","value1":"LABELLING"\}' />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Show Demand Lines -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHOW_DEMAND_LINES_LABEL}">
+							<form:fields>
+								<CheckBox id="showDemandLinesChekBox" selected="true">
+									<customData>
+										<core:CustomData key="label"
+											value="{i18n>TXT_COLLABORATION_SEARCH_FORM_SHOW_DEMAND_LINES_CUSTOM_DATA_LABEL}" />
+										<core:CustomData key="completeFilterKey"
+											value="RecordType" />
+									</customData>
+								</CheckBox>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+
+		<footer>
+			<Bar>
+				<contentRight>
+					<!-- Continue button -->
+					<Button id="continueButton" text="{i18n>TXT_COLLABORATION_SEARCH_FORM_CONTINUE_BUTTON}"
+						type="Emphasized" press="handleFilterPress" />
+
+					<!-- Reset button -->
+					<Button text="{i18n>TXT_GENERIC_RESET}"
+						press="handleFilterResetPress" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

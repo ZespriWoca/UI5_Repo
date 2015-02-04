@@ -1,0 +1,17 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<ActionSheet showCancelButton="true" placement="Top">
+		<buttons>
+			<!-- Global Text -->
+			<Button text="{i18n>TXT_ALLOCATION_ACTIONSHEET_MAINTAIN_GLOBAL_TEXT}"
+				visible="{parts:['currentUserDetails>/Administrator', 'currentUserDetails>/Supplier'], formatter:'.formatActionSheetVisible'}"
+				press="handleDeliveryHeaderTextOpen" icon="sap-icon://it-host"></Button>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

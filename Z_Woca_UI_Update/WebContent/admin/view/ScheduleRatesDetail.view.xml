@@ -1,0 +1,134 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.zespri.awct.admin.view.ScheduleRatesDetail"
+	xmlns:form="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	busyIndicatorDelay="0">
+	<Page id="pageScheduleRatesDetail" title="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_PAGE_TITLE}">
+
+		<!-- Form -->
+		<form:Form id="scheduleRateDetailForm" class="zAwctFormPaddingTop"
+			title="{i18n>TXT_ADMIN_SCHEDULE_LINE_DETAILS_FORM_TITLE}">
+
+			<form:layout>
+				<form:ResponsiveGridLayout labelSpanL="4"
+					labelSpanM="3" labelSpanS="3" emptySpanL="4" emptySpanM="3"
+					emptySpanS="3" />
+			</form:layout>
+
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Schedule Name -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_LABEL_SCHEDULE_NAME}">
+							<form:fields>
+								<Input width="60%" id="textScheduleName" value="{ScheduleName}"
+									change="handleInputChange" maxLength="10" enabled="false" />
+							</form:fields>
+						</form:FormElement>
+
+						<!-- By Schedule Type -->
+						<form:FormElement
+							label="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_LABEL_SCHEDULE_TYPE}">
+							<form:fields>
+								<Select width="60%" id="textDeliveryPallet" change="handleInputChange"
+									enabled="false">
+									<core:Item key="D"
+										text="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_LABEL_SCHEDULE_TYPE_DELIVERY}" />
+									<core:Item key="S"
+										text="{i18n>TXT_ADMIN_SCHEDULE_RATES_DETAIL_LABEL_SCHEDULE_TYPE_SWAP}" />
+									<core:Item key="P" text="{i18n>TXT_GENERIC_PALLET}" />
+								</Select>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+
+			</form:formContainers>
+		</form:Form>
+
+		<Table id="scheduleLineTable" mode="SingleSelectMaster"
+			selectionChange="handleScheduleLineTableSelect" growing="true"
+			growingThreshold="100" class="zAwctTableVerticalCenterCells">
+			<headerToolbar>
+				<Toolbar>
+					                                              
+					<Label class="zAwctScheduleLineToolbarLabel" text="{i18n>TXT_ADMIN_SCHEDULE_LINE_TABLE_TITLE}"></Label>
+					                                                   
+				</Toolbar>
+			</headerToolbar>
+
+			<columns>
+
+				<!-- schedule name -->
+				<Column hAlign="Right">
+					<Label text="{i18n>TXT_ADMIN_SCHEDULE_LINE_DAYS_FROM_LOADING}"
+						tooltip="{i18n>TXT_ADMIN_SCHEDULE_LINE_DAYS_FROM_LOADING}" />
+				</Column>
+
+				<!-- short notice start -->
+				<Column hAlign="Right">
+					<Label text="{i18n>TXT_ADMIN_SCHEDULE_LINE_STANDARD_RATE}"
+						tooltip="{i18n>TXT_ADMIN_SCHEDULE_LINE_STANDARD_RATE}" />
+				</Column>
+
+				<!-- By Delivery -->
+				<Column hAlign="Right">
+					<Label text="{i18n>TXT_ADMIN_SCHEDULE_LINE_SHORT_NOTICE_RATE}"
+						tooltip="{i18n>TXT_ADMIN_SCHEDULE_LINE_SHORT_NOTICE_RATE}" />
+				</Column>
+
+				<!-- For 'actions'. No header needed. -->
+				<Column width="50px">
+				</Column>
+
+
+			</columns>
+
+			<items>
+
+				<ColumnListItem>
+					<cells>
+						<Text
+							text="{path:'DaysFromLoading', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+							tooltip="{i18n>TXT_ADMIN_SCHEDULE_LINE_DAYS_FROM_LOADING}" />
+						<Text text="{StandardRate} {Currency}" tooltip="{i18n>TXT_ADMIN_SCHEDULE_LINE_STANDARD_RATE}" />
+						<Text text="{ShortNoticeRate} {Currency}" tooltip="{i18n>TXT_ADMIN_SCHEDULE_LINE_SHORT_NOTICE_RATE}" />
+						<!-- Actions -->
+						<Button id="rowActionsButton" icon="sap-icon://overflow"
+							press="handleRowActionsPress" type="Transparent"
+							tooltip="{i18n>TXT_TABLE_ROW_ACTIONS_BUTTON_TOOLTIP}" visible="false" />
+					</cells>
+
+				</ColumnListItem>
+
+			</items>
+
+		</Table>
+
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+					<!-- Button to save Schedule rate line -->
+					<Button id="scheduleRateSaveButton" text="{i18n>TXT_GENERIC_SAVE}"
+						press="handleScheduleRateDetailSavePress" type="Emphasized"
+						enabled="false" visible="false" />
+					<!-- Button to add new Schedule rate line -->
+					<Button id="addScheduleRates" text="{i18n>TXT_ADMIN_SCHEDULE_LINE_BUTTON_ADD}"
+						press="handleAddScheduleLinePress" visible="false" />
+					<!-- Button to cancel Schedule rate line -->
+					<Button text="{i18n>TXT_GENERIC_CANCEL}" press="handleScheduleRateDetailCancelPress" />
+					<!-- Action Sheet -->
+					<Button icon="sap-icon://overflow" press="handleScheduleRateActionSheetOpen" />
+				</contentRight>
+			</Bar>
+		</footer>
+
+	</Page>
+</core:View>

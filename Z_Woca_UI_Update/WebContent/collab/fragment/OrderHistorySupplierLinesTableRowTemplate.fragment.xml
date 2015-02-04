@@ -1,0 +1,70 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<ColumnListItem xmlns="sap.m"
+	class="zAwctOrderHistoryTableRowPaddingLeft">
+	<cells>
+		<CheckBox
+			visible="{parts:['ChargeQuantity','ChargeAmount', 'RecordType'], formatter:'.formatCheckBoxVisible'}"
+			select="handleChangeCheckboxSelection" />
+		<Text text="{SupplierID}" tooltip="{i18n>TXT_GENERIC_SUPPLIER}" />
+		<Text text="{ShipmentID}"
+			tooltip="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}" />
+		<Text text="{DeliveryID}"
+			tooltip="{i18n>TXT_GENERIC_DELIVERY_NUMBER}" />
+		<Text text="{DeliveryLineNumber}"
+			tooltip="{i18n>TXT_GENERIC_LINE_NUMBER}" />
+		<Text text="{ContainerID}"
+			tooltip="{i18n>TXT_GENERIC_CONTAINER_ID}" />
+		<Text text="{ExemptionUserID}" tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_USER_ID}" />
+		<Text
+			text="{path:'CreationTimestamp', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatDateTimeObject'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_TIME}" />
+		<Text text="{ProductNumber}" tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_PRODUCT}" />
+		<Text
+			text="{path:'Quantity',formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_GENERIC_QUANTITY}" />
+		<Text
+			text="{path:'ShortageQuantity',formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_GENERIC_SHORTAGE}" />
+		<Text
+			text="{path:'SurplusQuantity',formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_SURPLUS}" />
+		<Text
+			text="{path:'TradeQuantity',formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_GENERIC_TRADE}" />
+		<Text text="{UoM}" tooltip="{i18n>TXT_GENERIC_UOM}" />
+		<Text text="{path:'IsConsumed', formatter:'.formatIsConsumed'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CONSUMED}" />
+		<Text
+			text="{path:'ChargeQuantity',formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityWithDecimals'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_QUANTITY}" />
+		<Text
+			text="{path:'ChargeRate',formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityWithDecimals'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_RATE}" />
+		<Text
+			text="{path:'ChargeAmount',formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityWithDecimals'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_CHARGE_AMOUNT}" />
+		<Text text="{ChargeCode}"
+			tooltip="{i18n>TXT_GENERIC_CHARGE_CODE}" />
+		<Text
+			text="{path:'DeliveryStatusBeforeOrAfterRelease', formatter:'.formatDeliveryStatus'}"
+			tooltip="{i18n>TXT_GENERIC_DELIVERY_STATUS}" />
+		<Text
+			text="{path:'ExemptionRequested',formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_REQUESTED}" />
+		<Text
+			text="{path:'ExemptionAccepted',formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_ACCEPTED}" />
+		<Text text="{ExemptionStatus}"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_EXEMPTION_STATUS}" />
+		<Link text="{ReasonCode}" press="handleShowReasonCodeDescriptionPopover"
+			tooltip="{i18n>TXT_COLLABORATION_SUPPLIERLINES_COLUMN_REASON}" />
+		<!-- Actions -->
+		<Button icon="sap-icon://overflow" press="handleRowActionsPress"
+			type="Transparent" tooltip ="{i18n>TXT_TABLE_ROW_ACTIONS_BUTTON_TOOLTIP}"/>
+	</cells>
+</ColumnListItem>

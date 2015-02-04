@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:awct="com.zespri.awct.control">
+	<Dialog title="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_ADDSUPPLIERSTOCONTAINER_DIALOG_TITLE}" busyIndicatorDelay="0">
+	
+		<form:SimpleForm id="SimpleFormAddSuppliersToContainer"
+			layout="ResponsiveGridLayout">
+			<form:content>
+			
+				<!-- Container -->
+				<Label
+					text="{i18n>TXT_GENERIC_CONTAINER}" />
+				<Select id="containerSelect">
+					<core:Item key="{ContainerID}" text="{ContainerID}" />
+				</Select>
+				
+				<!-- Suppliers -->
+				<Label
+					text="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_ADDSUPPLIERSTOCONTAINER_SUPPLIERS_LABEL}" />
+				
+				<awct:SearchHelpInput id="supplierIDInput"
+					type="Text" valueHelpRequest="handleValueHelpPress">
+					<awct:customData>
+						<core:CustomData key="label"
+							value="{i18n>TXT_ALLOCATION_EDITALLOCATIONS_ADDSUPPLIERSTOCONTAINER_SUPPLIERS_LABEL}" />
+						<core:CustomData key="filterKey" value="SupplierID" />
+						<core:CustomData key="entitySet" value="/SupplierSet" />
+					</awct:customData>
+				</awct:SearchHelpInput>
+					
+			</form:content>
+		</form:SimpleForm>
+
+		<!-- OK button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_GENERIC_OK}"
+				dialogType="Message" press="handleAddSuppliersToContainerOKPress" />
+		</beginButton>
+
+		<!-- Close Button -->
+		<endButton>
+			<Button
+				text="{i18n>TXT_GENERIC_CANCEL}"
+				dialogType="Message" press="handleAddSuppliersToContainerCancelPress" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

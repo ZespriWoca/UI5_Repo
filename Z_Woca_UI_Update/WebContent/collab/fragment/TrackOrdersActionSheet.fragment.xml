@@ -1,0 +1,25 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<ActionSheet showCancelButton="true" placement="Top">
+		<buttons>
+			<Button id="requestExemptionButton"
+				visible="false"
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_ACTION_SHEET_REQUEST_EXEMPTION_BUTTON_LABEL}"
+				press="handleRequestExemptionDialogOpen"></Button>
+			
+			<Button id="grantExemptionButton" visible="false"
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_ACTION_SHEET_GRANT_EXEMPTION_BUTTON_LABEL}"
+				press="handleGrantExemptionDialogOpen"></Button>
+				
+			<Button id="rejectExemptionButton" visible="false"
+				text="{i18n>TXT_COLLABORATION_ORDERHISTORY_ACTION_SHEET_REJECT_EXEMPTION_BUTTON_LABEL}"
+				press="handleRejectExemptionDialogOpen"></Button>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

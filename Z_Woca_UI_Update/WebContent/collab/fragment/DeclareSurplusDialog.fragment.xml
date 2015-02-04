@@ -1,0 +1,55 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout">
+	<Dialog title="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_DECLARE_SURPLUS_TITLE}"
+		type="Message" busyIndicatorDelay="0">
+
+		<layout:HorizontalLayout class="zAwctHorizontalLayoutPaddingLeft">
+			<Label
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_ALLOCATED_QUANTITY_TITLE}" />
+			<Text
+				text=": {path:'Quantity', formatter:'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'} {UOM}" />
+		</layout:HorizontalLayout>
+
+		<!-- Form -->
+		<form:Form id="declareSurplusForm">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Surplus quantity -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_SURPLUS_QUANTITY_LABEL}">
+							<form:fields>
+								<Input type="Number" id="surplusQuantityInput"
+									value="{path:'Surplus', formatter:'com.zespri.awct.util.CommonFormatHelper.formatQuantityAsInteger'}"
+									maxLength="10" />
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+
+		<!-- Declare Surplus button -->
+		<beginButton>
+			<Button
+				text="{i18n>TXT_COLLABORATION_SUPPLIERORDERS_DECLARE_SURPLUS_TITLE}"
+				dialogType="Message" press="handleDeclareSurplusQuantityPress" />
+		</beginButton>
+
+		<!-- Close button -->
+		<endButton>
+			<Button text="{i18n>TXT_GENERIC_CLOSE}"
+				dialogType="Message" press="handleDeclareSurplusDialogClose" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

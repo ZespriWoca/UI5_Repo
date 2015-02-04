@@ -1,0 +1,103 @@
+<!-- 
+ *................................................................* 
+ * Copyright  (c) 2014 SAP SE. All rights reserved	
+ * Author       : SAP Custom Development 
+ * ................................................................ 
+ *--> 
+	<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:awct="com.zespri.awct.control" xmlns="sap.m"
+	controllerName="com.zespri.awct.collab.view.PrintOrders" xmlns:form="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" busyIndicatorDelay="0">
+
+	<!-- Title of the page -->
+	<Page title="{i18n>TXT_COLLABORATION_PRINT_ORDERS_PAGE_TITLE}" id="pagePrintOrders">
+		<!-- Form -->
+		<form:Form id="printOrdersForm" class="zAwctFormPaddingTop">
+			<form:layout>
+				<form:ResponsiveGridLayout />
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+
+						<!-- Season -->
+						<form:FormElement label="{i18n>TXT_GENERIC_SEASON}">
+							<form:fields>
+								<Select id="selectSeason">
+									<core:Item key="{Key}" text="{Key}" />
+								</Select>
+
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Shipment Number -->
+						<form:FormElement label="{i18n>TXT_GENERIC_SHIPMENT_NUMBER}">
+							<form:fields>
+								<awct:SearchHelpInput id="selectShipmentNumber"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="valueHelpKey" value="ShipmentNumber" />
+										<core:CustomData key="bindingKey" value="ShipmentID" />
+										<core:CustomData key="label" value="Shipment Number" />
+										<core:CustomData key="downloadKey" value="ShipmentID" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Delivery -->
+						<form:FormElement
+							label="{i18n>TXT_COLLABORATION_PRINT_ORDERS_DROPDOWN_DELIVERY}">
+							<form:fields>
+								<awct:SearchHelpInput id="selectDelivery"
+									type="Text" valueHelpRequest="handleValueHelpPress">
+									<awct:customData>
+										<core:CustomData key="valueHelpKey" value="Delivery" />
+										<core:CustomData key="bindingKey" value="DeliveryHeaderID" />
+										<core:CustomData key="label" value="Delivery" />
+										<core:CustomData key="downloadKey" value="DeliveryNumber" />
+									</awct:customData>
+								</awct:SearchHelpInput>
+							</form:fields>
+						</form:FormElement>
+
+						<!-- Supplier -->
+						<form:FormElement label="{i18n>TXT_GENERIC_SUPPLIER}">
+							<form:fields>
+								<Select id="selectSupplier" enabled="false">
+								</Select>
+							</form:fields>
+						</form:FormElement>
+
+					</form:formElements>
+
+				</form:FormContainer>
+				<!-- Empty form container to divide the layout in to two equal sections -->
+				<form:FormContainer>
+				</form:FormContainer>
+
+			</form:formContainers>
+		</form:Form>
+
+		<footer>
+			<Bar busyIndicatorDelay="0">
+				<contentRight>
+					<!-- Button to download PDF -->
+					<Button id="downloadPDFButton"
+						text="{i18n>TXT_COLLABORATION_PRINT_ORDERS_BUTTON_DOWNLOAD_PDF}"
+						press="handleDownloadPress" />
+					<!-- RFI All -->
+					<Button id="RFIAllButton"
+						text="{i18n>TXT_COLLABORATION_PRINT_ORDERS_BUTTON_RFI_ALL}" press="handleRFIAllPress" />
+					<!-- RFI -->
+					<Button id="RFIButton"
+						text="{i18n>TXT_COLLABORATION_PRINT_ORDERS_BUTTON_RFI}" press="handleRFIPress" />
+					<!-- Reset button -->
+					<Button text="{i18n>TXT_GENERIC_RESET}" press="handleFilterResetPress" />
+				</contentRight>
+			</Bar>
+		</footer>
+
+	</Page>
+
+</core:View>

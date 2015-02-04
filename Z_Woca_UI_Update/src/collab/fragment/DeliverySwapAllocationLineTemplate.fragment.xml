@@ -1,0 +1,51 @@
+<ColumnListItem xmlns="sap.m">
+	<cells>
+		<!-- Supplier -->
+		<Text text="{initiateSwapLines>Supplier}" />
+
+		<!-- Product -->
+		<Text text="{initiateSwapLines>Product}" />
+
+		<!-- Source Delivery Number -->
+		<Text />
+
+		<!-- Source BC -->
+		<Text />
+
+		<!-- Source Container -->
+		<Text text="{initiateSwapLines>SourceContainerID}" />
+
+		<!-- Source Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>SourceAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+		<!-- Source New Quantity -->
+		<Text
+			text="{parts:[{path: 'initiateSwapLines>SourceAllocationQuantity'},{path: 'initiateSwapLines>SwapQuantity'}], formatter:'.formatSourceNewQuantity'}" />
+
+		<!-- Swap Quantity -->
+		<Input value="{initiateSwapLines>SwapQuantity}" change="handleSwapQtyChange"
+			enabled="true" />
+
+		<!-- Target Delivery Number -->
+		<Text />
+
+		<!-- Target BC -->
+		<Text />
+
+		<!-- Target Container -->
+		<Text text="{initiateSwapLines>TargetContainerID}" />
+
+		<!-- Target Old Quantity -->
+		<Text
+			text="{path: 'initiateSwapLines>TargetAllocationQuantity', formatter: 'com.zespri.awct.util.LocaleFormatHelper.formatQuantity'}" />
+
+		<!-- Target New Quantity -->
+		<Text
+			text="{parts:[{path: 'initiateSwapLines>TargetAllocationQuantity'},{path: 'initiateSwapLines>SwapQuantity'}], formatter:'.formatTargetNewQuantity'}" />
+
+		<!-- UOM -->
+		<Text text="{initiateSwapLines>UoM}" />
+
+	</cells>
+</ColumnListItem>
